@@ -1,0 +1,745 @@
+Modulo Programación Orientada a Objetos
+
+***Clase 1 Lo que aprenderás sobre programación orientada a objetos y algoritmos con Python***
+Objetivos
+
+- Entender cómo funciona la programación orientada a objetos
+- Entender como medir la eficiencia temporal y espacial de nuestros algoritmos
+- Entender cómo y por qué graficar
+- Aprender a resolver problemas de búsqueda, ordenación y optimización
+
+***Clase 2 Programación Orientada a Objetos***
+
+Programación orientada a objetos en Python
+Uno de los elementos más importantes de los lenguajes de programación es la utilización de clases para organizar programas en módulos y abstracciones de datos.
+
+Las clases se pueden utilizar de diversas maneras. Pero en este artículo hablaremos de cómo utilizarlas en el contexto de la programación orientada a objetos. 
+La clave para entender la programación orientada a objetos es pensar en objetos como agrupaciones de datos y los métodos que operan en dichos datos.
+
+Por ejemplo, podemos representar a una persona con propiedades como nombre, edad, género, etc. y los comportamientos de dicha persona como caminar, cantar, comer, etc. 
+De la misma manera podemos representar unos audífonos con propiedades como su marca, tamaño, color, etc. y sus comportamientos 
+como reproducir música, pausar y avanzar a la siguiente canción.
+
+Puesto de otra manera, la programación orientada a objetos nos permite modelar cosas reales y concretas del mundo y sus relaciones con otros objetos.
+
+Las ideas detrás de la programación orientada a objetos tienen más de 50 años y han sido ampliamente aceptadas y practicadas en los últimos treinta. 
+A mediados de la década de los setenta se comenzaron a escribir artículos académicos explicando los beneficios de esta aproximación a la programación. 
+También durante esos años se comenzaron a escribir los primeros lenguajes de programación que incorporaban estas ideas (como Smalltalk y CLU). 
+Pero no fue hasta la llegada de Java y C++ que la idea consiguió un número importante de seguidores.
+
+Hasta ahora, en el curso previo de esta serie hemos utilizado programación orientada a objetos de manera implícita. 
+Cuando decimos “Los objetos son las principales cosas que un programa de Python manipula. 
+Cada objeto tiene un tipo que define qué cosas puede realizar un programa con dicho objeto,” nos estamos refiriendo a las ideas principales de la programación 
+orientada a objetos. 
+
+Hemos utilizado los tipos lista y diccionario, entre muchos otros, así como los métodos asociados a dichos tipos.
+
+Así como los creadores de un lenguaje de programación solo pueden diseñar una fracción muy pequeña de todas las funciones útiles (como abs, float, type, etc.), 
+también pueden escribir una fracción muy pequeña de los tipos útiles (int, str, dict, list, etc.). 
+Ya sabemos los mecanismos que nos permiten crear funciones, ahora veremos los mecanismos que nos permiten crear nuevos tipos (o clases).
+
+Clases en Python
+Las estructuras primitivas con las que hemos trabajado hasta ahora nos permiten definir cosas sencillas, como el costo de algo, el nombre de un usuario,
+las veces que debe correr un bucle, etc. Sin embargo, existen ocasiones cuando necesitamos definir estructuras más complejas, por ejemplo un hotel. 
+Podríamos utilizar dos listas: una para definir los cuartos y una segunda para definir si el cuarto se encuentra ocupado o no.
+
+cuartos_de_hotel = [101, 102, 103, 201, 202, 203]
+cuarto_ocupado = [True, False, False, True, True, False]
+Sin embargo, este tipo de organización rápidamente se sale de control. ¿Qué tal que quisiéramos añadir más propiedades, cómo si el cuarto ya fue aseado o no? 
+¿Si el cuarto tiene cama doble o sencilla? Esto nos lleva a una falta fuerte de organización y es justamente el punto que justifica la existencia de clases.
+
+Las clases nos permiten crear nuevos tipos que contiene información arbitraria sobre un objeto. En el caso del hotel, podríamos crear dos clases Hotel() y Cuarto() 
+que nos permitiera dar seguimiento a las propiedades como número de cuartos, ocupación, aseo, tipo de habitación, etc.
+
+Es importante resaltar que las clases solo proveen estructura. Son un molde con el cual podemos construir objetos específicos. 
+La clase señala las propiedades que los hoteles que modelemos tendrán, pero no es ningún hotel específico. Para eso necesitamos las instancias.
+
+Instancias
+Mientras que las clases proveen la estructura, las instancias son los objetos reales que creamos en nuestro programa: un hotel llamado PlatziHotel o Hilton. 
+Otra forma de pensarlo es que las clases son como un formulario y una vez que se llena cada copia del formulario tenemos las instancias que pertenecen a dicha clase. 
+Cada copia puede tener datos distintos, al igual que cada instancia es distinta de las demás 
+(aunque todas pertenecen a una misma clase).
+
+Para definir una clase, simplemente utilizamos el keyword class. Por ejemplo:
+
+class Hotel:
+    pass
+Una vez que tenemos una clase llamada Hotel podemos generar una instancia llamando al constructor de la clase.
+
+hotel = Hotel()
+Atributos de la instancia
+Todas las clases crean objetos y todos los objetos tienen atributos. Utilizamos el método especial __init__ para definir el estado inicial de nuestra instancia. 
+Recibe como primer parámetro obligatorio self (que es simplemente una referencia a la instancia).
+
+class Hotel:
+    
+    def __init__(self, numero_maximo_de_huespedes, lugares_de_estacionamiento):
+        self.numero_maximo_de_huespedes = numero_maximo_de_huespedes
+        self.lugares_de_estacionamiento = lugares_de_estacionamiento
+        self.huespedes = 0
+
+
+hotel = Hotel(numero_maximo_de_huespedes=50, lugares_de_estacionamiento=20)
+print(hotel.lugares_de_estacionamiento) # 20
+Métodos de instancia
+Mientras que los atributos de la instancia describen lo que representa el objeto, los métodos de instancia nos indican qué podemos hacer con las instancias
+de dicha clase y normalmente operan en los mencionados atributos. Los métodos son equivalentes a funciones dentro de la definición de la clase, pero todos reciben 
+self como primer argumento.
+
+class Hotel:
+
+    ...
+
+    def anadir_huespedes(self, cantidad_de_huespedes):
+        self.huespedes += cantidad_de_huespedes
+
+    def checkout(self, cantidad_de_huespedes):
+        self.huespedes -= cantidad_de_huespedes
+
+    def ocupacion_total(self):
+        return self.huespedes
+
+
+hotel = Hotel(50, 20)
+hotel.anadir_huespedes(3)
+hotel.checkout(1)
+hotel.ocupacion_total() # 2
+Ahora que ya sabemos qué son las clases y cómo las podemos utilizar en nuestros programas, platícanos qué clases te serían útiles para modelar en uno de tus programas.
+
+***Clase 3 Tipos de datos abstractos y clases, Instancias***
+
+- el constructor de python es: __init__
+- en python cuando pierde las referencias, es decir, nadie está usando ese código por así decirlo el garbage collector lo elimina dentro de memoria
+- Aunque en python no existe 
+- Instancias:
+    - Los atributos de clase nos permiten:
+        - Representar datos
+        - Procedimientos para interactuar con los mismos (métodos)
+        - Mecanismos para esconder la representación interna
+    - Se accede a los atributos con la notación de punto
+    - Se pueden tener atributos privados, por convención comienzan con _
+        - En algunos lenguajes se usa el keyword private para colocar como privado ese atributo
+    
+Datos abstractos o abstracción:
+
+- Ventajas:
+    - Decomposición
+    - Abstracción
+    - Encapsulación
+
+- En python todo es un objeto y tiene un tipo.
+    - Representación de datos y forma de interactuar con ellos
+
+- Formas de interactuar con un objeto:
+    - Creación - Crear
+    - Manipulación - Manipular
+    - Destrucción - Destruir
+
+así se generan este tipo de datos abstractos:
+usamos el keyword class que nos permite definir los tipos de datos abstractos luego se le da el nombre de la clase y en ocasiones se recibe una súper clase
+después usamos el método def __init__ que se le conoce como constructor, en python siempre los metodos dentro de una clase empiezan con el primer parámetro que le llamamos 
+self, se le pasan si se quiere otros métodos y, luego tenemos las expresiones de esa función o método
+- las funciones que están dentro de las clases se convierten o se les pasa a llamar métodos
+- el constructor es el primer método que se ejecuta cuándo se instancia una clase
+- las variables son nombres que apuntan a memoria
+- Ejemplo:
+    - class Persona:
+        def __init__(self, nombre, edad):
+            self.nombre = nombre
+            self.edad = edad
+        
+        def saluda(self, otra_persona):
+            return f'Hola {otra_persona.nombre}, mi nombre es: {self.nombre}
+
+- class es una clase
+- def es una función, pero dentro de un class es un metodo, por lo tanto en nuestro ejemplo es un método.
+- constructor es el primer método que se ejecuta
+- instancia es lo que esta dentro de un método, después de self. Ejm.: (self, otra_coordenada).
+
+***Clase 4 Decomposición***
+
+- Partir un problema en problemas más pequeños
+- Las clases permiten crear mayores abstracciones en forma de componentes
+- Cada clase se encarga de una parte del problema y el programa se vuelve más fácil de mantener
+
+- Cuando por ejemplo le pasamos a una función un parametro con valor ya asignado por así decirlo a este tipo de parámetro se le llama
+default keyword o parámetro por defecto:
+por ejemplo:
+    - tipo="gasolina"
+        def __init__(self, cilindros, tipo="gasolina"):
+y aunque sea por defecto significa que si queremos lo específicamos, si no, no
+
+***Clase 5 Abstracción***
+
+Esto lo leí en internet y lo que entendí de la abstracción es:
+    Es una clase abstracta sobre la cual no se pueden crear modelos concretos, y con esta no se pueden instanciar objetos, de todos modos, 
+    tiene características específicas y funcionalidades de objeto con lo cual se puede distinguir del resto de tipos de objetos 
+
+- Enfocarnos en la información relevante
+- Separar la información central de los detalles secundarios
+    - Separa la información relevante de la no relevante
+- Podemos utilizar variables y métodos(privados o públicos)
+
+***Clase 6 Funciones: base de los decoradores***
+
+El concepto de decorador en Python es algo que podríamos ubicar en un nivel “intermedio” en el manejo del lenguaje, por lo que es buena idea que tengas una base sólida, 
+sobre todo en cuanto a funciones al momento de profundizar e implementarlas.
+
+Los decoradores son una forma sencilla de llamar funciones de orden mayor, es decir, funciones que toman otra función como parámetro 
+y/o retornan otra función como resultado. De esta forma un decorador añade capacidades a una función sin modificarla.
+
+Un ejemplo de esto son las llantas de un automóvil. Si les colocas cadenas para la nieve, el automóvil aún puede andar y además extiende su funcionalidad 
+para conducirse en otros terrenos.
+
+Recordando sobre funciones
+Antes de abordar el tema de decoradores haremos un pequeño repaso por las funciones, las cuales retornan un valor ante la entrada de un argumento.
+
+Analicemos este sencillo ejemplo donde una función que multiplica un número se eleva a la tercera potencia:
+
+def elevar_cubo(numero):
+	return numero * numero * numero
+Si damos como argumento el número 3, entonces tendremos como salida el número 27 al ejecutar la función:
+
+>>> elevar_cubo(3)
+27
+Funciones como objetos de primera-clase
+Otro concepto importante a tener en cuenta es que en Python las funciones son objetos de primera-clase, es decir, que pueden ser pasados y 
+utilizados como argumentos al igual que cualquier otro objeto 
+(strings, enteros, flotantes, listas, etc.).
+
+Veamos un ejemplo donde definimos 3 diferentes funciones que utilizaremos de manera conjunta:
+
+def presentarse(nombre):
+	return f"Me llamo {nombre}"
+
+def estudiemos_juntos(nombre):
+	return f"¡Hey {nombre}, aprendamos Python!"
+
+def consume_funciones(funcion_entrante):
+	return funcion_entrante("David")
+Las primeras dos funciones son obvias en su resultado, donde nos mostrarán un mensaje con el valor de la variable nombre. La tercera función puede 
+ser más compleja de predecir, ya que toma otra función como entrada. Veamos que pasa cuando colocamos una función como atributo:
+
+>>> consume_funciones(presentarse)
+'Me llamo David'
+
+>>> consume_funciones(estudiemos_juntos)
+'¡Hey David, aprendamos Python!'
+Pongamos atención en cómo la función consume_funciones() se escribe con paréntesis para ser ejecutada, mientras que la función presentarse y estudiemos_juntos solo hace
+referencia a estas.
+
+Funciones anidadas
+Al igual que los condicionales y bucles también puedes colocar funciones dentro de otra función.
+
+Tómate un minuto para analizar el siguiente código e inferir cuál será el resultado de salida:
+
+def funcion_mayor():
+	print("Esta es una función mayor y su mensaje de salida.")
+
+	def librerias():
+		print("Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.")
+
+	def frameworks():
+		print("Algunos frameworks de Python son: Django, Dash y Flask.")
+
+	frameworks()
+	librerias()
+Si llamamos a la función funcion_mayor tendremos la siguiente salida:
+
+>>> funcion_mayor()
+Esta es una función mayor y su mensaje de salida.
+Algunos frameworks de Python son: Django, Dash y Flask.
+Algunas librerías de Python son: Scikit-learn, NumPy y TensorFlow.
+Debemos considerar que las funciones anidadas dentro de funcion_mayor no se ejecutan hasta que se llama a esta primera, siendo muestra del scope o alcance de las funciones. 
+Si las llamamos obtendremos un error
+
+En la siguiente lectura entraremos al concepto de decoradores, setters y getters, pues al entender mejor las funciones será más fácil asimilar su uso en la implementación
+del encapsulamiento.
+
+***Clase 7 Setters, getters y decorador property***
+
+En este punto estamos comenzando a utilizar conceptos en Python que comienzan a ser más avanzados, por lo que es normal que puedan parecerte complejos o difíciles de asimilar,
+así que te animo a que los repases un par de veces.
+
+Puedes tener la tranquilidad de que si bien, al inicio no los implementas en su totalidad, podrás seguir avanzando en el curso y poco a poco incorporarlos a tus proyectos
+donde lo más importante es que sepas que cuentas con estas herramientas.
+
+Entendiendo el concepto de decorador
+Antes de comenzar me gustaría que analices el siguiente código:
+
+def funcion_decoradora(funcion):
+	def wrapper():
+		print("Este es el último mensaje...")
+		funcion()
+		print("Este es el primer mensaje ;)")
+	return wrapper
+
+def zumbido():
+	print("Buzzzzzz")
+
+zumbido = funcion_decoradora(zumbido)
+¿Qué pasará si llamamos a la función zumbido()? si logras determinar el resultado de salida o entenderlo con detalle, entonces podemos seguir adelante.
+
+Lo que sucede es lo siguiente:
+
+>>> zumbido()
+Este es el último mensaje...
+Buzzzzzz
+Este es el primer mensaje ;)
+Si no diste con el resultado no te preocupes, solo hay que analizarlo con detalle y el truco está en la línea zumbido = funcion_decoradora(zumbido). 
+Sucede que la función wrapper() recibió la la función zumbido() cómo parámetro y coloca su salida entre los otros dos prints.
+
+Todo lo que sucede se conoce en programación como metaprogramación (metaprogramming), ya que una parte del programa trata de modificar a otra durante el tiempo de compilación. 
+En tanto un decorador básicamente toma una función, le añade alguna funcionalidad y la retorna.
+
+Mejorando la sintaxis
+Definitivamente la forma en que decoramos la función es complejo, pero afortunadamente Python lo tiene en cuenta y podemos utilizar decoradores con el símbolo @. 
+Volviendo al mismo ejemplo de funcion_decoradora(), 
+podemos simplificarlo así:
+
+@funcion_decoradora
+def zumbido():
+	print("Buzzzzzz")
+En solo tres líneas de código tenemos el mismo resultado que escribir zumbido = funcion_decoradora(zumbido).
+
+¿Qué son getters y setters?
+A diferencia de otros lenguajes de programación, en Python los getters y setters tienen el objetivo de asegurar el encapsulamiento de datos. 
+Cómo habrás visto, si declaramos una variable privada en Python al colocar un guión bajo al inicio de esta (_) y normalmente son utilizados 
+para: añadir lógica de validación al momento de obtener y definir un valor y, para evitar el acceso directo al campo de una clase.
+
+La realidad es que en Python no existen variables netamente privadas, pues aunque se declaren con un guión bajo podemos seguir accediendo a estas. 
+En Programación Orientada a Objetos esto es peligroso, pues podemos alterar el método de alguna clase y tener efectos colaterales que afecten la lógica de nuestra aplicación.
+
+Clases sin getters y setters
+Veamos un ejemplo con una clase que almacena un dato de distancia recorrida en millas (mi) y lo convierte a kilómetros (km):
+
+class Millas:
+	def __init__(self, distancia = 0):
+		self.distancia = distancia
+
+	def convertir_a_kilometros(self):
+		return (self.distancia * 1.609344)
+Ahora creemos un objeto que haga referencia a un viaje:
+
+# Creamos un nuevo objeto
+avion = Millas()
+
+# Indicamos la distancia
+avion.distancia = 200
+
+# Obtenemos el atributo distancia
+>>> print(avion.distancia)
+200
+
+# Obtenemos el método convertir_a_kilometros
+>>> print(avion.convertir_a_kilometros())
+321.8688
+Utilizando getters y setters
+Incluyamos un par de métodos para obtener la distancia y otro para que no acepte valores inferiores a cero, pues no tendría sentido que un vehículo recorra una distancia 
+negativa. 
+Estos son métodos getters y setters:
+
+class Millas:
+	def __init__(self, distancia = 0):
+		self.distancia = distancia
+
+	def convertir_a_kilometros(self):
+		return (self.distancia * 1.609344)
+
+	# Método getter
+	def obtener_distancia(self):
+		return self._distancia
+
+	# Método setter
+	def definir_distancia(self, valor):
+		if valor < 0:
+			raise ValueError("No es posible convertir distancias menores a 0.")
+		self._distancia = valor
+El método getter obtendrá el valor de la distancia que y el método setter se encargará de añadir una restricción. También debemos notar cómo distancia 
+fue reemplazado por _distancia, denotando que es una variable privada.
+
+Si probamos nuestro código funcionará, la desventaja es que cualquier aplicación que hayamos creado con una base similar deberá ser actualizado. 
+Esto no es nada escalable si tenemos cientos o miles de líneas de código.
+
+Función property()
+Esta función está incluida en Python, en particular crea y retorna la propiedad de un objeto. La propiedad de un objeto posee los métodos getter(), setter() y del().
+
+En tanto la función tiene cuatro atributos: property(fget, fset, fdel, fdoc) :
+
+fget : trae el valor de un atributo.
+fset : define el valor de un atributo.
+fdel : elimina el valor de un atributo.
+fdoc : crea un docstring por atributo.
+Veamos un ejemplo del mismo caso implementando la función property() :
+
+class Millas:
+	def __init__(self):
+		self._distancia = 0
+
+	# Función para obtener el valor de _distancia
+	def obtener_distancia(self):
+		print("Llamada al método getter")
+		return self._distancia
+
+	# Función para definir el valor de _distancia
+	def definir_distancia(self, recorrido):
+		print("Llamada al método setter")
+		self._distancia = recorrido
+
+	# Función para eliminar el atributo _distancia
+	def eliminar_distancia(self):
+		del self._distancia
+
+	distancia = property(obtener_distancia, definir_distancia, eliminar_distancia)
+
+# Creamos un nuevo objeto 
+avion = Millas()
+
+# Indicamos la distancia
+avion.distancia = 200
+
+# Obtenemos su atributo distancia
+>>> print(avion.distancia)
+Llamada al método getter
+Llamada al método setter
+200
+Aunque en este ejemplo hay una sola llamada a print, tenemos tres líneas como salida pues esta llama a los primeros dos métodos. Por lo que la propiedad distancia es una 
+propiedad de objeto que ayuda a mantener el acceso de forma privada.
+
+Decorador @property
+Este decorador es uno de varios con los que ya cuenta Python, el cual nos permite utilizar getters y setters para hacer más fácil la implementación de la programación orientada
+a objetos en Python cambiando los métodos o atributos de las clases de forma que no modifiquemos el código.
+
+Pero mejor veamos un ejemplo en acción:
+
+class Millas:
+	def __init__(self):
+		self._distancia = 0
+
+	# Función para obtener el valor de _distancia
+	# Usando el decorador property
+	@property
+	def obtener_distancia(self):
+		print("Llamada al método getter")
+		return self._distancia
+
+	# Función para definir el valor de _distancia
+	@obtener_distancia.setter
+	def definir_distancia(self, valor):
+		if valor < 0:
+			raise ValueError("No es posible convertir distancias menores a 0.")
+		print("Llamada al método setter")
+		self._distancia = valor
+
+# Creamos un nuevo objeto 
+avion = Millas()
+
+# Indicamos la distancia
+avion.distancia = 200
+
+# Obtenemos su atributo distancia
+>>> print(avion.definir..distancia)
+Llamada al método getter
+Llamada al método setter
+200
+De esta manera usamos el decorador @property para utilizar getters y setters de una forma más prolija e incluimos una nueva funcionalidad a nuestro método definir_distancia(), 
+al mismo tiempo protegemos el acceso a nuestras variables privadas y cumplimos con el principio de encapsulación.
+
+***Clase 8 Encapsulación, getters and setters***
+
+- Permite agrupar datos y su comportamiento
+- Controla el acceso a dichos datos
+- Previene modificaciones no autorizadas
+la encapsulación tiene que ver también con algo que le llaman programación defensiva
+
+***Clase 9 Herencia***
+
+- Permite modelar una jerarquía de clases
+- Permite compartir comportamiento común en la jerarquía
+- Al padre se le conoce como superclase y al hijo como subclase
+
+Un aspecto importantísimo de la Herencia es la posibilidad de reutilizar código. La reutilización es uno de los pilares de la POO, de manera que evitemos reinventar la rueda
+cada vez. Si tenemos un comportamiento que es común entre una serie de objetos de la misma categoría, este comportamiento debe enviarse a un clase superior que permita 
+compartirlo con sus clases hijas. Esto facilita la mantenibilidad del código haciéndolo más estable.
+
+OJO A ESTO:
+en la clase9_herencia.py, el maestro coloca la función super() nos permite obtener una referencia directa de la súper clase,entonces cuando ejecutamos la función super()
+estamos obteniendo la referencia de la súper clase, mirar el archivo clase9_herencia.py
+
+***Clase 10 Polimorfismo***
+
+Herencia: copy paste
+Polimorfismo: edit copy paste
+
+- La habilidad de tomar varias formas
+- En python, nos permite cambiar el comportamiento de una superclase para adaptarlo a la subclase
+
+se aplica para realizar cualquier cambio de comportamiento y al mismo tiempo, poder compartir con toda la jerarquía de clases que se han construído
+el comportamiento deseado y así especializar las clases
+
+Módulo Complejidad algorítmica
+
+***Clase 11 Introducción a la complejidad algorítmica***
+Nos permite comparar la eficiencia entre dos algoritmos
+
+- Por qué comparamos la eficiencia de un algoritmo
+- Complejidad temporal vs complejidad espacial
+- Podemos definirla como T(n)
+- Cronometrar el tiempo en el que corre un algoritmo
+- Contar los pasos con una medida abstracta de operación
+- Contar los pasos conforme nos aproximamos al infinito
+
+El sysmódulo " " en Python proporciona una función llamada para modificar el límite de recursividad en Python. Toma un parámetro, el valor del nuevo límite 
+de recursividad. Por defecto, este valor suele ser 10 ^ 4. Si se trata de entradas grandes, puede configurarlo en 10 ^ 6 para que las entradas grandes 
+puedan manejarse sin errores. setrecursionlimit()
+
+Usando el setrecursionlimit()método, podemos aumentar el límite de recursividad y el programa se puede ejecutar sin errores incluso en entradas grandes.
+import sys 
+sys.setrecursionlimit(10**6) 
+
+Necesitamos aumentar la máxima profundidad de recursividad para resolver el problema anterior. Usamos la función setrecursionlimit() para establecer el 
+límite de recursividad. La sintaxis correcta para usar esta función es la siguiente:
+
+sys.setrecursionlimit(limit)
+
+El programa a continuación muestra cómo podemos usar este método para establecer el límite de recursividad en Python.
+Ejemplo:
+	import sys
+	sys.setrecursionlimit(5000)
+	print(sys.getrecursionlimit())
+	resultado = 5000
+
+***Clase 12 Conteo abstracto de operación***
+
+Rojo=función polinómica
+Azul = función lineal
+Amarillo = Función Logarítmica
+Verde = Constante.
+
+Les comparto el libro: Introducción al Cálculo de James Stewart
+PDF-> https://drive.google.com/file/d/1fH0jmaSGXBo2IPPz3gmUToWWvr869iRz/view?usp=sharing
+
+***Clase 13 Notación asintótica***
+
+- Si tenemos un loop decimos que es un crecimiento lineal
+- Si tenemos iteración dentro de otra iteración, un loop dentro de otro loop, decimos que es un crecimiento cuadrático
+- Si decimos que tenemos una función recursiva que genera más de una llamada recursiva, es decir, genera dos o tres o cuatro llamadas recursivas
+decimos que es un crecimiento exponencial
+
+- No importan variaciones pequeñas
+- El enfoque se centra en lo que pasa conforme el tamaño del problema se acerca al infinito
+- Mejor de los casos, promedio, peor de los casos
+- Big O
+- Nada más importa el término de mayor tamaño
+
+***Clase 14 Clases de complejidad algorítmica***
+
+- O(1) -> Constante
+- O(n) -> Lineal
+- O(log n) -> Logarítmica
+- O(n log n) -> Log lineal
+- O(n**2) -> Polinomial
+- O(2**n) -> Exponencial
+ 
+Módulo Algoritmos de búsqueda y ordenación
+
+***Clase 15 Búsqueda lineal***
+
+- Busca en todos los elementos de manera secuencial
+- ¿Cuál es el peor caso?
+- Busca encontrar una respuesta línea por línea, o se puede decir también paso por paso, elemento por elemento para dar una respuesta
+
+***Clase 16 Búsqueda binaria***
+
+- Divide y conquista
+- El problema se divide en 2 en cada iteración
+	- Valga la aclaración se dice busqueda binaria porque se divide en 2 en cada iteración
+- ¿Cuál es el peor caso?
+
+para encontrar una respuesta parte en dos el problema
+
+***Clase 17 Ordenamiento de burbuja***
+
+El ordenamiento de burbuja es un algoritmo que recorre repetidamente una lista que necesita ordenarse.
+Compara elementos adyacentes y los intercambia si están en el orden incorrecto. Este procedimiento se repite
+hasta que no se requieren más intercambios, lo que indica que la lista se encuentra ordenada
+
+***Clase 18 Ordenamiento por inserción***
+
+Ordenamiento por inserción
+El ordenamiento por inserción es uno de los algoritmos más comunes que estudian
+los Científicos del Cómputo. Es intuitivo y fácil de implementar, pero es muy
+ineficiente para listas de gran tamaño.
+
+Una de las características del ordenamiento por inserción es que ordena en “su
+lugar.” Es decir, no requiere memoria adicional para realizar el ordenamiento
+ya que simplemente modifican los valores en memoria.
+
+La definición es simple:
+
+Una lista es dividida entre una sublista ordenada y otra sublista desordenada.
+Al principio, la sublista ordenada contiene un solo elemento, por lo que por
+definición se encuentra ordenada.
+
+A continuación se evalua el primer elemento dentro la sublista desordenada para
+que podamos insertarlo en el lugar correcto dentro de la lista ordenada.
+
+La inserción se realiza al mover todos los elementos mayores al elemento que
+se está evaluando un lugar a la derecha.
+
+Continua el proceso hasta que la sublista desordenada quede vacia y, por lo
+tanto, la lista se encontrará ordenada.
+
+Veamos un ejemplo:
+
+Imagina que tienes la siguiente lista de números:
+
+7, 3, 2, 9, 8
+
+Primero añadimos 7 a la sublista ordenada:
+
+7, 3, 2, 9, 8
+
+Ahora vemos el primer elemento de la sublista desordenada y lo guardamos en
+una variable para mantener el valor. A esa variable la llamaremos valor_actual.
+Verificamos que 3 es menor que 7, por lo que movemos 7 un lugar a la derecha.
+
+7, 7, 2, 9, 8 (valor_actual=3)
+
+3 es menor que 7, por lo que insertamos el valor en la primera posición.
+
+3, 7, 2, 9, 8
+
+Ahora vemos el número 2. 2 es menor que 7 por lo que lo movemos un espacio a la
+derecha y hacemos lo mismo con 3.
+
+3, 3, 7, 9, 8 (valor_actual=2)
+
+Ahora insertamos 2 en la primera posición.
+
+2, 3, 7, 9, 8
+
+9 es más grande que el valor más grande de nuestra sublista ordenada por lo que
+lo insertamos directamente en su posición.
+
+2, 3, 7, 9, 8
+
+El último valor es 8. 9 es más grande que 8 por lo que lo movemos a la derecha:
+
+2, 3, 7, 9, 9 (valor_actual=8)
+
+8 es más grande que 7, por lo que procedemos a insertar nuestro valor_actual.
+
+2, 3, 7, 8, 9
+
+Ahora la lista se encuentra ordenada y no quedan más elementos en la sublista
+desordenada.
+
+Antes de ver la implementación en Python, trata de implementarlo por ti mismo
+y compártenos tu algoritmo en la sección de comentarios.
+
+Esta es una forma de implementar el algoritmo anterior:
+
+
+def ordenamiento_por_insercion(lista):
+
+    for indice in range(1, len(lista)):
+        valor_actual = lista[indice]
+        posicion_actual = indice
+
+        while posicion_actual > 0 and lista[posicion_actual - 1] > valor_actual:
+            lista[posicion_actual] = lista[posicion_actual - 1]
+            posicion_actual -= 1
+
+        lista[posicion_actual] = valor_actual
+
+***Clase 19 Ordenamiento por mezcla***
+
+El ordenamiento por mezcla es un algoritmo de divide y conquista. Primero divide una lista en partes iguales
+hasta que quedan sublistas de 1 ó 0 elementos. Luego las recombina en forma ordenada
+
+Módulo Ambientes virtuales
+ 
+***Clase 20 Ambientes virtuales***
+
+para activar el entorno en Windows:
+environment\Scripts\activate
+
+para solucionar este error: 
+ModuleNotFoundError: No module named 'pip'
+fue con el siguiente comando, eso si, en windows
+	- python -m ensurepip
+
+Para crear un ambiente es con el siguiente código:
+
+python -m venv environment
+
+donde environment es el nombre del ambiente virtual y venv es el comando integrado que permite crear el entorno virtual
+
+- Permiten aislar el ambiente para poder instalar diversas versiones de paquetes
+- A partir de python 3 se incluye en la librería estandar el módulo venv
+- Ningún ingeniero profesional de Python trabaja sin ellos
+
+Una practica muy útil es crear un archivo con el nombre de requirements.txt y colocar los paquetes que necesitemos uno debajo del otro
+
+Tambien puedes congelar todos los paquetes instalados del proyecto dentro de un 
+archivo.txt, por ejemplo si ejecutas el siguiente comando creas automáticamente dentro de tu 
+venv el archivo.txt, dentro esta el detalle de los paquetes instalados y las versiones necesarias para tu proyecto:
+pip freeze > requirements.txt
+
+Windows:
+
+0.- Entras a CMD.
+1.- Entras a tu carpeta con el comando cd.
+2.- Ingresa el comando “py -m pip install virtualenv”.
+3.- Pones el comando py -m venv nombre_de_tu_espacio_virtual".
+4.- Colocas "nombre_de_tu_espacio_virtual\Scripts\activate"
+5.- Por último, tipeas “pip install nombre_de_librería” en este caso, el nombre de la librería que queremos en “bokeh”.
+
+Módulo Graficado
+
+***Clase 21 ¿Por qué graficar?***
+
+***Clase 22 Graficado simple***
+
+Módulo Algoritmos de optimización
+
+***Clase 23 Introducción a la optimización***
+
+***Clase 24 El problema del morral***
+
+- mirar código correspondiente a clase 24
+
+***Clase 25 Conclusiones***
+
+- Los tipos abstractos(clases) permiten crear programas poderosos que modelan al mundo
+- Podemos medir la eficiencia de diversos algoritmos
+- Las gráficas nos permiten encontrar patrones rápidamente
+- Optimización
+- Pensamiento computacional desarrollado:
+	- Decomposición
+	- Abstracción
+	- Reconocimiento de patrones
+	- Diseño de algoritmos
+
+Sitios donde encontrar retos:
+	https://www.hackerrank.com más recomendado
+	https://exercism.io/
+	https://www.freecodecamp.org/learn
+	https://codewars.com más recomendado
+	http://codeforces.com/
+	https://coderbyte.com/
+	https://www.codingame.com/
+	https://www.codechef.com/
+	https://www.topcoder.com/challenges/
+	http://pywombat.com/
+	https://projecteuler.net/ para resolver problemas y mejorar habilidades de programación y matemáticas
+	Visiten https://kaggle.com Tiene muchos ejercicios y tutoriales para practicar.
+	https://algoexpert.io
+	https://www.codesignal.com
+	https://www.codingame.com
+
+IMPORTANTE:
+
+Seguir los retos que hay en este enlace, muy buenos
+https://www.youtube.com/watch?v=GCUp6Pegq9g&list=PLh7JzoyIyU4ItkCzTywNPhEQRHwNHj6BJ&index=5

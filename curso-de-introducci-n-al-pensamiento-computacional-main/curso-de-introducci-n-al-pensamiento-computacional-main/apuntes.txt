@@ -1,0 +1,730 @@
+***Clase 2 Introducción al computo***
+
+Resumen Introducción al Cómputo
+
+“Primera computadora” creada por los griegos, calcula la posición del sol, luna y algunas constelaciones.
+
+En 1801, Telar de Jacquar, separa el resultado de la informacion que contiene las instrucciones.
+
+Siglo XIX, Motor analítico de Babbage, haciendo uso del avances en mecánica (engranajes) de su época logra separar instrucciones de calculo y realizar varios cálculos a la vez.
+
+Finales siglo XIX, ENIAC (Eectronic Numerical Integrator and Computer) usaba sistema decimal. creada por Alan Turing y Alonso. Esta época exigía exactitud en los cálculos que hacían que compañías dependieran de esta(Compañías Ferroviarias por ejemplo). Turing y Alonso, Descubrieron que matemáticamente todos los algoritmos podíamos reducirlos a una secuencia de soluciones matemáticas.
+
+En 1945, Arquitectura de Von Neumann, EDVAC (Electronic Discrete Variable Automatic Computer) usaba sistema binario. Su aporte fue el descubrimiento que dentro de los componentes electrónicos se puede usar una serie de hadward para realizar el computo y almacenar datos dentro de memoria.
+
+En 1950, Microchip, ejemplo Apple 1
+
+En siglo XX, Arquitectura de Feymann, aporta las bases matemáticas de computo cuántico.
+
+- Las computadoras hacen dos cosas: hacen cálculos y recuerdan el resultado de dichos cálculos
+- Por la mayoría de la historia humana, estábamos limitados por la velocidad del cerebro y la mano
+- Aún con las computadoras modernas existen problemas que no podemos resolver
+
+***Clase 3 Introducción a los lenguajes de programación***
+
+Lenguajes:
+- Tienen una sintaxis que definen la secuencia de símbolos que está bien formada
+- Semántica estática: Define qué enunciados con sintaxis correcta tienen significado
+- Semántica: Define el significado, en los lenguajes de programación solo hay un significado, son precisos, exactos, no tienen doble sentido
+
+Un algoritmo es una lista finita de instrucciones que describen un cómputo, que cuando se ejecuta con ciertas entradas(inputs) ejecuta
+pasos intermedios para llegar  a un resultado (output)
+- John V. Guttag
+
+¿Qué es un lenguaje de programación?
+Es un lenguaje formal que, mediante una serie de instrucciones, le permite a un programador escribir un conjunto de órdenes, acciones consecutivas, datos y algoritmos para, de esa forma, crear programas que controlen el comportamiento físico y lógico de una máquina.
+
+¿Qué tipos de lenguaje de programación existen?
+El lenguaje de programación es la base para construir todas las aplicaciones digitales que se utilizan en el día a día y se clasifican en dos tipos principales: lenguaje de bajo nivel y de alto nivel.
+
+Lenguaje de programación de bajo nivel
+Son lenguajes totalmente orientados a la máquina.
+
+Este lenguaje sirve de interfaz y crea un vínculo inseparable entre el hardware y el software.
+
+Además, ejerce un control directo sobre el equipo y su estructura física. Para aplicarlo adecuadamente es necesario que el programador conozca sólidamente el hardware. Éste se subdivide en dos tipos:
+
+Lenguaje máquina
+Es el más primitivo de los lenguajes y es una colección de dígitos binarios o bits (0 y 1) que la computadora lee e interpreta y son los únicos idiomas que las computadoras entienden.
+
+Ejemplo: 10110000 01100001
+
+No entendemos muy bien lo que dice ¿verdad? Por eso, el lenguaje ensamblador nos permite entender mejor a qué se refiere éste código.
+
+Lenguaje ensamblador
+El lenguaje ensamblador es el primer intento de sustitución del lenguaje de máquina por uno más cercano al utilizado por los humanos.
+
+Un programa escrito en éste lenguaje es almacenado como texto (tal como programas de alto nivel) y consiste en una serie de instrucciones que corresponden al flujo de órdenes ejecutables por un microprocesador.
+
+Sin embargo, dichas máquinas no comprenden el lenguaje emsamblador, por lo que se debe convertir a lenguaje máquina mediante un programa llamado Ensamblador.
+
+Este genera códigos compactos, rápidos y eficientes creados por el programador que tiene el control total de la máquina.
+
+Ejemplo: MOV AL, 61h (asigna el valor hexadecimal 61 al registro “AL”)
+
+Lenguaje de programación de alto nivel
+Tienen como objetivo facilitar el trabajo del programador, ya que utilizan unas instrucciones más fáciles de entender.
+
+Además, el lenguaje de alto nivel permite escribir códigos mediante idiomas que conocemos (español, inglés, etc.) y luego, para ser ejecutados, se traduce al lenguaje de máquina mediante traductores o compiladores.
+
+Traductor
+Traducen programas escritos en un lenguaje de programación al lenguaje máquina de la computadora y a medida que va siendo traducida, se ejecuta.
+
+Compilador
+Permite traducir todo un programa de una sola vez, haciendo una ejecución más rápida y puede almacenarse para usarse luego sin volver a hacer la traducción.
+
+***Clase 4 Preparación de la computadora***
+
+Antes de comenzar este curso asegúrate de preparar tu entorno de trabajo para poder hacer todos los ejercicios. A continuación te compartiré los pasos que debes seguir para configurar tu computadora.
+
+Si estás usando Windows asegúrate de instalar lo siguiente en tu computadora:
+
+Python 3.7 (o superior)
+1. Para obtener el instalador dirígete a https://www.python.org/downloads/
+1.png
+2. Descarga el instalador y ejecútalo en tu computadora.
+2.png
+3. Habilita la casilla de verificación en Install launcher for all users y Add Python 3.8 to PATH. A continuación presiona en Install Now. Windows te solicitará permisos para instalar Python en tu computadora.
+3.png
+4. Al finalizar la instalación se abrirá una ventana como la siguiente, en ella deberás presionar en la opción Disable path length limit. Windows te solicitará permisos para realizar este cambio.
+4.png
+Visual Studio Code
+En el curso el profesor utiliza Visual Studio Code, un editor de textos que tiene integradas varias herramientas que te ayudarán a desarrollar tus ejercicios con facilidad. Para obtenerlo en tu computadora, dirígete a: https://code.visualstudio.com/
+
+4.png
+1. Realiza una instalación normal de Visual Studio code.
+6.png
+Una vez instalado se ejecutará Visual Studio Code.
+
+2. En Visual Studio Code dirígete al panel de Extensiones, se encuentra en el panel lateral izquierdo. Ahí deberás buscar la extensión llamada Python.
+6.png
+3. Selecciona la extensión creada por Microsoft, la identificarás por ser similar a la que se muestra en la imágen. Una vez seleccionada, instálala
+7.png
+4. Una vez instalada, reinicia Visual Studio Code.
+Listo con esto podrás correr los programas que escribas en python en la terminal de Visual Studio Code.
+
+Cuando quieras correr tu programa en la terminal de Visual Studio Code, puedes introducir la dirección como lo muestra el profesor en el curso o presionar en el botón “Run Python File in Terminal”
+
+***Clase 4 Elementos básicos de python***
+
+- Bajo nivel vs alto nivel
+    - alto nivel: significa que está diseñado para los humanos, es decir, que se acerca mucho más al lenguaje natural a la forma en que nos comunicamos
+    - bajo nivel: está diseñado para que lo entienda un máquina se parece más a unos y ceros
+- General vs dominio específico
+    - General: significa que tiene todos los primitivos que nos otorga turing para poder implementar o computar cualquier algoritmo
+    - Dominio específico:  son lenguajes especialidados a aplicaciones específicas
+- Interpretado vs compilado
+    - Interpretado: es decir la máquina lo va leyendo y cada instrucción la va convirtiendo a tiempo real en un lenguaje que pueda entender la máquina
+    - Compilado: 
+
+- Objetos:
+    Tipos:
+        - entero, flotantes, booleanos, etc
+    - Escalares: 
+        que se pueden subdividir
+    -No escalares:
+        que no se pueden subdividir
+
+***Clase 6 asignación de variables***
+
+Las variables son simplemente nombres asociados a espacios en memoria, y los vinculamos a través del operador de asignación
+Se lee de derecha a izquierda. Al contrario que la lectura normal.
+
+por ejemplo en explicación es así:
+a = 2
+x = 4
+z = (a*x/2)
+lo que le decimos ahí es que a tiene el valor de 2, x tiene el valor de 4, y z tiene el resultado de la operación entre a y x y divido 2
+- a las variables siempre se les da un nombre exacto de lo que significa, ejemplo:
+
+base = 2
+altura = 4
+area = (base*altura)/2
+
+- si tenemos una variable y esa variable apunta a un lugar de memoria y si nosotros reasignamos esa variable, simplemente pasamos a apuntar a otro lugar
+las variables en python:
+    - Pueden estár compuestas de mayúsculas, minúsculas, números (sin comenzar con uno), y el símbolo _
+    - No pueden llamarse como palabras reservadas de python
+
+***Clase 7 Cadenas y entradas***
+
+en cadenas se puede usar los operadores * y +, + lo podemos usar paara concatenar dos cadenas
+- len -> nos muestra la longitud o el número de caracteres que tiene un string
+- indexing (indexación) -> podemos ver un dato de un string pasándole la posición exacta de la cadena
+- slicing(rebanadas)
+    - my_str[comienzo:final:pasos]
+    lo que puede uno hacer con esto es decirle, de ese string muestreme los caracteres que estan desde un posición a otra o también,
+    muestreme los caracteres que estan desde un posición en este número de pasos
+- Los objetos o tipo de str pueden representarse con comillas simples o comillas dobles "",''
+- Operador + tiene diferentes significados según el tipo de dato (overloaded). Con cadenas significa concatenación
+- El operador * es el operador de repetición con cadenas
+- Las cadenas son inmutables
+- Entradas:
+    - Python tiene la función input para recibir datos del usuario del programa
+    - Input siempre regresa cadenas, por lo que si queremos usar otro tipo, tenemos que hacer type casting
+por ejemplo:
+cuando queremos saber el tipo de valor de un dato es con type y es así:
+print(type(variable))
+
+- si queremos cambiar el valor que recibe el input es así:
+si queremos que reciba un entero es así:
+dato = int(input("texto de aviso del input"))
+si queremos que reciba un flotante o decimal es así:
+dato = float(input("texto"))
+
+***Clase 8 Programas ramificados***
+
+operadores de igualdad:
+
+2==3
+2!=3
+2>3
+2<3
+2<=3
+2>=3
+tabla de verdad
+A    |B    |A and B|A or B|Not B|
+True |True |True   |True  |False|
+True |False|False  |True  |True |
+False|True |False  |True  |     |
+False|False|False  |False |     |
+
+***Clase 9 iteraciones***
+
+- La mayoría de las tareas computacionales no se pueden lograr con ramificaciones
+- Cuando queremos que un programa haga lo mismo varias veces, usamos iteraciones
+- Se pueden escribir iteraciones dentro de iteraciones
+- Podemos usar break para salir
+- Tener cuidado con las iteraciones infinitas
+
+***Clase 10 Bucles for***
+
+Los bucles, en diversos lenguajes de programación pueden ser definidos o indefinidos. Los bucles definidos preestablecen las condiciones de la iteración por adelantado. Por su parte, los bucles indefinidos establecen la condición en la que una iteración terminará. En este último tipo de bucles existe el riesgo de que el bucle se vuelva infinito (cuando la condición de suspensión nunca se cumple).
+
+Los bucles definidos se implementan en Python a través del keyword for. Por su parte, los bucles indefinidos se implementan con el keyword while.
+
+Sin embargo, esta no es la única forma de implementar bucles definidos. Por ejemplo, Javascript puede implementar un bucle definido mediante el siguiente constructo:
+
+for (i = 0; i <= 10; i++) {
+  <expresión>
+}
+El bucle se puede leer de la siguiente manera:
+
+Inicializa el bucle en 0
+Continua el bucle mientras i sea menor o igual que 10
+Incrementa i en uno al final de cada iteración
+Es importante señalar que la expresión i++ es equivalente a lo que en Python escribiríamos como i += 1.
+
+Una segunda forma de crear un bucle definido es iterando en una colección de objetos. Esta es la forma que Python utiliza:
+
+for <variable> in <iterable>:
+    <expresión>
+El bucle for en Python
+En la definición anterior debemos entender <iterable> como una colección de objetos; y la <variable> como el elemento específico que se está exponiendo mediante el bucle en cada iteración.
+
+>>> frutas = ['manzana', 'pera', 'mango']
+>>> for fruta in frutas:
+        print(fruta)
+
+manzana
+pera
+mango
+Iterables
+En Python, un iterable es un objeto que se puede utilizar en un bucle definido. Si un objeto es iterable significa que se puede pasar como argumento a la función iter. El iterable que se pasa como parámetro a la función iter
+regresa un iterator.
+
+>>> iter('cadena') # cadena
+>>> iter(['a', 'b', 'c']) # lista
+>>> iter(('a', 'b', 'c')) # tupla
+>>> iter({'a', 'b', 'c'}) # conjunto
+>>> iter({'a': 1, 'b': 2, 'c': 3}) # diccionario
+Todas las llamadas anteriores regresan un objeto de tipo iterator.
+
+¿Qué pasa si le pasamos a la función iter un objeto que no es iterable? Obtendremos un TypeError que señala que el objeto no es un iterable. Esto es un ejemplo de programación defensiva en el que Python verifica el tipo del
+objeto antes de proceder al cómputo. ¡Intentalo en tu consola!
+
+Es importante señalar que estos no son los únicos tipos de objetos que pueden ser iterable. Existen gran cantidad de ejemplos en la librería estándar y, de hecho, casi cualquier objeto se puede convertir en un iterable (pero eso
+ya lo veremos cuando hablemos de Python avanzado).
+
+Iterators
+Ahora que ya sabemos cómo obtener un iterator, ¿Qué podemos hacer con él? Un iterator es un objeto que regresa sucesivamente los valores asociados con el iterable.
+
+>>> frutas = ['manzana', 'pera', 'mango']
+>>> iterador = iter(frutas)
+>>> next(iterador)
+manzana
+>>> next(iterador)
+pera
+>>> next(iterador)
+mango
+Como puedes ver, el iterator guarda el estado interno de la iteración, de tal manera que cada llamada sucesiva a next regresa el siguiente elemento. ¿Qué pasa una vez que ya no existan más elementos en el iterable? La llamada
+a next arrojará un error de tipo StopIteration.
+
+¿Cómo implementa Python los bucles definidos?
+Ahora ya conocemos todos los elementos necesarios para entender que es lo que sucede en Python cuando ejecutamos un bucle for. Considera nuevamente el siguiente código:
+
+>>> frutas = ['manzana', 'pera', 'mango']
+>>> for fruta in frutas:
+        print(fruta)
+Este bucle se puede describir con los conceptos que explicamos previamente:
+
+Python llama internamente la función iter para obtener un iterator
+Una vez que tiene un iterator llama repetidamente la función next para
+tener acceso al siguiente elemento en el bucle.
+Detiene el bucle una vez que se arroja el error StopIteration.
+Bucles for con diccionarios
+Para iterar a lo largo de un diccionario tenemos varias opciones:
+
+Ejecutar el bucle for directamente en el diccionario, lo cual nos permite
+iterar a lo largo de las llaves del diccionario.
+Ejecutar el bucle for en la llamada keys del diccionario, lo cual nos permite
+iterar a lo largo de las llaves del diccionario.
+Ejecutar el bucle for en la llamada values del diccionario, lo cual nos
+permite iterar a lo largo de los valores del diccionario.
+Ejecutar el bucle for en la llamada items del diccionario, lo cual nos
+permite iterar en una tupla de las llaves y los valores del diccionario.
+estudiantes = {
+    'mexico': 10,
+    'colombia': 15,
+    'puerto_rico': 4,
+}
+
+for pais in estudiantes:
+    ...
+
+for pais in estudiantes.keys():
+    ...
+
+for numero_de_estudiantes in estudiantes.values():
+    ...
+
+for pais, numero_de_estudiantes in estudiantes.items():
+    ...
+Modificación del comportamiento de un bucle for
+Podemos modificar el comportamiento de un bucle for mediante los keywords
+break y continue.
+
+break termina el bucle y permite continuar con el resto del flujo de nuestro
+programa.
+
+continue termina la iteración en curso y continua con el siguiente ciclo de
+iteración.
+
+Conclusiones
+Como pudimos observar, Python implementa los bucles definidos mediante los bucles for. Esta implementación nos permite iterar a lo largo de cualquier objeto que sea iterable. Para iterar necesitamos un iterador que nos regresará
+el siguiente valor en cada iteración. Todo esto, Python lo puede hacer por nosotros con el constructo for ... in ....
+
+***Clase 11 Representación de flotantes***
+
+La mayoría del tiempo los números flotantes (tipo float) son una muy buena aproximación de los números que queremos calcular con nuestras computadoras. Sin embargo, “la mayoría del tiempo” no significa todo el tiempo, y cuando no se comportan de esta manera puede tener consecuencias inesperadas.
+
+Por ejemplo, trata de correr el siguiente código:
+
+x = 0.0
+for i in range(10):
+    x += 0.1
+
+if x == 1.0:
+    print(f'x = {x}')
+else:
+    print(f'x != {x}')
+Es probable que te hayas sorprendido con el resultado. La mayoría de nosotros esperaríamos que imprimiera 1.0 en vez de 0.999999999999. ¿Qué es lo que pasó?.
+
+Para entender qué es lo que pasó tenemos que entender que es lo que pasa en la computadora cuando realizamos cómputos con números flotantes. Y para eso necesitamos entender números binarios.
+
+Cuando aprendiste a contar, lo que en realidad aprendiste es una técnica combinatoria para manipular los siguientes símbolos que le llamamos números: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+
+La forma en la que funciona esta técnica es asignando el número 10 a la 0 al número de la extrema derecha, 10 a la 1 al siguiente, 10 a la 2 al siguiente y así sucesivamente. De tal manera que el número 525 es simplemente la representación de (5 * 100) + (2 * 10) + (5 * 1).
+
+Esto nos dice que el número de números que podemos representar depende de cuanto espacio tengamos. Si tenemos un espacio de 3, podemos representar 1,000 números (10 elevado a la 3) o la secuencia del 0 al 999. Si tenemos 4, podemos representar 10,000 (10 elevado a la 4) o la secuencia del 0 al 9,999. De manera general podemos decir que con una secuencia de tamaño n, podemos representar 10 elevado a la n números.
+
+Los números binarios funcionan de la misma manera (de hecho cualquier número en cualquier base, por ejemplo, octales o hexadecimales). La única diferencia es cuántos símbolos tenemos para representar. En binario nada más tenemos 0, 1;
+en hexadecimal tenemos 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f.
+
+De esta manera podemos decir que el número de la extrema derecha es cantidad_de_simbolos**0, cantidad_de_simbolos**1, cantidad_de_simbolos**2, etc. Por lo que en binario, que nada más tenemos 2 símbolos, decimos 2**0, 2**1, 2**2, etc. Por ejemplo el número binario 101 es la representación de (1 * 4) + (0 * 2) + (1 * 1), es decir 5.
+
+Esta representación nos permite trabajar con todos los números positivos enteros dentro del computador, pero ¿Qué hacemos con los negativos y los racionales?.
+
+El caso de los números negativos es sencillo: simplemente agregamos un bit adicional que representa el signo y la añadimos en la extrema izquierda. Por lo que el número 0101 sería +5 y el número 1101 sería -5.
+
+El caso de los racionales es más complejo. En la mayoría de los lenguajes de programación modernos los racionales utilizan una implementación llamada punto flotante. ¿Cómo funciona esta representación?.
+
+Antes de pasar a binario, vamos a pretender que estamos trabajando con una computadora basada en decimales. Un número flotante lo representaríamos con un par de enteros: los dígitos significativos y el exponente. Por ejemplo, el número 2.345 se representaría como (2345 * 10**-3) o (2345, -3).
+
+El número de dígitos significativos determinan la precisión con la que podemos representar número. Por ejemplo si nada más tuviéramos dos dígitos significativos el número 2.345 no se podría representar de manera exacta y tendríamos que convertirlo a una aproximación, en este caso 2.3.
+
+Ahora pasemos a la verdadera representación interna de la computadora, que es en binario. ¿Cómo representarías el número 5/8 o 0.625? Lo primero que tenemos que saber es que 5/8 es en realidad el número 5 * 2**-3. Por lo que podríamos decir (101, -11) (recuerda que el número 5 es 101 en binario y el 3 es 11).
+
+Regresemos a nuestro problema inicial: ¿Cómo representaremos 1/10 (que escribimos en Python cómo 0.1)? Lo mejor que podemos hacer con cuatro dígitos significativos es (0011, -101) que es equivalente a 3/32 (0.09375). ¿Qué tal si tuviéramos cinco dígitos significativos? La mejor representación sería (11001, -1000) que es equivalente a 25/256 (0.09765625). ¿Cuántos dígitos significativos necesitamos entonces? Un número infinito. No existe ningún número que cumpla con la siguiente ecuación: sim * 2**-exp.
+
+En la mayoría de las implementaciones de Python tenemos 53 bits de precisión para números flotantes. Así que los dígitos significativos para representar el número 0.1 es igual a:
+
+11001100110011001100110011001100110011001100110011001 que es equivalente al número decimal: 0.1000000000000000055511151231257827021181583404541015625
+
+Muy cercano a 1/10 pero no exactamente 1/10. Ahora ya sabemos la razón de esa respuesta tan extraña. Hay muy pocas situaciones en la que 1.0 es aceptable, pero 0.9999999999999999 no. Pero ¿Cuál es la moraleja de esta historia?
+
+Hasta ahora hemos verificado igualdad con el operador ==. Sin embargo, cuando estamos trabajando con flotantes es mejor asegurarnos que los números sean aproximados en vez de idénticos. Por ejemplo x < 1.0 and x > 0.99999.
+
+***Clase 12 Enumeración exhaustiva***
+
+- También llamado "adivina y verifica"
+- Las computadoras actuales son muy muy rápidas
+- Uno de los primeros algoritmos que debes tratar
+
+***Clase 13 Aproximación de soluciones***
+
+- Similar a enumeración exhaustiva, pero no necesita una respuesta exacta
+- Podemos aproximar soluciones con un margen de error que llamaremos epsilon 
+- abs() -> función que nos regresa el valor absoluto de un número
+- los algoritmos dependen del hardware
+
+***Clase 14 Búsqueda binaria***
+
+- Cuando la respuesta se encuentra en un conjunto ordenado, podemos usar la búsqueda binaria
+- Es altamente eficiente, pues corta el espacio de búsqueda en dos por cada partición 
+cuando hay un conjunto ordenado la búsqueda binaria si funciona
+
+Lo aplicado en esta clase se denomina Métodos Numéricos, el metodo usado en la clase es conocido como método de la bisección, es un tipo de búsqueda incremental en el que el intervalo se divide siempre a la mitad.
+Existen diversos métodos que tiene una mejor convergencia para la aproximación a la solución, el mas conocido es el metodo newtoh raphson.
+
+Pueden revisar este libro si les interesa aprender mas sobre Métodos Numéricos
+
+
+***Clase 15 funciones y abstracción***
+
+- La abstracción significa que no necesitamos entender como funciona algo internamente para usarlo
+- Decomposición: 
+    - Permite dividir el código en componentes que colaboran con un fin en común
+    - Se puede pensar como mini programas dentro de un programa mayor
+
+***Clase 16 Alcance***
+
+- también podemos pasar funciones como argumentos
+- es entender como se va ejecutar una función, paso a paso
+
+***Clase 17 Especificaciones del código***
+
+los docstrings -> es como un comentario que se deja en un código explicando variedad de cosas como por ejemplo quién lo hizo, cuándo lo hizo, para que lo hizo,
+cual es su finalidad, en donde más se está usando, etc.
+
+para saber como funciona una función lo podemos hacer con help, así:
+help(nombre_de_la_función)
+help(suma)
+def suma(a,b):
+    """ suma dos valores a y b
+    le estamos diciendo que estamos esperando un parametro(param) que debe ser entero(int(a)) y puede ser cualquier entero
+    param int a cualquier entero
+    le estamos diciendo que estamos esperando un parametro(param) que debe ser entero(int(b)) y puede ser cualquier entero
+    param int b cualquier entero
+    le decimos que es lo que regresa esta función
+    returns la sumatoria de a y b
+    """
+    total a+b
+    return total
+
+***Clase 18 Recursividad***
+
+- Algorítmica: Una forma de crear soluciones usando el principio de "divide y vencerás"
+- Programática: Una técnica programática mediante la cual una función se llama a sí misma
+
+Desconocía totalmente que Python tuviera un límite de recursividad. Para conocerlo hay que importar la librería sys:
+
+>>> import sys
+>>> print(sys.getrecursionlimit())
+1000
+Para modificar ese límite
+
+sys.setrecursionlimit(n) # n es el nuevo límite a establecer
+
+
+***Clase 19 Finobacci y la recursividad***
+La secuencia de Fibonacci es una función matemática que se define recursivamente. En el año 1202, el matemático italiano Leonardo de Pisa, también conocido como Fibonacci, encontró una fórmula para cuantificar el crecimiento que ciertas poblaciones experimentan.
+
+Imagina que una pareja de conejos nace, un macho y una hembra, y luego son liberados. Imagina, también, que los conejos se pueden reproducir hasta la edad de un mes y que tienen un periodo de gestación también de un mes. Por último imagina que estos conejos nunca mueren y que la hembra siempre es capaz de producir una nueva pareja (un macho y una hembra). ¿Cuántos conejos existirán al final de seis meses?
+
+Una forma de visualizar este crecimiento es mirándolo de forma tabular:
+
+Mes	Hembras
+0	1
+1	1
+2	2
+3	3
+4	5
+5	8
+6	13
+Un punto importante a considerar es que para el mes n > 1, hembras(n) = hembras(n - 1) + hembras(n - 2).
+
+Como podemos ver, tenemos una definición distinta a la de factorial que vimos anteriormente. En específico, tenemos dos casos base (0 y 1) y tenemos dos llamadas recursivas (hembras(n - 1) + hembras(n - 2)).
+
+Podemos crear una solución recursiva de manera sencilla:
+
+def fibonacci(n):
+    if n == 0 or n == 1:
+        return 1
+
+    return fibonacci(n - 1) + fibonacci(n - 2)
+Aunque la definición es muy sencilla, es también bastante ineficiente. En los siguientes cursos de la serie de pensamiento computacional veremos como calcular exactamente la eficiencia de este algoritmo y cómo optimizarlo. De mientras, platícanos si conoces alguna otra definición recursiva.
+
+***Clase 20 Funciones como objetos***
+
+Funciones como objetos
+Una de las características más poderosas de Python es que todo es un objeto, incluyendo las funciones. Las funciones en Python son “ciudadanos de primera clase”.
+
+Esto, en sentido amplio, significa que en Python las funciones:
+
+Tienen un tipo
+Se pueden pasar como argumentos de otras funciones
+Se pueden utilizar en expresiones
+Se pueden incluir en varias estructuras de datos (como listas, tuplas,
+diccionarios, etc.)
+Argumentos de otras funciones
+Hasta ahora hemos visto que las funciones pueden recibir parámetros para realizar los cómputos que definen. Algunos de los tipos que hemos pasado son tipos simples como cadenas, números, listas, etc. Sin embargo, también pueden recibir funciones para crear abstracciones más poderosas. Veamos un ejemplo:
+
+def multiplicar_por_dos(n):
+    return n * 2
+
+def sumar_dos(n):
+    return n + 2
+
+def aplicar_operacion(f, numeros):
+    resultados = []
+    for numero in numeros:
+        resultado = f(numero)
+        resultados.append(resultado)
+
+>>> nums = [1, 2, 3]
+>>> aplicar_operacion(multiplicar_por_dos, nums)
+[2, 4, 6]
+
+>>> aplicar_operacion(sumar_dos, nums)
+[3, 4, 5]
+Funciones en expresiones
+Una forma de definir una función en una expresión es utilizando el keyword lambda. lambda tiene la siguiente sintaxis: lambda <vars>: <expresion>.
+
+Otro ejemplo interesante es que las funciones se pueden utilizar en una expresión directamente. Esto es posible ya que como lo hemos platicado con anterioridad, en Python las variables son simplemente nombres que apuntan a un objeto (en este caso a una función). Por ejemplo:
+
+sumar = lambda x, y: x + y
+
+>>> sumar(2, 3)
+5
+Funciones en estructuras de datos
+Las funciones también se pueden incluir en diversas estructuras que las permiten almacenar. Por ejemplo, una lista puede guardar diversas funciones a aplicar o un diccionario las puede almacenar como valores.
+
+def aplicar_operaciones(num):
+    operaciones = [abs, float]
+
+    resultado = []
+    for operacion in operaciones:
+        resultado.append(operacion(num))
+
+    return resultado
+
+>>> aplicar_operaciones(-2)
+[2, -2.0]
+Como pudimos ver, las funciones son objetos muy versátiles que nos permiten tratarlas de diversas maneras y que nos permiten añadir capas adicionales de abstracción a nuestro programa.
+
+Compártenos cómo te imaginas que estas capacidades de Python te pueden ayudar a escribir mejores programas.
+ver la el archivo clase20.py, ahí se ejecutaron las funciones que están en estos apuntes que corresponden a la clase 20
+
+***Clase 21 Tuplas***
+
+- Son secuencias inmutables de objetos
+- A diferencia de las cadenas pueden contener cualquier tipo de objeto
+- Pueden usarse para resolver varios valores en una función
+
+***Clase 22 Rangos***
+
+- Representan una secuencia de enteros
+- range(comienzo,fin,pasos)
+- Al igual que las cadenas y las tuplas, los rangos son inmutables
+- Muy eficientes en uso de memoria y normalmente usado en for loops
+- Tener en cuenta que cuando uno pide un rango siempre el número final que uno le indica no es hasta donde va, si no que va hasta el número antes del que uno le indicó, ejemplo:
+my_range = range(1,5)
+esto lo que va imprimir es desde el número 1 hasta el 4 y siempre es así, como dije antes, imprime hasta el número anterior al indicado
+
+***Clase 23 Listas y mutabilidad***
+
+- Son secuencias de objetos, pero a diferencia de las tuplas, sí son mutables, modificables
+- Cuando modificas una lista, pueden existir efectos secundarios(sid effects)
+- Es posible iterar con ellas
+- Para modificar una lista podemos:
+    - Asignar vía indice (my_list[9] = 3)
+    - Utilizar los metodos de la lista(append, pop, remove, insert, etc.)
+- Clonación de listas:
+    - Casi siempre es mejor clonar una lista en lugar de mutarla
+    - Para clonar una lista podemos usar rebanadas (slices) o la función list
+- List comprenhension:
+    - Es una forma concisa de aplicar operaciones a los valores de una secuencia
+    - También se pueden aplicar condiciones para filtrar
+
+#para generar una lista con un rango lo hacemos así:
+my_list = list(range(10))
+
+https://docs.python.org/3/tutorial/datastructures.html#more-on-lists
+
+***Clase 24 Diccionarios***
+
+- Son como listas, pero en lugar de usar indices usan llaves
+- No tienen orden interno
+- Los diccionarios son mutables, es decir, modificables
+- Pueden iterarse
+
+IMPORTANTE
+
+https://www.datacamp.com/community/tutorials/python-dictionary-comprehension
+
+***Clase 25 Pruebas de caja negra***
+
+- Se basan en una especificación de la función o el programa
+- Prueba inputs y outputs
+- Unit testing o integration testing
+
+TDD o Test Driven Development es una metodología donde hacemos todo al revés. Por un momento vamos a dejar de programar para dedicarnos a escribir las pruebas.
+
+Pero, ¿cómo vamos a saber lo que debemos probar si ni siquiera hemos escrito el código? Muy buena pregunta. Eso es exactamente lo que vamos a descubrir a continuación.
+
+Objetivo: agilizar nuestro desarrollo
+Las pruebas son código que escribimos para comprobar que otra parte del código funciona correctamente. Sin embargo, no debemos olvidar que podemos caer en muy malas prácticas al escribir nuestro código sin saber exactamente lo que debe hacer, qué resultados debemos conseguir o cuándo deben saltar las alarmas.
+
+En ocasiones puede parecer que es más demorado. Pero, así como toda buena práctica, esto es solo al principio, solo es un primer “obstáculo” que debemos superar para conseguir muchos beneficios.
+
+A la larga, seguir estas metodologías y buenas prácticas nos ahorra tiempo y esfuerzo en errores que debemos resolver. Será mucho más fácil implementar nuevas características y evitaremos escribir código inútil que vamos a utilizar.
+
+Gracias a TDD podemos agilizar nuestro proceso de creación de código. Nos preocupamos más por el qué y el por qué antes del cómo. Todo el código que necesitamos para implementar eso que planeamos con las pruebas será problema un poco más adelante. Por ahora, lo que importa es asegurarnos que estamos resolviendo los problemas correctos.
+
+Cómo funciona: ciclo de vida de las pruebas
+TDD y el concepto de Black Box
+Nuestra metodología de pruebas funciona muy parecido a un concepto de sistemas y física que conocemos como Black Box: Estudiamos o trabajamos a partir de las entradas (inputs) y las salidas o respuestas que produce o debería producir nuestro sistema (outputs).
+
+Caja negra (sistemas) - Wikipedia.
+Con nuestras pruebas es igual. Definimos los argumentos que le enviamos a “la caja negra” y las posibles respuestas que debemos obtener dependiendo de las combinaciones de argumentos.
+
+El desarrollo de nuestras pruebas es el siguiente:
+
+Definimos los objetivos de nuestra prueba y escribimos su posible implementación. Nuestras pruebas deben fallar al principio porque, claramente, todavía no hemos programado el código que les permita funcionar correctamente. 🤔
+Programamos el código necesario para pasar las pruebas. 😎
+Redefinimos los objetivos. Podemos añadir nuevos casos de uso y refactorizar nuestro código para mejorar la aplicación. 😏
+Herramientas de TDD
+No hay una herramienta como tal para implementar la metodología de TDD. Más bien, existen herramientas que nos ayudan a escribir y correr nuestras pruebas de forma automatizada.
+
+Aquí algunas de las herramientas y frameworks más populares para diferentes lenguajes:
+
+JUnit para Java: Es gratuito y open source. Tiene muy buen soporte, mantenimiento y está en constante mejora con nuevas versiones. Nos permite probar EJBs, servlets y programas multihilo pero no hace pruebas unitarias en interfaces Swing, JSPs o HTML. Nos proporciona muy buena DX o experiencia a los desarrolladores ya que se integra muy bien con IntelliJ. Github.com/Junit-team.
+Jest para JavaScript: Existen muchas alternativas pero, Jest tiene una comunidad muy grande que ha creado más herramientas para mejorar aún más la experiencia de los desarrolladores. También es open source y tiene muy buen mantenimiento por sus creadores, de Facebook. Además, se integra muy bien con herramientas como React, Vue y Angular; funciona tanto del lado del cliente (frontend) como de lado del servidor (frontend y backend). Github.com/Facebook/Jest.
+En Python: Como te dije antes, TDD es una metodología y la podemos aplicar con cualquier herramienta. Por supuesto, existen librerías nativas o instalables que facilitan el desarrollo y automatización de pruebas en Python como unittest, pytest o Hypothesis.
+MiniTest para Ruby: También dispone de algunas herramientas nativas que nos dan algunas ayudas para escribir nuestras pruebas más fácilmente. Además, se integran muy bien con Rails y las gemas más populares de Ruby: MiniTest.
+Omití algunas herramientas y lenguajes que también pueden ser muy útiles. Si quieres, puedes decirme tus favoritos en los comentarios 😃.
+
+https://platzi.com/blog/que-es-y-como-funciona-tdd/
+
+***Clase 26 Pruebas caja de cristal***
+
+El testing tambien es un campo interesante,
+Aqui la lista de los ** 7 principios de Testing ** de acuerdo al libro de ISTQB.
+
+1 Las pruebas muestran la presencia de defectos
+Significa que las pruebas pueden demostrar que EXISTEN problemas, pero no que los problemas NO EXISTEN.
+El objetivo principal de llevar a cabo una prueba es para detectar defectos. Trabajando bajo la premisa de que cada producto contiene defectos de algún tipo, una prueba que revela los errores es generalmente mejor que una que no lo hace. Todas las pruebas por lo tanto, deben ser diseñados para revelar tantos errores como sea posible
+
+2 Las pruebas exhaustivas son imposibles
+Las pruebas exhaustivas tratan de cubrir todas las combinaciones posibles de datos en el software, a fin de garantizar que ninguna situación puede surgir, una vez probado el software se ha liberado. Excepto en aplicaciones muy simples, el número de combinaciones posibles de datos es demasiado alta, es más eficaz y eficiente que los ingenieros de pruebas se centren en las funcionalidades de acuerdo a riesgos y prioridades.
+
+3 Pruebas tempranas.
+Un producto (incluyendo los documentos, tales como la especificación del producto) se puede probar tan pronto como se ha creado. ISTQB recomienda probar un producto tan pronto como sea posible, corregir los errores más rápidamente posible. Los estudios han demostrado que los errores identificados al final del proceso de desarrollo por lo general cuestan más para resolver.
+Por ejemplo: un error encontrado en las especificaciones puede ser bastante sencillo de solucionar. Sin embargo, si ese error se transfiere a la codificación de software, una vez descubierto el error puede ser muy costoso y consume tiempo.
+
+4 Agrupamiento de Defectos
+Los estudios sugieren que los problemas en un elemento de software tienden a agruparse en torno a un conjunto limitado de módulos o áreas. Una vez que estas áreas han sido identificadas, los administradores eficientes de prueba son capaces de enfocar las pruebas en las zonas sensibles, mientras que siguen buscando a los errores en los módulos de software restantes. Me recuerda al 80/20.
+
+5 La paradoja del “Pesticida”
+Al igual que el sobre uso de un pesticida, un conjunto de pruebas que se utilizan repetidamente en el disminuirá en su eficacia. Usando una variedad de pruebas y técnicas expondrá una serie de defectos a través de las diferentes áreas del producto.
+
+6 La prueba es dependiente del contexto
+Las mismas pruebas no se deben aplicar en todos los ámbitos. Distintos productos de software tienen diferentes requisitos, funciones y propósitos. Una prueba diseñada para realizarse en un sitio web, por ejemplo, puede ser menos eficaz cuando se aplica a una aplicación de intranet. Una prueba diseñada para una forma de pago con tarjeta de crédito puede ser innecesariamente rigurosa si se realiza en un foro de discusión.
+En general, cuanto mayor es la probabilidad y el impacto de los daños causados ​​por el software fallado, mayor es la inversión en la realización de pruebas de software.
+
+7 La falacia de ausencia de errores
+Declarar que una prueba no ha descubierto ningún error no es lo mismo que declarar que el software es “libre de errores”. Con el fin de garantizar que los procedimientos adecuados de software de prueba se lleva a cabo en todas las situaciones, los evaluadores deben asumir que todo el software contiene algunos (aunque disimulada) errores.
+
+***Clase 27 Debugging***
+Reglas generales
+- No te molestes con el debugger, aprende a usar el print statement
+- Estudia los datos disponibles
+- Utiliza los datos para crear hipótesis y experimentos. Método cientifico
+- Ten una mente abierta. Si entendieras el programa, probablemente no habrían bugs
+- Lleva un registro de lo que has tratado, preferentemente en la forma de tests
+- Debugear es un proceso de búsqueda. Cada prueba debe acotar el espacio de búsqueda
+- Búsqueda binaria con print statement
+- Encuentra a los sospechoso comunes
+- En lugar de preguntarte por qué un programa no funciona, pregúntate por qué está funcionando de esta manera
+- Es posible que el debug no se encuentre donde crees que está
+- Explícale el problema a otra persona. De preferencia que no tenga contexto
+- Lleva un registro de lo que has tratado, preferentemente en forma de tests
+- Vete a dormir
+
+***Clase 28 Manejo de excepciones****
+
+- Son muy comunes en la programación, no tiene nada de excepcional
+- Las excepciones de python normalmente se relacionan con errores de semántica
+- Se pueden crear excepciones propias
+- Cuando una excepción no se maneja(unhandled exception), el programa termina en error
+- Las excepciones se maneja con los keywords: try, except, finally
+- Se pueden usar también para ramificar programas
+- No debe manejarse de manera silenciosa(por ejemplo, con print statements)
+- Para colocar tu propia excepción utiliza el keyword raise
+
+Excepciones comunes:
+ImportError : una importación falla;
+IndexError : una lista se indexa con un número fuera de rango;
+NameError : se usa una variable desconocida ;
+SyntaxError : el código no se puede analizar correctamente
+TypeError : se llama a una función en un valor de un tipo inapropiado;
+ValueError : se llama a una función en un valor del tipo correcto, pero con un valor inapropiado
+
+***Clase 29 Excepciones y controlde flujo***
+
+Excepciones como control de flujo
+Hasta ahora hemos visto como las excepciones nos permiten controlar los posibles errores que pueden ocurrir en nuestro código. Sin embargo, dentro de la comunidad de Python tienen otro uso: control de flujo.
+
+En este momento ya debes estar familiarizado con las estructuras de control flujo que ofrece Python (if... elif...else); entonces, ¿por qué es necesaria otra modalidad para controlar el flujo? Una razón muy específica: el principio EAFP (easier to ask for forgiveness than permission, es más fácil pedir perdón que permiso, por sus siglas en inglés).
+
+El principio EAFP es un estilo de programación común en Python en el cual se asumen llaves, índices o atributos válidos y se captura la excepción si la suposición resulta ser falsa. Es importante resaltar que otros lenguajes de programación favorecen el principio LBYL (look before you leap, revisa antes de saltar) en el cual el código verifica de manera explícita las precondiciones antes de realizar llamadas.
+
+Veamos ambos estilos:
+
+# Python
+
+def busca_pais(paises, pais):
+    &quot;&quot;&quot;
+    Paises es un diccionario. Pais es la llave.
+    Codigo con el principio EAFP.
+    &quot;&quot;&quot;
+    
+    try:
+        return paises[pais]
+    except KeyError:
+        return None
+// Javascript
+
+/**
+* Paises es un objeto. Pais es la llave.
+* Codigo con el principio LBYL.
+*/
+function buscaPais(paises, pais) {
+  if(!Object.keys(paises).includes(pais)) {
+    return null;
+  }
+
+  return paises[pais];
+}
+Como puedes ver, el código de Python accede directamente a la llave y únicamente si dicho acceso falla, entonces se captura la excepción y se provee el código necesario. En el caso de JavaScript, se verifica primero que la llave exista en el objeto y únicamente con posterioridad se accede.
+
+Es importante resaltar que ambos estilos pueden utilizarse en Python, pero el estilo EAFP es mucho más "pythonico".
+
+***Clase 30 Afirmaciones***
+
+- Programación defensiva
+- Pueden usarse para verificar que los tipos sean correctos en una función
+- También sirven para debuguear
+- Las afirmaciones es muy sencilla, necesitamos usar el keyword assert, dar una expresión booleana, es decir una condición que evalúe
+a verdadero o falso y agregar un mensaje, el cual accedemos a él cuando terminamos la ejecución

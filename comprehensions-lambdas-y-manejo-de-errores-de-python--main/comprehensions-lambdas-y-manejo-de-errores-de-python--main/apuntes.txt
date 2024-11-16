@@ -1,0 +1,353 @@
+***Clase 2 Zen de python***
+
+- Beautiful is better than ugly.
+- Explicit is better than implicit.
+- Simple is better than complex.
+- Complex is better than complicated.
+- Flat is better than nested.
+- Sparse is better than dense.
+- Readability counts.
+- Special cases aren't special enough to break the rules.
+- Although practicality beats purity.
+- Errors should never pass silently.
+- Unless explicitly silenced.
+- In the face of ambiguity, refuse the temptation to guess.
+- There should be one-- and preferably only one --obvious way to do it.
+- Although that way may not be obvious at first unless you're Dutch.
+- Now is better than never.
+- Although never is often better than *right* now.
+- If the implementation is hard to explain, it's a bad idea.
+- If the implementation is easy to explain, it may be a good idea.
+- Namespaces are one honking great idea -- let's do more of those!
+
+Traducción
+
+- Bello es mejor que feo:
+    - Pyhton es estéticamente superior a cualquier otro lenguaje de programación. Al momento de escribir código, es mejor que sea de manera limpia y estética.
+- Explícito es mejor que implícito:
+    - Hacer más fácil que las otras personas entiendan el código.
+- Simple es mejor que complejo:
+    - Es mejor tener una implementación simple, que ocupe pocas lineas de código y sea entendible, a que sea una larga y complicada.
+- Complejo es mejor que complicado:
+    - Si tenemos que extendernos en la implementación y hacerla más compleja para que el código si se entienda, esto es mejor que hacerlo simple y mal.
+- Plano es mejor que anidado:
+    - El anidamiento es cuando tenemos un bloque de código dentro de otro bloque de código (dependiendo de este). Esto se nota en Python por la identación, nos quedarían estos bloques muy corridos a la derecha.
+    - Es mejor evitar el anidamiento, y hacer las cosas de manera plana.
+- Espaciado es mejor que denso:
+    - Por la identación de Python (sus sangrías), este principio se nos hace imposible de esquivar. El código inevitablemente es espaciado.
+- La legibilidad es importante:
+    - Es importante que otros programadores puedan entender lo que estamos escribiendo. Esto hace más fáciles las cosas cuando trabajemos con otros en los proyectos.
+- Los casos especiales no son lo suficientemente especiales cpmo para romper las reglas (sin embargo, la practicidad le gana a la pureza):
+    - Siempre que podamos respetar estas reglas que nos plantea Python, es mejor así. Sin embargo, si por el hecho de hacer un código muy puro o muy ‘Pythonista’, este pierde legibilidad, es mejor ser más prácticos y romper o saltearnos algunas de estas reglas para que el código sea más eficiente. Por lo tanto, llegado el momento debermos decidir si es mejor hacer las cosas de manera pura o práctica.
+- Los errores nunca deberían pasar silenciosamente (a menos que se silencien explícitamente):
+    - Manejar los erroes es fundamental. Cada error nos dice algo y hay que prestarle atención. A menos que seas capaz de silenciar un error explícitamente, aunque para esto hay que tener criterio.
+- Frente a la ambiguedad, evitar la tentación de adivinar:
+    - Nuestro código debería solamente tener una interpretación. Si en un contexto significa algo, y en otro otra cosa, es mejor que lo revisemos y busquemos una solución.
+- Debería haber una, y preferiblemente sola, una manera obvia de hacerlo. (A pesar de que esa manera no sea obvia a menos que seas holandés):
+    - Esto hace referencia al creador de Python ''Guido van Rossum", que de manera muy inteligente encontrar las soluciones precisas a los problemas, y deberíamos imitarlo.
+- Ahora es mejor que nunca:
+    - Es mejor desarrollar nuestra solución cuánto antes, no dejarlo para mañana o para mas adelante.
+- A pesar de que nunca es muchas veces mejor que ahora mismo:
+    - Si por hacer las cosas ya y tenemos poco tiempo, si es mejor dejarlo para después y no hacerlo apurado y mal.
+- Si la implementación es díficil de explicar, es una mala idea, y si es fácil de explicar, es una buena idea:
+    - Si somos capaces de explicar nuestra implementación a otros desarrolladores paso a paso, es una buena idea. En cambio si no podemos hacerlo, significa que ni nosotros entendemos la implementación y deberíamos repensar nuestra forma de encarar la solución.
+- **Los espacios de nombres son una gran idea, ¡Tengamos más de esos! (namespaces):
+    - Es el nombre que se ha indicado luego de la palabra import, es decir la ruta (namespace) del módulo. (Lo veremos a profundidad más adelante).
+
+***Clase 3 ¿Qué es la documentación?***
+
+En esta encontramos todo con respecto a la funcionalidad del lenguaje, errores, sintáxis, referencias del lenguajes, tutoriales
+ahí encontramos los PEP: son los documentos que conforman a toda la guía de estilos del lenguaje, es una guía de como se debe escribir el lenguaje python, el pep8 es la guia de estilos de python
+en esta podemos ver las buenas prácticas que debemos tener para escribir python
+
+https://peps.python.org/pep-0008/
+
+***Clase 4 ¿Qué es un entorno virtual?***
+
+Módulo: Básicamente es código escrito por otra persona que nos sirve para solucionar un problema de manera rápida
+por ejemplo tenemos el módulo Random
+
+Es ese python aislado para un solo proyecto que tiene sus propios módulos y funcionar únicamente ahí
+
+Aprendí sobre los entornos virtuales gracias al Curso de Creación Lenguajes de Programación: Intérpretes, la idea es sencilla, de hecho el concepto es similar al de los contenedores de Docker, como profesional empezarás a requerir de trabajar diversos proyectos que trabajen con diferentes versiones, ya sea del lenguaje o de algún módulo.
+Sería una catástrofe tener que instalar y actualizar módulos para cada proyecto cuidando que ninguno se rompa, porque fácilmente podrías actualizar un módulo que, para un proyecto funcione, pero para otro deje de funcionar, es por eso que se crea el concepto de entornos virtuales.
+Este concepto lo tienen muchos lenguajes, y lo genial es que soluciona muy bien el problema de la compatibilidad entre proyectos, porque cada entorno virtual es independiente y funciona con las versiones que se les hayan instalado ahí mismo 😄.
+
+Recomendado de la Clase:
+
+https://platzi.com/cursos/interpretes-software/
+
+***Clase 5 El primer paso profesional: creación de un entorno virtual***
+
+para crear un ambiente en windows con cmder me funcionó así:
+- python -m venv venv
+- python -m venv venv2
+
+- -m -> significa que vamos a modificar el funcionamiento normal por otra cosa, y en python -m significa modulo, es decir, vamos a llamar a un módulo interno del lenguaje
+- venv -> significa que estamos llamando al módulo venv que hace referencia al entorno virtual, lo que quiere decir es que le estamos diciendo a la consola que nos cree un virtual environment
+- venv2 -> es el nombre que le vamos a colocar al entorno virtual
+
+y ya con eso se nos crea el entorno virtual para trabajar 
+- ahora para entrar al entorno virtual y trabajar, es decir, activarlo es así:
+
+- para activar el entorno virtual en Mac o linux:
+    - source venv/bin/activate
+        donde venv recordar que es el nombre del entorno virtual
+- para activar el entorno virtual en windows con cmder
+    .\venv\Scripts\activate
+- para activar el entorno virtual en windows con git bash
+    source venv2/Scripts/activate
+
+usualmente en el mundo de la programación se suele llamar al entorno virtual que se crea como venv al igual que el módulo, pero en este ejemplo para evitar confusiones lo creé como venv2
+
+***Clase 6 Instalación de dependencias con pip***
+
+- PIP: Package Installer for Python
+hay módulos que están dentro de python pero hay otros que no están instalados, por ende, para obtenerlos usamos pip
+este módulo viene dentro de python para instalar otros módulos
+por ejemplo:
+    - Requests
+    - BeautifulSoup4
+    - Pandas
+    - Numpy
+    - Pytest
+
+cuando ingresamos al entorno virtual e instalamos módulos o dependencias, estas quedan instaladas solo en ese entorno virtual
+- pip freeze: con este comando podemos ver qué módulos tenemos instalados ya sea en nuestro entorno virtual como por fuera
+y para instalar un módulo es así, como ejemplo:
+
+- pip install pandas
+- pip install django
+
+IMPORTANTE:
+
+si por ejemplo yo estoy desarrollando una app y quiero que un compañero u otra persona en su entorno instale exactamente los mismos requerimientos que yo tengo
+o los mismos módulos, lo hago de la siguiente manera:
+
+- pip freeze > requirements.txt
+y ya con eso, tenemos los programas que tengo en mi local listos para pasarselos a otra persona, y ahora para que esa persona los pueda instalar exactos a los mios
+debo ejecutar el siguiente comando:
+- pip install -r requirements.txt
+
+https://pypi.org/project/pipenv/
+Quiz entorno virtual
+
+***Clase 7 Listas y diccionarios anidados***
+
+cuando creo el archivo .gitignore y no quiero subir un entorno virtual lo coloco en el .gitignore así:
+- venv/
+o así:
+*venv
+
+***Clase 8 List comprehensions***
+
+ejemplo de una list comprehensions
+
+    squares = [i**2 for i in range(1,11) if i % 3!=0]
+    print(squares)
+voy a leer la list comprehensions anterior:
+    - para cada i en el rango que va de 1 hasta 11 voy a guardar esa i elevada al cuadrado solamente si la i modulo 3 es distinta de 0 
+        - en otras palabras: para cada i de los números del 1 a 11 voy a guardar esa i al cuadrado solamente si no es divisible por 3
+explicación por partes de la list comprehensions
+[element for element in iterable if condition]
+
+- element
+    - Representa a cada uno de los elementos a poner en una nueva lista
+- for element in iterable
+    - Ciclo a partir del cual se extraerán elementos de otra lista o cualquier iterable
+- if condition
+    - Condición opcional para filtrar los elementos del ciclo
+y se lee así:
+para cada elemento en el iterable voy a guardar ese elemento solo si se cumple la condición
+
+***Clase 9 Dictionary comprehensions***
+
+{key:value for value in iterable if condition}
+
+- key:value -> Representa a cada una de las llaves y valores a poner en el nuevo diccionario
+- for value in iterable ->
+- if condition -> condición opcional para filtrar los elementos del ciclo
+se lee así:
+para cada elemento en el iterable voy a colocar una llave y un valor solamente si se cumple la condición
+Quiz alternativa a los ciclos: comprehensions
+
+***Clase 10 Funciones anónimas: lambda***
+
+las funciones anónimas valga la redundancia es una función sin nombre, es decir, que no tienen identificador 
+y su estructura es así:
+
+lambda argumentos: expresión
+
+las funciones lambda puede tener los argumentos que nosotros queramos o necesitemos pero una sola línea de código
+
+se conforma de un argumento que es el parametro que recibe la función para trabajar acompañado de la palabra clave lambda, luego tenemos una expresión que es una línea de código
+y tenemos una variable que es un identificador, tener en cuenta que ese identificador no es de la función, es de una variable que va contener un objeto de tipo función que retorna 
+todo, recordar que la función lambda no tiene nombre, pero el nombre que tiene esa función con el que la vamos a llamar va ser el nombre de la variable 
+
+- lo bueno de las funciones lambda es que no se necesita poner return
+ejemplo:
+
+palindrome = lambda string:string ==sting[::-1]
+print(palindrome('oso'))
+
+y en una función normal, sería así:
+
+def palindrome(string):
+    return string == string[::-1]
+print(palindrome('ana'))
+
+lo que es lo mismo y debe retornar True o False, en lugar de usar def uso lambda en lugar de pasar los parametros en parentesis, en lambda los coloco sin parentesis
+el identificador se acostumbra a ponerlo como el nombre de la variable en lugar del nombre de la función y en lambda no coloco la palabra clave return, simplemente la omito
+
+***Clase 11 High order functions: filter, map y reduce***
+
+función que recibe otra función como parámetro
+my_list = [1,4,5,6,9,13,19,21]
+odd = [i for i in my_list if i %2 != 0]
+print(odd)
+- filter:
+    
+Para trabajar con reduce, se tiene que importar la función de la siguiente manera
+from functools import reduce
+Funciones de orden superior:
+    - Es una función que recibe otra función como parámetro
+
+    - filter: 
+        para su uso como ejemplo, tenemos una lista con números:
+        my_list = [1,4,5,6,9,13,19,21]
+        y quiero tener una lista de esos números, pero únicamente los que son impares
+        [1,5,9,13,19,21]
+        y lo usamos solo con list comprehensions
+        my_list = [1,4,5,6,9,13,19,21]
+        odd = [i for i in my_list if i %2 !=0]
+        print(odd)
+        
+        ahora lo hacemos con list comprehensions y lambda, y la explicación es así:
+        esta lambda lo que hace es, recibe como parámetro una x y retorna el resultado de una expresión x%2 != 0
+        en otras palabras, recibe un número y retorna True o False si ese número es par o impar, además tenemos una lista que es el segundo
+        parámetro de la función filter, la función filter es una función de orden superior que recibe dos parámetros una función que en este caso
+        es una función anónima una lambda function y un iterable que en este caso es una lista, ahora está función filter no nos va a devolver
+        la lista que nosotros queremos porque retorna un iterador, entonces para que sea una lista lo que hacemos es colocar el método lista por encima 
+        de la función filter así: list(filter)) para que mi resultado quede dentro de una lista
+
+        my_list = [1,4,5,6,9,13,19,21]
+        odd = list(filter(lambda x: x%2 != 0, my_list))
+        print(odd)
+
+    - map: 
+        con list comprehensions
+        my_list =[1,2,3,4,5]
+        squares = [i**2 for i in my_list]
+        print(squares)
+        con lambda function y map
+
+        la explicación es así:
+            esta lambda lo que hace es, recibe como parámetro una x y retorna el resultado de una expresión x**2
+            en otras palabras, recibe un número y retorna ese número de la lista elevado a la 2, además tenemos una lista que es el segundo
+            parámetro de la función map, la función map es una función de orden superior que recibe dos parámetros, una función que en este caso
+            es una función anónima llamada lambda function y un iterable que en este caso es una lista llamda my_list, ahora esta función map no nos va a devolver
+            la lista que nosotros queremos porque retorna un iterador, entonces para que sea una lista lo que hacemos es colocar el método lista por encima 
+            de la función map así: list(map)) para que mi resultado quede dentro de una lista
+
+        funciona exactamente igual a filter, ejemplo:
+        my_list = [1,4,5,6,9,13,19,21] 
+        odd = list(map(lambda x: x**2, my_list))
+        print(odd)
+    - reduce: 
+
+        iniciando que importar la función reduce de python 
+
+***Clase 12 Proyecto: filtrando datos***
+
+all_python_devs = [worker["name"] for worker in DATA if worker["language"]=="python"]
+donde worker es el nombre de cada una de las partes del código, en lugar de worker se le puede colocar otra designación o nombre
+ 
+Quiz conceptos avanzados de funciones
+
+***Clase 13 Los errores en el código***
+
+Un error en el código es algo normal, todos los ingenieros de programación por ahí le sale un error, y cuando nos equivocamos python nos avisa que eso pasó
+- Errores:
+    - SyntaxError:
+        - KeyBoardInterrupt:
+            - Este pasa cuando de manera forzada detengo la máquina con ctrl + c
+        - KeyError:
+            - Este error pasa cuando en un diccionario no existe la llave a la cual queremos entrar
+        - IndexError:
+            - Este error pasa cuando en una lista tengo datos y quiero acceder al índice o a la posición de esa lista, por eso me arroja este error
+        - FileNotFoundError:
+            - Este error pasa cuando se quiere abrir un archivo y ese archivo no existe
+        - ZeroDivisionError:
+            - Este error pasa cuando estamos intentando dividir un número entre cero, operación que en matemáticas no está permitida
+        - ImportError:
+            - Este error pasa cuando queremos importar un módulo de python
+    - Exception:
+        Las excepciones detienen el programa y no ejecutan si quiera la primera línea del programa
+
+Los traceback de python se leen de abajo hacia arriba, 
+
+***Clase 14 Debugging***
+Estudiar debugging de python con visual studio code
+
+***Clase 15 Manejo de excepciones***
+En esta clase se va a probar que le estamos pidiendo al usuario que nos ingrese una palabra y lo que nos ingresa es un número, entonces para ello
+y evitar que nuestro programa se reviente le vamos a manejar una excepción 
+
+- Si le pasamos una cadena vacía python lo toma como verdadero, es decir, como si fuése un palindromo, sin embargo, no debería hacer eso, entonces lo que se hace
+es capturar también ese error, hacer una función para eso.
+
+- try: finally:
+    - Se usa usualmente al final de una estructura try, except, y se puede cerrar un archivo, liberar recursos externos, entre otros.
+    - Es muy raro su uso
+***Clase 16 Poniendo a prueba el manejo de excepciones***
+
+***Clase 17 Assert statements***
+.isnumeric() -> lo que hace es devolver verdadero si ese string corresponde a una especie de número
+y si por el contrario es ingresa una letra se activa el mensaje
+
+Quiz manejo de errores
+
+***Clase 18 ¿Cómo trabajar con archivos?***
+Archivos de texto:
+    - .txt
+    - .py
+    - .json
+    - .js
+    - .xml
+
+Para abrir un archivo de texto con python tenemos 3 formas de hacerlo
+    - R -> Lectura
+    - W -> Escritura(sobrescribir)
+        - Lo que se hace es que si por ejemplo, tengo ya unos scripts en un archivo y uso ese modo de apertura lo que estoy haciendo ahí es 
+        reemplazando lo que hay ya ahí en ese archivo, es decir quitando lo que estaba y queda lo último que coloqué
+    - A -> Escritura(agregar al final)
+        - Lo que se hace con este es por ejemplo si ya tengo unos datos o scripts en ese archivo lo nuevo que coloco se agrega a lo último del archivo, no se borra
+        como el modo anterior
+para abrir un archivo es así:
+función interna de python -> open        
+with open ("./ruta/del/archivo.txt", "r") as f:
+
+
+***Clase 19 Trabajando con archivos de texto en Python***
+
+- función de READ -> LEER
+    - Para esta función usamos la denominación r para dar a entender que no más queremos leer el archivo que le estamos pasando
+
+- función write -> escribir
+    con esta función lo que hacemos es crear un archivo en la carpeta numbers con el nombre de names.txt y usamos el metodo w
+    en ese documento colocamos los nombres que están en la lista names, y si por ejemplo al momento de escribir un nombre lo escribí mal
+    y quiero escribirlo como es realmente lo que hago es corregir y el programa me sobre escribe ese dato, valga la redundancia lo actualiza
+
+- función append -> agregar
+    - con esta función si por ejemplo tenemos ya un archivo en este caso el archivos names.txt y lo que queremos es agregarle información sin que
+    el archivo original sobre escriba lo que ya está entonces usamos la denominación "a" que significa append(agregar)
+Quiz manejo de archivos
+
+***Clase 20 Reto final: Juego del Ahorcado o Hangman Game***
+
+- Incorporar list comprehensions
+- Investigar la función enumerate
+- El metodo get de los diccionarios
+- cls, es para limpiar la pantalla en windows
+
+***Clase 21 Continúa tu camino profesional con Python***

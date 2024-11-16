@@ -1,0 +1,1819 @@
+Bienvenida conceptos básicos y contexto histórico de las Bases de Datos
+
+***Clase 1 Bienvenida conceptos básicos y contexto histórico de las Bases de Datos***
+- Recomendado:
+    https://aukera.es/blog/bases-de-datos-relacionales-vs-no-relacionales/
+
+El almacenamiento en la nube tiene un gran pro comparada con los otros métodos de almacenamiento ya que es accesible desde cualquier parte del mundo. Además es centralizada y puede ser usada por varias personas al mismo tiempo.
+
+Las bases de datos entran cuando hacemos la transición a medios digitales.
+
+Tipos de bases de datos:
+
+Relacionales: En la industria hay varias compañías dedicadas a ser manejadoras de 
+    bases de datos relacionales como: 
+        SQL Server, Oracle, MariaDB, entre otras.
+No relacionales: Todavía están avanzando y existen ejemplos muy distintos 
+    como: 
+        cassandra, elasticsearch, neo4j, MongoDB, entre otras.
+
+Servicios:
+
+Auto administrados: Es la base de datos que instalas tú y te encargas de actualizaciones, mantenimiento, etc.
+Administrados: Servicios que ofrecen las nubes modernas como Azure y no debes preocuparte por mantenimiento o actualizaciones.
+
+Medios digitales:
+    - Discos duros
+    - Discos de estado sólido
+    - Cds
+
+Introducción a las bases de datos relacionales
+
+***Clase 2 Historia de las bases de datos relacionales***
+- Para leer:
+    https://aukera.es/blog/bases-de-datos-relacionales-vs-no-relacionales/
+Las bases de datos surgen de la necesidad de conservar la información más allá de lo que existe en la memoria RAM.
+
+Las bases de datos basadas en archivos eran datos guardados en texto plano, fáciles de guardar pero muy difíciles de consultar y por la necesidad de mejorar esto nacen las bases de datos relacionales. 
+Su inventor Edgar Codd dejó ciertas reglas para asegurarse de que toda la filosofía de las bases de datos no se perdiera, estandarizando el proceso.
+
+Recomendado de la clase:
+https://www.w3resource.com/sql/sql-basic/codd-12-rule-relation.php
+https://www.mindmeister.com/es/1079684487/las-12-reglas-de-codd-del-modelo-relacional?fullscreen=1
+
+Las 12 reglas de Codd: fuente
+
+Regla 0: Regla de fundación.
+Regla 1: Regla de la información.
+Regla 2: Regla del acceso garantizado.
+Regla 3: Regla del tratamiento sistemático de valores nulos.
+Regla 4: Catálogo dinámico en línea basado en el modelo relacional.
+Regla 5: Regla comprensiva del sublenguaje de los datos.
+Regla 6: regla de actualización de vistas.
+Regla 7: alto nivel de inserción, actualización, y cancelación.
+Regla 8: Independencia física de los datos.
+Regla 9: Independencia lógicas de los datos.
+Regla 10: Independencia de la integridad.
+Regla 11: Independencia de la distribución.
+Regla 12: La regla de la no subversión.
+
+***Clase 3 Entidades y atributos***
+
+En este ejemplo o curso, cuando un atributo se lo encierra en dos circulos o doble óvalo se está diciendo que es un atributo multivaluado entonces significado
+que tiene más de un valor o multiples valores
+
+- Atributos compuestos porque están compuestos valga la aclaración por otros atributos
+- Por convención las entidades se colocan en plural, porque una entidad representa un grupo de estos objetos
+- Cuando un atributo tiene un guión debajo del nombre o el nombre subrayado, es un atributo que dentro de la entidad se va identificar de forma única
+entonces lo identifican de manera única dentro del conjunto o de la entidad
+- Entidad fuerte:
+    ejemplo:
+        Libro
+- Entidades débiles:
+    - Se representan con un cuadrado pero tienen doble línea, estas entidades pueden ser débiles por dos motivos, uno por identidad y otro por existencia
+    las entidades débiles por identidad quiere decir que no se se diferencian entre sí más que por la clave de su entidad fuerte
+        ejemplo:
+            ejemplares del libro que es la entidad fuerte
+
+
+***Clase 4 Entidades de Platzi Blog***
+
+Nuestro proyecto será un manejador de Blogpost. Es un contexto familiar y nos representará retos muy interesantes.
+
+- Las entidades recordar que convencionalmente se escriben en plural
+    ejemplo de entidad -> post, y sus atributos:
+        entidad: posts
+        atributos: título, fecha_publicación, contenido, status, etiquetas(atributo multivaluado), id(atributo que dentro de la entidad se va identificar de forma única)  
+    ejemplo de entidad -> usuarios, y sus atributos:
+        entidad: usuarios
+        atributos: login, password, apodo, username, email, id(atributo que dentro de la entidad se va identificar de forma única)
+
+Primer paso: Identificar las entidades
+Segundo paso: Pensar en los atributos
+
+***Clase 5 Relaciones***
+
+- Las relaciones es la manera en que empezamos a ligar nuestras diferentes entidades u objetos
+    ejemplos:
+        las relaciones se representan con un rombo
+
+ejemplo:
+----------            ---------
+automóvil ----|tiene|--- dueño
+----------            ---------
+----------                ---------
+jugador    ----|pertenece|--- equipo
+----------                ---------
+
+Las relaciones nos permiten ligar o unir nuestras diferentes entidades y se representan con rombos. 
+Por convención se definen a través de verbos.
+
+Las relaciones tienen una propiedad llamada cardinalidad y tiene que ver con números. 
+Cuántos de un lado pertenecen a cuántos del otro lado:
+
+Cardinalidad: 1 a 1
+Cardinalidad: 0 a 1
+Cardinalidad: 1 a N
+Cardinalidad: 0 a N
+
+- ejemplos de cada cardinalidad:
+    1 a 1:
+        (1)persona tiene (1)datos_contacto
+        (1)datos_contacto pertenecen a (1)persona
+        por eso decimos que es una relación de 1 a 1 y la podemos representan así: 1:1
+        en diagramas físicos los vamos a encontrar así: 
+        __|_______________|__
+          |               |
+y en este también lo representa y se entiende como: 1 y sólo 1 de un lado y 1 y sólo 1 del otro lado     
+        _||_______________||_
+         ||               ||
+          
+    0 a 1:
+
+        algunos autores la discuten, sin embargo, se la conoce como 1 a 1 opcional y eso queire decir que no existe alguno de los lados, la podemos representar 0:1
+        ejemplo:
+            sesion_actual tiene usuario
+            la sesion_actual debe tener un usuario, pero el usuario puede que no esté en la sesión en este momento, por lo tanto la cardinalidad se define de 0:1
+            y se representa así:
+            --|-------|--
+            con la línea punteada para indicar que es opcional, o así:
+            __|0_______________|__
+              |                |
+            
+    1 a N:
+        cabe aclara que índica que en un lado tenemos uno(1) y en otro lado tenemos muchos(N)
+            ejemplo:
+                persona(1) tiene (N)automóvil
+                (1)persona tiene automóvil(N)
+                (N)muchos automóviles pertenecen a (1)persona
+                
+                y se representa así:
+            __|_______________0<__
+              |                                
+              (pate gallina al final)
+            __|_______________<__
+              |                 
+              (pate gallina al final)
+            _||_______________|<_
+             ||               |
+            (pate gallina al final)
+
+    0 a N:
+
+        algunos autores también la discuten, sin embargo, se la conoce como 0 a N opcional y eso quiere decir que no existe alguno de los lados, la podemos representar 0:N
+        ejemplo:
+            paciente tiene habitacion_hospital
+            el hospital tiene 0 pacientes para muchas habitaciones
+            y se representa así:
+            --|-------<-
+            con la línea punteada para indicar que es opcional, o así:
+            __|0_______________<__
+              |                
+***Clase 6 Múltiples muchos***
+
+    N:N
+        relación de muchos a muchos
+        ejemplo:
+            alumno(1) pertenece a (N)clases
+            alumno(N) pertenece a (1)clases
+        se lo puede representar N:N
+
+***Clase 7 Diagrama ER***
+
+Un diagrama es como un mapa y nos ayuda a entender cuáles son las entidades con las que vamos a trabajar, 
+cuáles son sus relaciones y qué papel van a jugar en las aplicaciones de la base de datos.
+
+muchas veces un atributo multivaluado se convierte en una entidad separada, porque si está en muchas partes toma una vida propia
+
+Diagrama Entidad Relación de PlatziBlog:
+
+    usuarios(1) escribe (N)comentarios
+    usuarios(1) escribe (N)posts 
+    posts(1) tiene (N)comentarios
+    posts(N) tiene (1)categorias
+    posts(N) tiene (N)etiquetas
+
+***Clase 8 Diagrama Físico:  tipos de datos y constraints***
+
+Texto: 
+    Char(n): Este sirve para guardar cadenas de caracteres
+    Varchar(n): Este sirve para guardar cadenas de caracteres pero es más dinámico que CHAR la diferencia es la optimización del uso de memoria,
+        y si por ejemplo siempre vamos a tener una cadena de 8 caracteres la podemos guardar con un char, pero si la cadena va crecer más se usa varchar
+    Text: Sirve para guardar grandes contenidos de texto muy grandes
+Números: 
+    Integer(n): Para guardar números enteros
+    Bigint(n): Es un subtipo de Integer y sirve para guardar números muy muy grandes
+    Smallint(n): Es un subtipo de Integer y sirve para guardar números pequeños por ejemplo de 99 o menos
+    Decimal(n,s): para guardar números decimales
+    Numeric(n,s): 
+Fecha/Hora: 
+    Date:  Para guardar unicamente la fecha 
+    Time: Para guardar unicamente la hora
+    Datetime:  Para guardar la fecha, hora y hasta segundos
+    Timestamp: Para guardar la fecha, hora y hasta segundos
+Lógicos: 
+    Boolean: Para guardar True o False, 0 o 1, y se usa para hacer validación entre dos cosas
+
+Constraints(restricciones)
+- Not null: Se aegura que la columna no tenga valores nulos, es decir, que ese campo no puede ir vacio o en blanco, y si quieren pasarle un dato así, les da error
+- Unique: Se asegura que cada valor en la columna no se repita, es decir, que es uníco en toda la tabla, que solo existe uno con ese valor en la tabla
+- Primary Key: Es una combinación de Not Null y Unique, este es una de las más importantes, y cuando colocamos este enla base de datos vamos a tener la garantía
+    de que ese campo va ser not null y unique, además nos ayuda a hacer la unión entre una tabla y otra, ó entre una entidad y otra
+    es la que en realidad nos ayuda a hacer las relaciones entre entidades
+- Foreign Key: Identifica de manera única una tupla en otra tabla, quiere decir llave foránea y es el otro lado de la primary key, y se usa cuando queremos juntar dos tablas
+    y decir que esta tabla está relacionada con esta otra lo que hacemos es que la primary key de una tabla se añade como Foreign key en la otra,y debe tener las mismas
+    características de la primary key
+- Check: Se asegura que el valor en la columna cumpla una condición dada, nos permite generar una regla 
+- Default: Coloca un valor por defecto cuando no hay un valor específico, por ejemplo si no viene un valor podemos decir que por defecto traiga un valor 0
+- Index: Se crea por columna para permitir búsquedas más rápidas, hay que saber trabajarlos porque genera confusiones
+
+***Clase 9 Diagrama Físico: normalización***
+
+La normalización como su nombre lo indica nos ayuda a dejar todo de una forma normal. Esto obedece a las 12 reglas de Codd y nos permiten separar componentes en la base de datos:
+
+Primera forma normal (1FN): Atributos atómicos (Sin campos repetidos)
+Segunda forma normal (2FN): Cumple 1FN y cada campo de la tabla debe depender de una clave única.
+Tercera forma normal (3FN): Cumple 1FN y 2FN y los campos que NO son clave, NO deben tener dependencias.
+Cuarta forma normal (4FN): Cumple 1FN, 2FN, 3FN y los campos multivaluados se identifican por una clave única.
+
+
+***Clase 10 Formas normales en Bases de Datos relacionales***
+
+La normalización en las bases de datos relacionales es uno de esos temas que, por un lado es sumamente importante y por el otro suena algo esotérico. Vamos a tratar de entender las formas normales (FN) de una manera simple para que puedas aplicarlas en tus proyectos profesionales.
+
+Primera Forma Normal (1FN)
+Esta FN nos ayuda a eliminar los valores repetidos y no atómicos dentro de una base de datos.
+
+Formalmente, una tabla está en primera forma normal si:
+
+Todos los atributos son atómicos. Un atributo es atómico si los elementos del dominio son simples e indivisibles.
+No debe existir variación en el número de columnas.
+Los campos no clave deben identificarse por la clave (dependencia funcional).
+Debe existir una independencia del orden tanto de las filas como de las columnas; es decir, si los datos cambian de orden no deben cambiar sus significados.
+Se traduce básicamente a que si tenemos campos compuestos como por ejemplo “nombre_completo” que en realidad contiene varios datos distintos, en este caso podría ser “nombre”, “apellido_paterno”, “apellido_materno”, etc.
+
+También debemos asegurarnos que las columnas son las mismas para todos los registros, que no haya registros con columnas de más o de menos.
+
+Todos los campos que no se consideran clave deben depender de manera única por el o los campos que si son clave.
+
+Los campos deben ser tales que si reordenamos los registros o reordenamos las columnas, cada dato no pierda el significado.
+
+Segunda Forma Normal (2FN)
+Esta FN nos ayuda a diferenciar los datos en diversas entidades.
+
+Formalmente, una tabla está en segunda forma normal si:
+
+Está en 1FN
+Sí los atributos que no forman parte de ninguna clave dependen de forma completa de la clave principal. Es decir, que no existen dependencias parciales.
+Todos los atributos que no son clave principal deben depender únicamente de la clave principal.
+Lo anterior quiere decir que sí tenemos datos que pertenecen a diversas entidades, cada entidad debe tener un campo clave separado. Por ejemplo:
+Captura de Pantalla 2019-04-30 a la(s) 17.30.27.png
+
+En la tabla anterior tenemos por lo menos dos entidades que debemos separar para que cada uno dependa de manera única de su campo llave o ID. En este caso las entidades son alumnos por un lado y materias por el otro. En el ejemplo anterior, quedaría de la siguiente manera:
+Captura de Pantalla 2019-04-30 a la(s) 17.26.28.png
+
+Tercera Forma Normal (3FN)
+Esta FN nos ayuda a separar conceptualmente las entidades que no son dependientes.
+
+Formalmente, una tabla está en tercera forma normal si:
+
+Se encuentra en 2FN
+No existe ninguna dependencia funcional transitiva en los atributos que no son clave
+
+Esta FN se traduce en que aquellos datos que no pertenecen a la entidad deben tener una independencia de las demás y debe tener un campo clave propio. Continuando con el ejemplo anterior, al aplicar la 3FN separamos la tabla alumnos ya que contiene datos de los cursos en ella quedando de la siguiente manera.
+
+Captura de Pantalla 2019-04-30 a la(s) 17.27.43.png
+Captura de Pantalla 2019-04-30 a la(s) 17.27.52.png
+Cuarta Forma Normal (4FN)
+Esta FN nos trata de atomizar los datos multivaluados de manera que no tengamos datos repetidos entre rows.
+
+Formalmente, una tabla está en cuarta forma normal si:
+
+Se encuentra en 3FN
+Los campos multivaluados se identifican por una clave única
+Esta FN trata de eliminar registros duplicados en una entidad, es decir que cada registro tenga un contenido único y de necesitar repetir la data en los resultados se realiza a través de claves foráneas.
+
+Aplicado al ejemplo anterior la tabla materia se independiza y se relaciona con el alumno a través de una tabla transitiva o pivote, de tal manera que si cambiamos el nombre de la materia solamente hay que cambiarla una vez y se propagara a cualquier referencia que haya de ella.
+
+Captura de Pantalla 2019-04-30 a la(s) 17.29.00.png
+Captura de Pantalla 2019-04-30 a la(s) 17.29.29.png
+
+De esta manera, aunque parezca que la información se multiplicó, en realidad la descompusimos o normalizamos de manera que a un sistema le sea fácil de reconocer y mantener la consistencia de los datos.
+
+Algunos autores precisan una 5FN que hace referencia a que después de realizar esta normalización a través de uniones (JOIN) permita regresar a la data original de la cual partió.
+
+***Clase 11 Diagrama Físico: normalizando Platziblog***
+
+- lo escribí en un cuaderno el diagrama, sin embargo, debo buscar donde hacer el diagrama
+- Siempre la llave foranea va quedar donde está la relación de muchos(N)
+
+ejemplos de entidades con sus respectivos atributos:
+    usuarios:
+        id INTEGER(PK)
+        login VARCHAR(30)NN
+        password VARCHAR(32)NN
+        nickname VARCHAR(40)NN
+        email VARCHAR(40) UNIQUE
+    el NN es: Not Null
+    posts:
+        id INTEGER(PK)
+        título VARCHAR(150)
+        fecha_publicación TIMESTAMP
+        contenido TEXT
+        status CHAR(8) CHECK IN('activo', 'inactivo')
+    comentarios:
+        id INTEGER(PK)
+        comentario TEXT
+    categorias:
+        id INTEGER(PK)
+        categoria VARCHAR(30)
+    etiquetas:
+        id INTEGER(PK)
+        nombre_etiqueta VARCHAR(30) 
+
+Ahora, cuando se empiezan a hacer las relaciones entre las entidades, se agrega las claves de usuario, Foreign Key(llave foránea)
+entonces en las tablas de posts y de usuarios van a aparecer las Foreign Key(llaves foraneas) eso pasa cuando relacionamos las Entidades
+con líneas y en la base de datos lo que pasa es que se añade la clave única digamos del usuario como clave foranea en la otra tabla
+en el caso de posts tenemos que se nos agregó usuarios_id INTEGER FK que es justamente la llave foranea que viene referenciando el id del usuario que lo creó
+y en comentarios también tenemos el usuarios_id INTEGER FK que es justamente la llave foranea que viene referenciando el id del usuario que lo creó
+
+- Cuando tengamos de 1:1 no importa a qué tabla le pongamos la referencia de la otra tabla es indistinto
+- Cuando tengamos de 1:N es importante que la tabla donde tengamos la terminación muchos es en donde se pone la llave foranea de la tabla que tiene 1
+    por eso tenemos el ejemplo de posts y comentarios REVISAR
+
+- también tenemos el ejemplo de posts(N) tiene (1)categorias, entonces colocamos la llave foranea en la tabla de posts
+
+    usuarios:
+        id INTEGER(PK)
+        login VARCHAR(30)NN
+        password VARCHAR(32)NN
+        nickname VARCHAR(40)NN
+        email VARCHAR(40) UNIQUE
+    el NN es: Not Null
+    posts:
+        id INTEGER(PK)
+        título VARCHAR(150)
+        fecha_publicación TIMESTAMP
+        contenido TEXT
+        status CHAR(8) CHECK IN('activo', 'inactivo')
+        usuarios_id INTEGER FK
+        categorias_id INTEGER FK
+    comentarios:
+        id INTEGER(PK)
+        comentario TEXT
+        usuarios_id INTEGER FK
+        posts_id INTEGER FK
+    categorias:
+        id INTEGER(PK)
+        categoria VARCHAR(30)
+    etiquetas:
+        id INTEGER(PK)
+        nombre_etiqueta VARCHAR(30) 
+
+- EXCEPCIÓN: N:N la unión de dos entidades que tienen relación de muchos a muchos,
+    ejemplo: posts y etiquetas, qué pasa en este caso?
+        esa relación de muchos a muchos lo que pasa es que se rompe y coloca una tabla intermedia, y a esa tabla muchas veces se le llama tabla pivote
+        y nos ayuda justamente a mirar cual es la relación enre ambas entidades
+    y queda así una tabla así:
+
+    posts_etiquetas
+    post_id INTEGER(PK, FK)
+    etiqueta_id INTEGER(PK, FK)
+
+RDBMS (MySQL) o cómo hacer lo anterior de manera práctica
+
+***Clase 12 ¿Qué es RDB y RDBMS?***
+
+RDB: Relational Database(Bases de datos relacionales)
+RDBMS: Relational Database Management System (Sistema manejador de bases de datos relacionales)
+este nos ayuda a cumplir las reglas
+ejemplos de RDBMS:
+    Mysql
+    PostsgreSQL
+    Oracle
+
+***Clase 13 Instalación local de un RDBMS (Windows)***
+
+https://dev.mysql.com/downloads/workbench/
+https://dev.mysql.com/downloads/mysql/5.7.html
+
+***Clase 14 Instalación local de un RDBMS (Mac)***
+
+https://platzi.com/clases/1566-bd/20207-instalacion-local-de-un-rdbms-mac5139/
+tener en cuenta que el workbench hay que descargarlo aparte
+
+***Clase 15 Instalación local de un RDBMS (Ubuntu)***
+
+Visita la dirección de descarga de la versión de comunidad de MySql
+https://dev.mysql.com/downloads/mysql/5.7.html#downloads
+
+Dirígete a la sección de selección de descargas y selecciona tu distribución de Linux. En nuestro caso Ubuntu y selecciona posteriormente la versión que estás utilizando actualmente, en nuestro caso 18.04 de 64 bits.
+Captura de Pantalla 2019-04-30 a la(s) 17.35.57.png
+
+Más abajo encontrarás las diferentes opciones de descarga existen diversos paquetes dependiendo tus necesidades. En el caso del ejemplo usaremos la versión deb bundle. Da click en el botón Download seleccionado.
+Captura de Pantalla 2019-05-14 a la(s) 19.13.24.png
+
+En la siguiente pantalla nos piden que nos registremos o iniciemos sesión, pero ya que solo queremos la descarga daremos click en el link que se encuentre en la parte de abajo.
+Captura de Pantalla 2019-04-30 a la(s) 17.36.25.png
+
+Espera a que la descarga concluya.
+Al terminar abre el archivo .tar con el desempaquetador de tu preferencia.
+Captura de Pantalla 2019-04-30 a la(s) 17.36.37.png
+
+Extrae el contenido en la carpeta de tu preferencia.
+Captura de Pantalla 2019-04-30 a la(s) 17.36.48.png
+
+Selecciona el archivo de servidor de comunidad y ábrelo con tu manejador de paquetes instalado.
+Captura de Pantalla 2019-04-30 a la(s) 17.36.59.png
+Captura de Pantalla 2019-04-30 a la(s) 17.37.07.png
+
+Da click en instalar.
+Finalmente puedes ir a la consola o terminal de Ubuntu y escribir el siguiente comando.
+sudo mysql
+Captura de Pantalla 2019-04-30 a la(s) 17.37.15.png
+
+A continuación deberá aparecer una ventana con el prompt de mysql donde ya puedes comenzar a ejecutar los comandos de las lecciones.
+
+Captura de Pantalla 2019-04-30 a la(s) 17.37.22.png
+Nota: recuerda estar seguro que las dependencias para el paquete se cumplen para instalar.
+Nota: muchas veces las distribuciones ya cuentan con paquetes en su repositorio, en ese caso también puedes ejecutar el comando:
+sudo apt-get install mysql-server
+
+***Clase 16 Clientes gráficos***
+
+Fue una clase para familiarizarnos con MySQL, cómo crear una instancia, esquemas, entre otros apuntes
+
+***Clase 17 Servicios administrados***
+
+Hoy en día muchas empresas ya no tienen instalado en su servidor los RDBMS si no que los contratan a otras personas y estos servicios se les llama
+servicios cloud o servicios administrados, lo que significa que un servicio cloud, la empresa no se ocupa realmente de administrar la base de datos
+colocarles parches de seguridad, mantenerla, computadores, entre otros requerimientos.
+Algunos de los servicios donde podemos encontrar ello es con:
+    - Amazon - Aws
+    - Azure - Microsoft
+    - Google cloud
+    - etc.
+Muchos de los servicios ya están dirigidos más a empresa que ha desarrolladores, aunque para desarrolladores dan una prueba gratuita bastante amplia, y cuando
+ya se tiene mucha información o mucho uso de esa app, entonces empiezan a cobrar
+
+Enlace donde vamos a practicar con ese servicio administrado
+https://cloud.google.com/cloud-console
+aunque no me dejó ingresar porque no tengo tarjeta de crédito :(
+SQL hasta en la sopa
+
+***Clase 18 Historia de SQL***
+
+SQL: Structure Query Language(Lenguaje de consultas estructurado)
+NOSQL: Not Only Structure Query Language(No uses solo lenguaje de consultas estructurado)
+
+Se crea en un momento en el que trataban de hacer consultas a datos pero no existia una forma realmente estandarizada de hacerlo
+entonces por eso se crea SQL, y el objetivo es hacer un solo lenguaje para consultar y no importa el manejador de bases de datos que tengamos
+trata de unificarlos todos. Se crea porque las compañías tenían su RDBMS pero no sabían como comunicarse entre ellos y el tratar de programar algo 
+que permite la comunicación resultaba muy tedioso, entonces debido a eso se crea el SQL, y una de sus características más importantes 
+es que es estructurado, es decir, tiene un estructura muy clara y fija.
+
+Hoy en día aunque hay bases de datos no relacionales, y aunque usan un lenguaje un poco más amplío que el SQL, como base siguen teniendo SQL
+por ejemplo:
+    Cassandra: Tiene un lenguaje que se llama cql que es muy similar a sql
+
+SQL significa Structured Query Language y tiene una estructura clara y fija. Su objetivo es hacer un solo lenguaje para consultar cualquier manejador de bases de datos volviéndose un gran estándar.
+
+Ahora existe el NOSQL o Not Only Structured Query Language que significa que no sólo se utiliza SQLen las bases de datos no relacionales.
+
+***Clase 19 DDL create***
+
+No está de más aclarar que primero se debe crear la base de datos o schema y luego ir a tables y darle en crear tabla, pero ahí nos da la opción
+de crearla manualmente por así decirlo y no con código.
+
+Data Definition Language(Lenguaje de definición de datos):
+    - Este nos ayuda a crear la estructura de una base de datos, los cimientos, relaciones, entidades
+
+- Create: Se puede usar el create para crear una base de datos, esquema(schema), tabla, vista, índice, entre otros
+- Alter: Con este se puede alterar o modificar datos como tablas, agregando columna o quitando, ó cambiando tipo de dato de la columna, entre otros.
+- Drop: Aunque es de mucho cuidado, con este se puede borrar columnas, una tabla, e incluso toda una base de datos.
+Lo que se va manejar con el lenguaje DDL por ejemplo son:
+    Database: Repositorio de datos que va usar un proyecto
+    Table: Son la proyección o la traducción a SQL de las entidades, tanto de entidad relación como el diagrama físico
+    View: Es la proyección de los datos de la base de datos de una forma visual entendible para alguien
+- Para crear base de datos es así:
+    CREATE DATABASE test_db; 
+    USE DATABASE test_db;
+    test_db es el nombre de la base de datos
+    en el primero estamos creando una base de datos
+    y en el USE DATABASE test_db lo que decimos es que queremos usar esa base de datos por defecto
+
+- Para crear una tabla tenemos el siguiente ejemplo:
+    people será el nombre de la tabla
+CREATE TABLE people(
+    persona_id int,
+    last_name varchar(255),
+    firts_name varchar(255),
+    address varchar(255),
+    city varchar(255),
+);
+
+En el MySQL, en el servidor el significado de los datos que toman los atributos:
+
+SQL tiene dos grandes sublenguajes:
+DDL o Data Definition Language que nos ayuda a crear la estructura de una base de datos. Existen 3 grandes comandos:
+
+Create: Nos ayuda a crear bases de datos, tablas, vistas, índices, etc.
+Alter: Ayuda a alterar o modificar entidades.
+Drop: Nos ayuda a borrar. Hay que tener cuidado al utilizarlo.
+
+3 objetos que manipularemos con el lenguaje DDL:
+    - Database o bases de datos
+    - Table o tablas: Son la traducción a SQL de las entidades
+    - View o vistas: Se ofrece la proyección de los datos de la base de datos de forma entendible.
+
+- AI: Auto Incrementado(Auto Increment), lo que quiere decir que cada que agregamos una persona va tomar un valor automáticamente y en secuencia
+- Q: UNIQUE
+
+
+por si queremos hacer la creación de la tabla desde código, quedaría así:
+
+CREATE TABLE `platziblog`.`people` (
+  `persona_id` INT NOT NULL AUTO_INCREMENT,
+  `last_name` VARCHAR(100) NOT NULL,
+  `first_name` VARCHAR(100) NOT NULL,
+  `address` VARCHAR(100) NOT NULL,
+  `city` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`persona_id`));
+
+***Clase 20 CREATE VIEW y DDL ALTER***
+
+Views(vistas): Tienen que ver con un concpeto avanzado y útil, las vistas lo que hacen es tomar datos de la base de datos y colocarlos en una forma presentable
+y convertir en algo que se pueda consultar de manera recurrente, el comando CREATE VIEW tiene dos partes principales
+    la primera: luego del CREATE VIEW Asignarle el nombre a la vista y por buena práctica cuando se está creando una vista al nombre de la vista se le coloca una v
+    en el nombre para identificar que es una vista lo que se tiene, entonces ejemplo de ese nombre: v_colombia_people
+
+IMPORTANTE:
+
+Como la base de datos que yo tenía para hacer la prueba de la vista no tenía datos, le coloqué datos desde código y usé la siguiente estructura
+
+INSERT INTO people(persona_id, last_name, first_name, address, city)
+VALUES ('1', 'Vázquez', 'Israel', 'Calle famosa num 1', 'México'), 
+('2','Hernández','Mónica','Reforma 222','México'), 
+('3','Alanís','Edgar','Central 1','Monterrey');
+
+y con eso me insertó los datos en la tabla y ya pasé a hacer la prueba de la vista
+
+Los pasos para crear la vista fueron los siguientes:
+a la tabla que tiene los datos que en este ejemplo fue people le dí click derecho, y seleccioné "Select rows 1000" cuando le doy ahí
+me lleva a la tabla donde tengo los datos y en el espacio de trabajo donde puedo codear me sale lo siguiente
+SELECT * FROM platziblog.people; y eso lo copio 
+2. de ahí me voy a views en el panel del lado izquiedo, doy click derecho y selecciono create view y eso nos lleva donde se puede codear
+y nos coloca un nombre de la vista por defecto el cual vamos a cambiar por el nombre que queramos, y la palabra AS si la dejamos, 
+luego pegamos la secuencia select que copiamos antes entonces quedaría algo así:
+CREATE VIEW `platzi_people` AS
+SELECT * FROM platziblog.people;
+despues de ello, le damos en apply y nos arroja lo siguiente:
+
+USE `platziblog`;
+CREATE  OR REPLACE VIEW `platzi_people` AS
+SELECT * FROM platziblog.people;
+
+y con eso queda la tabla en la tabla vistas con la información
+
+- Para crear una vista con código es así:
+
+USE test_db;
+CREATE OR REPLACE VIEW people_platzi AS
+SELECT * FROM test_db.people;
+
+En las vistas se puede guardar información de varias tablas y obtener la información exacta, y tiene la gran ventaja
+de que estas vistas se mantienen en memoria de tal manera que podemos mantener esta vista al día
+
+- ALTER
+ejemplos:
+    En este caso le estamos diciendo que se agregue una columna que se llame date_of_birth con el tipo date
+        ALTER TABLE people
+        ADD date_of_birth date;
+
+    En este caso le estamos diciendo que se altere o modifique el tipo de dato que tiene la columna date_of_birth por year
+        ALTER TABLE people
+        ALTER COLUMN date_of_birth year;
+
+    En este caso le estamos diciendo que elimine la columna date_of_birth
+        ALTER TABLE people
+        DROP COLUMN date_of_birth;
+
+Entonces en práctica lo que vamos a hacer es alterar la tabla de people, entonces vamos el panel del lado izquierdo en Tables
+seleccionamos la tabla con el click derecho y le damos alter table y nos lleva al grafico donde podemos modificar las tablas
+y cuando hacemos los cambios por ejemplo de agregar una columna nos arroja esto
+ALTER TABLE `platziblog`.`people` 
+ADD COLUMN `date_of_birth` DATETIME NULL AFTER `city`;
+
+y para modificar de nuevo ya sea el tipo de dato u otro dato, hacemos lo mismo en el panel del lado izquierdo
+
+***Clase 21 DDL drop***
+
+Lenguaje de definición de datos(Definition Data Language)
+
+Drop: Para borrar
+    ejemplos:
+        Para borrar una tabla
+            DROP people;
+        Para borrar una base de datos
+            DROP DATABASE test_db
+
+También para borrar una tabla desde el gráfico podemos ir al menú del lado izquierdo y seleccionar la tabla con click derecho y
+escoger la opción drop delete
+
+en código sería algo así por ejemplo:
+    DROP TABLE ´platzi_blog´.´people´;
+
+También para borrar un schema desde el gráfico podemos ir al menú del lado izquierdo y seleccionar el schema con click derecho y
+escoger la opción drop schema
+
+en código sería algo así por ejemplo:
+    DROP DATABASE `platziblog`;
+IMPORTANTE:
+así creé una base de datos y tablas con código y en el archvio de Query1, que hice fue:
+1. Crear la base de datos
+2. Decirle a MySQL que use la base de datos creada
+3. como ya estoy usando la base de datos creada, entonces le paso que cree la tabla
+tener en cuenta como se creó la primary key, hasta este momento no sé si esté bien pero así lo hice a modo de ejemplo
+y espero ir puliendo
+
+CREATE DATABASE test_db;
+USE test_db;
+CREATE TABLE people3(
+personas_id INT primary key not null AUTO_INCREMENT,
+last_name varchar(100) not null,
+first_name varchar(100) not null,
+address varchar(100) not null,
+city varchar(100) not null
+);
+
+ASÍ TAMBIÉN FUNCIONÓ
+
+CREATE DATABASE new;
+USE new;
+CREATE TABLE people(
+persona_id INT NOT NULL AUTO_INCREMENT,
+last_name VARCHAR(100) NOT NULL,
+first_name VARCHAR(100) NOT NULL,
+address VARCHAR(100) NOT NULL,
+city VARCHAR(100) NOT NULL,
+PRIMARY KEY(persona_id)
+);
+
+para colocarle la primary key
+
+DDL(Definition Data Language) Lenguaje de definición de datos
+
+Para eliminar una tabla o base de datos lo podemos hacer con el siguiente comando:
+
+Para eliminar una tabla
+    DROP TABLE people;
+
+Para eliminar una base de datos o en ocasiones la base de datos se conoce como esquema(schema)
+    cualquiera de los dos sirve
+    DROP SCHEMA test_db;
+    DROP DATABASE test_db;
+
+En consola lo hacemos así:
+
+desde la app grafica MySQL workbench, podemos ir al menú del lado izquierdo en Tables mirar las tablas que tenemos
+la que vamos a borrar la seleccionamos con click derecho y le damos en la opción drop table y con eso la podemos borrar
+aunque luego de ejecutar ello, nos arroja un código y es así:
+DROP TABLE `test_db`.`people2`;
+y si lo queremos hacer directamente con código lo hacemos así:
+    DROP TABLE people;
+    ó también me funcionó así:
+    DROP TABLE test_db.people
+    en donde le pasé directamente el nombre exacto de la base de datos y de la tabla y funcionó
+
+desde la app grafica MySQL workbench, podemos ir al menú del lado izquierdo mirar los schemas o bases de datos que tenemos
+la que vamos a borrar la seleccionamos con click derecho y le damos en la opción drop schema y con eso la podemos borrar
+aunque luego de ejecutar ello, nos arroja un código y es así:
+DROP DATABASE `tuto`;
+
+y si lo queremos hacer directamente con código lo hacemos así:
+    DROP DATABASE test_db;
+
+- Para crear una vista con código es así:
+
+USE test_db;
+CREATE OR REPLACE VIEW people_platzi AS
+SELECT * FROM test_db.people;
+
+Está puede ser la sentencia ¡más peligrosa! (????), sobre todo cuando somos principiantes. 
+Básicamente borra o desaparece de nuestra base de datos algún elemento.
+
+***Clase 22 DML***
+
+Data Maniupulation Language(DML) Lenguaje de manipulación de datos
+
+sus pilares son:
+    - Insert
+    - Update
+    - Delete
+    - Select
+Con estos podemos trabajar con la información que contiene una base de datos
+    ejemplos de cada pilar:
+        - Insert:
+            Con este podemos insertar, agregar, adicionar nuevos datos, registro o tupla a nuestra tabla en la base de datos
+                ejemplo de estructura:
+                    INSERT INTO people (last_name, first_name, address, city)
+                    VALUES ('Ronaldo', 'El Fenomeno', 'Leyenda', 'Valladolid');
+        
+        - Update:
+            Actualiza o modifica los datos que ya tenemos:
+            Si ya hay un dato que existe lo actualiza, tener en cuenta que este no inserta datos si no existen, actualiza los que están
+            Ejemplo de estructura:
+                En este le voy a decir que: en la tabla people cambie(SET) el apellido(last_name) por 'Juanfer', la ciudad(City) por 'Buenos Aires'
+                en el campo que el persona_id sea igual a 1
+                UPDATE people
+                SET last_name = 'Juanfer', 'city' = 'Buenos Aires'
+                WHERE persona_id = 1;
+
+            Otro ejemplo:                
+                En este le voy a decir que: en la tabla people cambie(SET) el primer nombre(first_name) por 'Robert'
+                donde la ciudad sea igual a 'Manchester'
+                UPDATE people
+                SET firts_name = 'Robert'
+                WHERE city = 'Manchester'
+                Tener cuidado con este porque si tengo muchos usuarios con que su ciudad es Manchester le puede cambiar el dato a todos los usuarios
+            
+        - Delete:
+            Sirve para borrar contenido de una tabla o una tabla también
+            Ejemplo de estructura:
+                Para borrar un dato nada más es así:
+                    DELETE FROM people
+                    WHERE persona_id = 1;
+                    Si me funcionó, pero si intentaba borrar con otro atributo, si no me dejaba, averiguar por qué
+                Para borrar la tabla completa es así:
+                    DELETE FROM people
+        - Select:
+            Se usa mucho esta sentencia, lo que hace es traer información de la base de datos
+            Ejemplo de estructura:
+                En este ejemplo le estamos diciendo que nos traiga el nombre y apellido de la tabla people
+                SELECT first_name, last_name FROM people;
+
+
+DDL -> Data Definition Language
+Ayuda a crear la estructura de una BD.
+
+Create
+* Database
+* Table
+* View
+Alter
+Drop
+DML -> Data Manipulation Language
+Ayuda a la manipulacion del contenido
+
+Insert
+Update
+Delete
+Select
+Siempre tener cuidado en el orden de los campos donde se le va pasar la información, porque si no, se agrega información en campos que no son
+
+DML trata del contenido de la base de datos. Son las siglas de Data Manipulation Language y sus comandos son:
+
+Insert: Inserta o agrega nuevos registros a la tabla.
+Update: Actualiza o modifica los datos que ya existen.
+Delete: Esta sentencia es riesgosa porque puede borrar el contenido de una tabla.
+Select: Trae información de la base de datos.
+
+***Clase 23 ¿Qué tan standard es SQL?***
+
+La utilidad más grande de SQL fue unificar la forma en la que pensamos y hacemos preguntas a un repositorio de datos. 
+Ahora que nacen nuevas bases de datos igualmente siguen tomando elementos de SQL.
+Para crear una tabla es así:
+    CREATE TABLE people3(
+    personas_id INT primary key not null AUTO_INCREMENT,
+    last_name varchar(100) not null,
+    first_name varchar(100) not null,
+    address varchar(100) not null,
+    city varchar(100) not null
+    );
+
+ASÍ TAMBIÉN FUNCIONÓ, pero si queremos especificar en qué base de datos queremos crear esa tabla, es así:
+
+USE new;
+CREATE TABLE people(
+persona_id INT NOT NULL AUTO_INCREMENT,
+last_name VARCHAR(100) NOT NULL,
+first_name VARCHAR(100) NOT NULL,
+address VARCHAR(100) NOT NULL,
+city VARCHAR(100) NOT NULL,
+PRIMARY KEY(persona_id)
+);
+
+
+- Para insertar datos es así:
+    INSERT INTO people (last_name, first_name, address, city)
+    VALUES ('Ronaldo', 'El Fenomeno', 'Leyenda', 'Valladolid');
+
+- Para traer o ver información hacemos así:
+    SELECT firts_name, last_name FROM people;
+
+- Para eliminar la tabla es así:
+    DROP TABLE people;
+
+PostsgreSQL:
+    Usa casi la misma estructura de MySQL
+
+    \dt: podemos ver la tabla que tenemos en la base de datos
+
+
+***Clase 24 Creando Platziblog: tablas independientes***
+
+Una buena práctica es comenzar creando las entidades que no tienen una llave foránea.
+Generalmente en los nombres de bases de datos se evita usar eñes o acentos para evitar problemas en los manejadores de las bases de datos.
+
+lo gráficos de esta clase los hice en cuaderno
+
+Empezamos en esta clase por crear la base de datos y luego crear las tablas, voy a poner el paso a paso tanto como lo hice con código como desde el gráfico
+
+- Con código:
+
+    CREATE DATABASE platziblog;
+    USE platziblog;
+    CREATE TABLE categorias(
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        nombre_categoria varchar(30) NOT NULL
+    )
+
+    CREATE TABLE etiquetas(
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        nombre_etiqueta varchar(30) NOT NULL
+    )
+
+    CREATE DATABASE platzi;
+    USE platziblog;
+    CREATE TABLE usuarios(
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        login VARCHAR(30) NOT NULL,
+        password VARCHAR(32) NOT NULL,
+        nickname VARCHAR(40) NOT NULL,
+        email VARCHAR(40) NOT NULL UNIQUE
+    );
+
+- Desde el gráfico de MySQL:
+    Cuando hago los pasos de ir al menú del lado izquierdo y todo eso, me arroja el siguiente comando
+
+    CREATE TABLE `platzi`.`categorias` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `nombre_categoria` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`id`));
+
+    CREATE TABLE `platzi`.`etiquetas` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `nombre_etiqueta` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`id`));
+
+    CREATE TABLE `platzi`.`usuarios` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `login` VARCHAR(30) NOT NULL,
+    `password` VARCHAR(32) NOT NULL,
+    `nickname` VARCHAR(40) NOT NULL,
+    `email` VARCHAR(40) NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
+
+
+***Clase 25 Creando Platziblog: tablas dependientes***
+
+Tener cuidado con estas tablas porque tienen llaves foraneas en el ejemplo que estamos mirando es la relación que tiene
+    Posts con usuarios_id y categorias_id
+    Comentarios con usuarios_id y posts_id
+
+    y se crean así
+
+    no sé si está bien(aunque eso espero), pero mediante código lo hice así:
+
+    CREATE TABLE posts (
+        id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        titulo VARCHAR(150) NOT NULL,
+        fecha_publicacion TIMESTAMP,
+        contenido TEXT NOT NULL,
+        estado CHAR(8) DEFAULT('activo'),
+        FOREIGN KEY(id) REFERENCES usuarios(id),
+        FOREIGN KEY(id) REFERENCES categorias(id)
+        ON DELETE NO ACTION
+        ON UPDATE CASCADE
+        );
+
+
+El comando “cascade” sirve para que cada que se haga un update en la tabla principal, 
+se refleje también en la tabla en la que estamos creando la relación.
+
+Consultas a una base de datos
+
+Colores de los atributos en la base de datos:
+    - Blanco: Cuando estaba sin marcar el NOT NULL
+    - Azul celeste: Cuando le marqué el NOT NULL
+    - La llave si quiere decir que es un id
+    - Rojo: es cuando es una llave foranea
+
+Creé la base de datos desde el gráfico y tener en cuenta que me arrojó este código
+
+    CREATE TABLE `platzi`.`posts` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `titulo` VARCHAR(150) NULL,
+    `fecha_publicacion` TIMESTAMP NULL,
+    `contenido` TEXT NOT NULL,
+    `status` CHAR(8) NOT NULL DEFAULT 'activo',
+    `usuario_id` INT NOT NULL,
+    `categoria_id` INT NOT NULL,
+    PRIMARY KEY (`id`));
+
+En la parte de abajo del gráfico de Workbench hay una opción para agregar una Foreign Key
+
+Las opciones que tienen estas llaves ON UPDATE:
+    - CASCADE: Cada que se haga un update en esa otra tabla hágalo también en la tabla de acá
+    - NO ACTION: No haga nada si se borra esa llave, borre los datos y ya
+    - SET NULL: lo que hace es que cuando el usuario desaparezca en el lugar del usuario_id me va poner un NULL
+    - RESTRICT: Lo que quiere decir es que cada que quieran borrar un usuario que tenga un blog posts asociado  va decir, No, no puedes
+        borrar ese usuario hasta que no se borren sus blog posts y te asegures que no hay información
+
+También está la relación que dice qué va pasar cuando se borre el usuario ON DELETE:
+    - CASCADE: si borran el usuario se borran todos los posts que haya creado un usuario
+    - SET NULL: lo que hace es que cuando el usuario desaparezca en el lugar del usuario_id me va poner un NULL
+    - RESTRICT: Lo que quiere decir es que cada que quieran borrar un usuario que tenga un blog posts asociado  va decir, No, no puedes
+        borrar ese usuario hasta que no se borren sus blog posts y te asegures que no hay información
+    - NO ACTION: No haga nada si se borra esa llave, borre los datos y ya
+
+la creación de la Foreign Key para la tabla platzi.posts y platzi.categorias
+
+ALTER TABLE `platzi`.`posts` 
+ADD INDEX `posts_usuarios_idx` (`usuario_id` ASC) VISIBLE;
+;
+ALTER TABLE `platzi`.`posts` 
+ADD CONSTRAINT `posts_usuarios`
+  FOREIGN KEY (`usuario_id`)
+  REFERENCES `platzi`.`usuarios` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE CASCADE;
+
+ALTER TABLE `platzi`.`posts` 
+ADD INDEX `posts_categorias_idx` (`categoria_id` ASC) VISIBLE;
+;
+ALTER TABLE `platzi`.`posts` 
+ADD CONSTRAINT `posts_categorias`
+  FOREIGN KEY (`categoria_id`)
+  REFERENCES `platzi`.`categorias` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+***Clase 26 Creando Platziblog: tablas transitivas***
+
+El comando “cascade” sirve para que cada que se haga un update en la tabla principal,
+se refleje también en la tabla en la que estamos creando la relación.
+
+Las Foreing Key options son las siguientes:
+Creación de todas las tablas por medio de código con llaves foraneas
+
+create database platziblog;
+use platziblog;
+
+CREATE TABLE categorias (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nombre_categorias VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE etiquetas (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nombre_etiquetas VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE usuarios (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+login VARCHAR(32) NOT NULL,
+password VARCHAR(30) NOT NULL,
+nickname VARCHAR(40) NOT NULL,
+email VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE posts (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+titulo VARCHAR(150) NOT NULL,
+fecha_publicacion TIMESTAMP NOT NULL,
+contenido TEXT NOT NULL,
+status CHAR(8) NOT NULL DEFAULT 'activo',
+usuario_id INT NOT NULL,
+categoria_id INT NOT NULL,
+INDEX posts_categorias_idx (categoria_id ASC),
+INDEX posts_usuarios_idx (usuario_id ASC),
+CONSTRAINT posts_usuarios
+FOREIGN KEY(usuario_id) 
+REFERENCES platziblog.usuarios(id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+CONSTRAINT posts_categorias
+FOREIGN KEY(categoria_id)
+REFERENCES platziblog.categorias(id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+);
+use platziblog;
+CREATE TABLE comentarios (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+cuerpo_comentario TEXT NOT NULL,
+usuarios_id INT NOT NULL,
+posts_id INT NOT NULL,
+INDEX comentarios_usuarios_idx (usuarios_id ASC),
+INDEX comentarios_posts_idx (posts_id ASC),
+CONSTRAINT comentarios_usuarios
+FOREIGN KEY(usuarios_id) 
+REFERENCES platziblog.usuarios(id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+CONSTRAINT comentarios_posts
+FOREIGN KEY(posts_id)
+REFERENCES platziblog.posts(id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+);
+
+CREATE TABLE posts_etiquetas (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+posts_id INT NOT NULL,
+etiquetas_id INT NOT NULL,
+INDEX postsetiquetas_etiquetas_idx (etiquetas_id ASC),
+INDEX postsetiquetas_posts_idx (posts_id ASC),
+CONSTRAINT postsetiquetas_etiquetas
+FOREIGN KEY(etiquetas_id) 
+REFERENCES platziblog.etiquetas(id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE,
+CONSTRAINT postsetiquetas_posts
+FOREIGN KEY(posts_id)
+REFERENCES platziblog.posts(id)
+ON DELETE NO ACTION
+ON UPDATE CASCADE
+);
+
+On update: 
+
+Significa qué pasará con las relaciones cuando una de estas sea modificada en sus campos relacionados, Por ejemplo, pueden utilizarse los valores:
+    - cascade: Si el id de un usuario pasa de 11 a 12, entonces la relacion se actualizará y el post buscará el id nuevo en lugar de quedarse sin usuario.
+    - restrict: _Si el id de un usuario pasa de 11 a 12, no lo permitirá hasta que no sean actualizados antes todos los post relacionados.
+    - set null Si el id de un usuario pasa de 11 a 12, entonces los post solo no estará relacionados con nada.
+    - no action: Si el id de un usuario pasa de 11 a 12, no se hará nada. Solo se romperá la relación.
+
+On delete:
+    - cascade: Si un usuario es eliminado entonces se borrarán todos los post relacionados.
+    - restrict: No se podrá eliminar un usuario hasta que sean eliminados todos su post relacionados.
+    - set null: Si un usuario es eliminado, entonces los post solo no estará relacionados con nada.
+    - no action: Si un usuario es eliminado, no se hará nada. Solo se romperá la relación.
+
+Las tablas transitivas sirven como puente para unir dos tablas. No tienen contenido semántico.
+Reverse Engineer nos reproduce el esquema del cual nos basamos para crear nuestras tablas. 
+Es útil cuando llegas a un nuevo trabajo y quieres entender cuál fue la mentalidad que tuvieron al momento de crear las bases de datos.
+
+Creé la base de datos comentarios con código y lo hice así:
+    USE platziblog;
+    CREATE TABLE comentarios (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    cuerpo_comentario TEXT NOT NULL,
+    usuario_id INT NOT NULL,
+    post_id INT NOT NULL,
+    FOREIGN KEY(id) REFERENCES usuarios(id),
+    FOREIGN KEY(id) REFERENCES categorias(id)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE
+    );
+
+Creé la base de datos mediante el gráfico, con llaves foraneas y todo y me arrojó el siguiente código
+
+CREATE TABLE `platzi`.`comentarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cuerpo_comentario` TEXT NOT NULL,
+  `usuario_id` INT NOT NULL,
+  `post_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `comentarios_usuarios_idx` (`usuario_id` ASC) VISIBLE,
+  INDEX `comentarios_posts_idx` (`post_id` ASC) VISIBLE,
+  CONSTRAINT `comentarios_usuarios`
+    FOREIGN KEY (`usuario_id`)
+    REFERENCES `platzi`.`usuarios` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `comentarios_posts`
+    FOREIGN KEY (`post_id`)
+    REFERENCES `platzi`.`posts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+Creé la base de datos transitiva que era posts_etiquetas con código y llaves foraneas y quedó así
+
+    USE platziblog;
+    CREATE TABLE posts_etiquetas (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    posts_id INT NOT NULL,
+    etiquetas_id INT NOT NULL,
+    FOREIGN KEY(id) REFERENCES posts(id),
+    FOREIGN KEY(id) REFERENCES etiquetas(id)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE
+    );
+
+Creé la base de datos mediante el gráfico y me quedó así:
+
+CREATE TABLE `platzi`.`posts_etiquetas` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `posts_id` INT NOT NULL,
+  `etiquetas_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `postsetiquetas_posts_idx` (`posts_id` ASC) VISIBLE,
+  INDEX `postsetiquetas_etiquetas_idx` (`etiquetas_id` ASC) VISIBLE,
+  CONSTRAINT `postsetiquetas_posts`
+    FOREIGN KEY (`posts_id`)
+    REFERENCES `platzi`.`posts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `postsetiquetas_etiquetas`
+    FOREIGN KEY (`etiquetas_id`)
+    REFERENCES `platzi`.`etiquetas` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+***Clase 27 ¿Por qué las consultas son tan importantes?***
+
+Las consultas o queries a una base de datos son una parte fundamental ya que esto podría salvar un negocio o empresa.
+Alrededor de las consultas a las bases de datos se han creado varias especialidades como ETL o transformación de datos, 
+business intelligence e incluso machine learning.
+
+***Clase 28 Estructura básica de un Query***
+
+Los queries son la forma en la que estructuramos las preguntas que se harán a la base de datos. 
+Transforma preguntas en sintaxis.
+
+El query tiene básicamente 2 partes: SELECT y FROM y puede aparecer una tercera como WHERE.
+
+La estrellita o asterisco (*) quiere decir que vamos a seleccionar todo sin filtrar campos.
+
+inserté estos datos para probar 
+
+INSERT INTO categorias (id, nombre_categorias)
+VALUES ('1', '1');
+
+INSERT INTO usuarios (id, login, password, nickname, email)
+VALUES ('1', 'user1', 'userdos', 'userone', 'll@f.com');
+
+INSERT INTO posts (id, titulo, fecha_publicacion, contenido, status, usuario_id, categoria_id)
+VALUES ('1', 'Mi primer post', '2021-03-04', 'hola amiguitos', 'activo', '1', '1');
+
+
+ejemplo de consulta sencilla:
+
+    SELECT * FROM posts WHERE fecha_publicacion < '2023-01-01';
+
+***Clase 29 SELECT***
+
+SELECT se encarga de proyectar o mostrar datos.
+
+El nombre de las columnas o campos que estamos consultando puede ser cambiado utilizando AS después del nombre del campo y poniendo el nuevo que queremos tener:
+    SELECT titulo AS encabezado FROM posts;
+Existe una función de SELECT para poder contar la cantidad de registros. 
+Esa información (un número) será el resultado del query:
+    SELECT COUNT(*) FROM posts;
+
+- ejemplos de consultas de la clase
+
+    - select count(*) from posts;
+    - select count(*) from categorias;
+    - select titulo, status from posts;
+- Ejemplos de consultas con alias
+
+SELECT contenido AS content, status AS estado, fecha_publicacion AS fecha FROM posts;
+
+***Clase 30 FROM***
+
+FROM indica de dónde se deben traer los datos y puede ayudar a hacer sentencias y filtros complejos cuando se quieren unir tablas. 
+La sentencia compañera que nos ayuda con este proceso es JOIN.
+
+Los diagramas de Venn son círculos que se tocan en algún punto para ver dónde está la intersección de conjuntos. 
+Ayudan mucho para poder formular la sentencia JOIN de la manera adecuada dependiendo del query que se quiere hacer.
+
+- Tipos de Join, ejemplos con tabla a y b
+    Left Join: Va traer los datos de la tabla A estén o no estén en la tabla B
+    Right join: Va traer los datos de la tabla B estén o no estén en la tabla A
+    INNER JOIN: Hace referencia a la intersección de dos conjuntos de datos, es decir sirve para traer los datos que están 
+        tanto en A como en B
+    OUTER JOIN
+    UNIÓN: Lo que hace es traer todo 
+    Diferencia simétrica: Va traer los datos que no tienen relación
+
+***Clase 31 Utilizando la sentencia FROM***
+
+Podemos unir tantas tablas como queramos 
+
+En esta consulta le estamos diciendo lo siguiente:
+    LEFT JOIN:
+        - Seleccione todo de la tabla usuarios y unela con la tabla posts através de su llave primaria que es usuario.id que sea igual en la tabla posts con su usuario_id
+        SELECT * FROM usuarios LEFT JOIN posts ON usuarios.id = posts.usuario_id;
+
+        - Seleccione todo de la tabla usuarios y unela con la tabla posts através de su llave primaria que es usuario.id que sea igual en la tabla posts con su usuario_id
+            donde los posts que tengan el usuario_id sea null o en el valor null
+        SELECT * FROM usuarios LEFT JOIN posts ON usuarios.id = posts.usuario_id where posts.usuario_id IS NULL;
+
+    RIGHT JOIN:
+        - En esta consulta le estamos diciendo que nos traiga los posts sin importar si tiene o no asociado un usuario 
+        SELECT * FROM usuarios LEFT JOIN posts ON usuarios.id = posts.usuario_id;
+        - En esta consulta le estamos diciendo que nos traiga los posts que si tienen asociado un usuario 
+        SELECT * FROM usuarios LEFT JOIN posts ON usuarios.id = posts.usuario_id where posts.usuario_id IS NULL;
+
+    INNER JOIN: Es conocidad como la intersección de datos y nos trae los datos correspondientes y es de las consultas más usadas, 
+        tráeme internamente solo lo que está ligado, es decir, los que tengan dependencia de ambos lados
+        como ejemplo vamos a traer o consultar los usuarios con posts y los posts con usuarios
+        
+        SELECT * FROM usuarios INNER JOIN posts ON usuarios.id = posts.usuario_id;
+    
+    FULL OUTER JOIN: Es para la unión de datos y es un join que tiene algunas bases de datos, en mysql como tal no lo tienen
+
+    UNION:
+        Con esta consulta nos trae todos los datos que tenemos en una tabla
+        Para hacer una unión de datos en mysql lo hacemos con la siguiente sintáxis
+        SELECT * FROM usuarios LEFT JOIN posts ON usuarios.id = posts.usuario_id
+        UNION
+        SELECT * FROM usuarios RIGHT JOIN posts ON usuarios.id = posts.usuario_id;
+    
+    DIFERENCIA SIMÉTRICA:
+        - Lo que existe en A pero no en B y lo que existe en B pero no en A y usamos la siguiene consulta
+
+***Clase 32 WHERE***
+
+WHERE es la sentencia que nos ayuda a filtrar tuplas o registros dependiendo de las características que elegimos.
+
+La propiedad LIKE nos ayuda a traer registros de los cuales conocemos sólo una parte de la información.
+La propiedad BETWEEN nos sirve para arrojar registros que estén en el medio de dos. Por ejemplo los registros con id entre 20 y 30.
+
+    SELECT * FROM posts WHERE id > 3;
+    SELECT * FROM posts WHERE id < 3;
+
+Por eso es importante definir los datos numéricos como numéricos y no como cadena
+
+Otra consulta con where
+    Con el operador igual(=)
+        - SELECT * FROM posts WHERE status = 'activo'
+    Con el operador diferente(!=)
+        - SELECT * FROM posts WHERE status != 'activo'
+    Con LIKE y %%
+        Cuando le colocamos esto lo que nos arroja es una busqueda o dato que tenga la palabra que está dentro de los porcentajes, ejemplo:
+        SELECT * FROM posts WHERE titulo LIKE '%hola%'
+
+    SELECT * FROM posts WHERE id < 2;
+    SELECT * FROM posts WHERE id <= 2;
+    SELECT * FROM posts WHERE id > 2;
+    SELECT * FROM posts WHERE id >= 2;
+
+    SELECT * FROM posts WHERE id != 2;
+
+    - Con esta consulta lo que me trae es los datos que en su texto o cadena traiga dicha palabra, en este caso 'messi'
+        SELECT * FROM posts WHERE titulo LIKE '%messi%';
+        - Otros ejemplos
+            SELECT * FROM posts WHERE contenido LIKE '%Primer%';
+            SELECT * FROM posts WHERE contenido LIKE '%primer%';
+    - Con esta consulta lo que me trae es los datos que al principio de su texto o cadena traiga dicha palabra, en este caso 'messi'
+        SELECT * FROM posts WHERE titulo LIKE 'messi%';
+    - Con esta consulta lo que me trae es los datos que al final de su texto o cadena traiga dicha palabra, en este caso 'messi'
+        SELECT * FROM posts WHERE titulo LIKE '%messi';
+    - Con esta consulta traemos datos de acuerdo a fechas
+        SELECT * FROM posts WHERE fecha_publicacion <'2022-09-09';
+        SELECT * FROM posts WHERE fecha_publicacion >'2022-09-09';
+    - Con BETWEEN
+        SELECT * FROM posts WHERE fecha_publicacion BETWEEN '2022-09-09' AND '2024-09-09';
+    Con AND
+        SELECT * FROM posts WHERE fecha_publicacion >'2022-09-09' AND '2024-09-09';
+        SELECT * FROM categorias WHERE id BETWEEN '1' AND '4';
+        SELECT * FROM categorias WHERE id BETWEEN 1 AND 4;
+
+        SELECT * FROM posts WHERE YEAR(fecha_publicacion) BETWEEN '2021' AND '2024';
+        SELECT * FROM posts WHERE MONTH(fecha_publicacion) >= 07;
+        SELECT * FROM posts WHERE MONTH(fecha_publicacion) = 07;
+
+
+***Clase 33 Utilizando la sentencia WHERE nulo y no nulo***
+
+El valor nulo en una tabla generalmente es su valor por defecto cuando nadie le asignó algo diferente. 
+La sintaxis para hacer búsquedas de datos nulos es IS NULL. 
+La sintaxis para buscar datos que no son nulos es IS NOT NULL
+
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL;
+    SELECT * FROM posts WHERE usuario_id IS NULL;
+
+    Agregando AND a la consulta is null o is not null
+
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL and status = 'inactivo'
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL and status = 'inactivo' AND id < 3;
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL and status = 'activo';
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL and status = 'inactivo' AND categoria_id < 3;
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL and status = 'activo' AND categoria_id > 2 AND YEAR(fecha_publicacion)<'2019';
+    SELECT * FROM posts WHERE usuario_id IS NOT NULL and status = 'inactivo' AND categoria_id > 2 AND YEAR(fecha_publicacion)>'2019';
+
+
+Para los que necesiten generar datos ficticios en sus tablas
+
+https://www.generatedata.com/
+
+Generalmente a este tipo de datos se les conoce como “dummy data”
+
+***Clase 34 GROUP BY***
+
+GROUP BY tiene que ver con agrupación. Indica a la base de datos qué criterios debe tener en cuenta para agrupar.
+
+
+Cuando se está agrupando se le pueden pasar varios criterios de agrupación, por ejemplo:
+
+    GROUP BY status, post_month;
+
+    Ejemplo de consulta:
+    En esta consulta le decimos:
+        seleccione la tabla status cuente(COUNT(*)) los registros de ese grupo le damos el nombre post_quantity y los traemos de la tabla posts
+        y quiero agrupar los posts con GROUP BY a través del campo status   
+        
+        SELECT status,COUNT(*) post_quantity FROM posts GROUP BY status;
+
+    En esta consulta le decimos:
+        seleccione el año de la publicación y a esa tabla coloquele como nombre post_year cuente esos datos y a esa tabla que trae
+        la cuenta nombrela como post_quantity, eso tomelo de la tabla posts y agrupelo por año(post_year)
+        
+        Para resumir, esta consulta nos va traer los posts que se hicieron en cada año
+
+        SELECT YEAR(fecha_publicacion) AS post_year, COUNT(*) AS post_quantity
+        FROM posts
+        GROUP BY post_year;        
+
+        esta consulta nos va traer los posts que se hicieron en cada mes y nos trae el nombre del mes
+
+        SELECT MONTHNAME(fecha_publicacion) AS post_month, COUNT(*) AS post_quantity
+        FROM posts
+        GROUP BY post_month;
+
+        esta consulta nos va traer los posts que se hicieron en cada mes y nos trae el número del mes
+
+        SELECT MONTH(fecha_publicacion) AS post_month, COUNT(*) AS post_quantity
+        FROM posts
+        GROUP BY post_month;
+
+        esta consulta nos va traer los posts que se hicieron en cada mes, nos trae el nombre del mes y además el estado de cada posts
+
+        SELECT status, MONTHNAME(fecha_publicacion) AS post_month, COUNT(*) AS post_quantity
+        FROM posts
+        GROUP BY status, post_month;
+
+***Clase 35 ORDER BY y HAVING***
+
+La sentencia ORDER BY tiene que ver con el ordenamiento de los datos dependiendo de los criterios que quieras usar.
+
+- ASC sirve para ordenar de forma ascendente.
+- DESC sirve para ordenar de forma descendente.
+- LIMIT se usa para limitar la cantidad de resultados que arroja el query.
+- HAVING tiene una similitud muy grande con WHERE, sin embargo el uso de ellos depende del orden. Cuando se quiere seleccionar tuplas agrupadas únicamente se puede hacer con HAVING.
+
+Ejemplos de consultas:
+    - ASC Y DESC
+    Ordenando datos en orden ascendente y descendente:
+        SELECT * FROM posts ORDER BY fecha_publicacion ASC;
+        SELECT * FROM posts ORDER BY fecha_publicacion DESC;    
+        SELECT * FROM posts ORDER BY contenido ASC;
+        SELECT * FROM posts ORDER BY contenido DESC;
+        SELECT * FROM posts ORDER BY categoria_id ASC;
+        SELECT * FROM posts ORDER BY categoria_id DESC;
+    
+    - LIMIT
+    Para estas consultas también tenemos el limit que si por ejemplo tengo muchos datos en la base de datos lo que hago es colocar el limit para decirle que 
+    me traiga información justo hasta el número que le ponga como límite, ejemplo:
+
+        SELECT * FROM posts ORDER BY categoria_id ASC LIMIT 3;
+
+    - HAVING
+        Es parecida a la sentencia WHERE, pero HAVING nos ayuda una vez que ya agrupamos y creamos campos dinámicos que nos cuentan y nos suman valores
+        WHERE nos ayuda a seleccionar los row pero los selecciona antes de hacer una agrupación
+        ejemplo de una consulta:
+            SELECT MONTHNAME(fecha_publicacion) AS post_month, status, COUNT(*) AS post_quantity
+            FROM posts
+            GROUP BY status, post_month
+            HAVING post_quantity > 1
+            ORDER BY post_month;
+        
+        Tener en cuenta que el HAVING se lo coloca usualmente, luego del GROUP BY
+        
+
+***Clase 36 El interminable agujero de conejo (Nested queries)***
+
+Los Nested queries significan que dentro de un query podemos hacer otro query. 
+Esto sirve para hacer join de tablas, estando una en memoria. 
+También teniendo un query como condicional del otro.
+
+Este proceso puede ser tan profundo como quieras, teniendo infinitos queries anidados.
+Se le conoce como un producto cartesiano ya que se multiplican todos los registros de una tabla con todos los del nuevo query. 
+Esto provoca que el query sea difícil de procesar por lo pesado que puede resultar.
+
+Ejemplo de una consulta:
+    SELECT new_table_projection.date, COUNT(*) AS post_count
+    FROM (
+        SELECT DATE(MIN(fecha_publicacion)) AS date, YEAR(fecha_publicacion) AS post_year
+        FROM posts
+        GROUP BY post_year
+    )
+    AS new_table_projection
+    GROUP BY new_table_projection.date
+    ORDER BY new_table_projection.date
+
+    Tener en cuenta que el nombre new_table_projection es una tabla dinámica que se crea en memoria y el date, es que le estamos diciendo que
+    lo tome por fecha las cuente y le coloque a esa tabla como nombre post_count
+
+    - Otra consulta
+        SELECT * FROM posts WHERE fecha_publicacion = (
+        SELECT MAX(fecha_publicacion)
+        FROM posts
+        );
+
+    Le estamos diciendo que nos seleccione todo de la tabla posts donde la fecha de publicación sea igual a la fecha de publicación
+    máxima de la tabla posts, estamos haciendo un querie aninado
+
+***Clase 37 ¿Cómo convertir una pregunta en un query SQL?***
+
+De pregunta a Query
+
+SELECT: Lo que quieres mostrar
+FROM: De dónde voy a tomar los datos
+WHERE: Los filtros de los datos que quieres mostrar
+GROUP BY: Los rubros por los que me interesa agrupar la información
+ORDER BY: El orden en que quiero presentar mi información
+    Para por ejemplo obtener un top de datos podemos usar ORDER BY y LIMIT
+HAVING: Los filtros que quiero que mis datos agrupados tengan
+LIMIT: La cantidad de registros que quiero
+
+WHERE utiliza las propiedades:
+    - LIKE, nos ayuda a filtrar los registros cuando solo conocemos una parte de la información.
+    – BETWEEN, nos ayuda a filtrar registros que estén entre un rango.
+También debemos de tener en cuenta que si la condición es numérica se escribe sin comillas simples de lo contrario la condición se debe escribir dentro de comillas simples
+Ej: ‘Texto’.
+
+ORDER BY utiliza los siguientes criterios:
+    – ASC. Ordena de forma ascendente.
+    – DESC. Ordena de forma descendente
+    – LIMIT. Limita la cantidad de resultados para mostrar en el query, Ej: Mostrar los 5 primeros registros.
+
+También se pueden hacer NESTED QUERIES (Consultas o Queries Anidados), esto significa que podemos hacer un query dentro de otro query.
+
+***Clase 38 Preguntándole a la base de datos***
+
+GROUP_CONCAT toma el resultado del query y lo pone como campo separado por comas.
+
+SELECT posts.titulo, COUNT(*)num_etiquetas
+FROM posts
+	INNER JOIN posts_etiquetas ON posts.id = posts_etiquetas.posts_id
+    INNER JOIN etiquetas ON etiquetas.id = posts_etiquetas.etiquetas_id
+GROUP BY posts.id
+ORDER BY num_etiquetas DESC;
+
+
+primer inner join:
+    posts_etiquetas tabla transitiva que ayuda a unir información ON que nos indica qué campo de cada lado los une y le decimos que es posts.id que viene
+    siendo el id del posts, = en el lado de la otra tabla el campo que los une es el posts_etiquetas.posts_id es decir el campo posts_id de la tabla posts_etiquetas
+segundo inner join:
+    de la tabla etiquetas ON donde el campo id de la tabla etiquetas con respecto a el campo etiquetas_id de la tabla posts_etiquetas
+Con eso tenemos la unión entre las 3 tablas: posts, posts_etiquetas y etiquetas, eso lo agrupamos por el id de los posts
+y lo ordenamos de manera descendente en la tabla que le dimos como nombre num_etiquetas
+
+SELECT posts.titulo, GROUP_CONCAT(nombre_etiquetas)
+FROM posts
+	INNER JOIN posts_etiquetas ON posts.id = posts_etiquetas.posts_id
+    INNER JOIN etiquetas ON etiquetas.id = posts_etiquetas.etiquetas_id
+GROUP BY posts.id;
+
+Con esta consulta obtenemos cada posts con sus etiquetas asociadas y las trae separadas por comas
+
+para este ejercicio lo hice así:
+
+INSERT INTO etiquetas (id, nombre_etiquetas)
+VALUES ('1', 'first');
+INSERT INTO etiquetas (id, nombre_etiquetas)
+VALUES ('3', 'three');
+
+INSERT INTO posts_etiquetas (id, posts_id, etiquetas_id)
+VALUES ('4', '4','2');
+
+es decir, primero agregué las etiquetas y las asocié a la tabla posts_etiquetas
+
+Ahora vamos a hacer la consulta de un etiqueta que tengamos en la base de datos que no esté asociada con ningún posts
+
+SELECT * FROM etiquetas 
+LEFT JOIN posts_etiquetas ON etiquetas.id = posts_etiquetas.etiquetas_id
+WHERE posts_etiquetas.etiquetas_id IS NULL;
+
+***Clase 39 Consultando PlatziBlog***
+
+Ejemplos de consultas:
+    - Vamos a traer las categorias de los posts pero las vamos a ordenar por las que tienen más posts
+    SELECT c.nombre_categorias, COUNT(*) AS cant_posts 
+    FROM categorias AS c
+    INNER JOIN posts AS p ON c.id = p.categoria_id
+    GROUP BY c.id
+    ORDER BY cant_posts DESC
+    LIMIT 2;
+    
+    - Vamos a consultar qué usuario ha estado creando más posts
+        SELECT u.nickname, COUNT(*) AS cant_posts
+        FROM usuarios AS u
+	    INNER JOIN posts AS p ON u.id = p.usuario_id
+        GROUP BY u.id
+        ORDER BY cant_posts DESC;
+    
+    - Vamos a consultar el número de posts que está escribiendo el autor y en qué categoria está escribiendo
+
+        SELECT u.nickname, COUNT(*) AS cant_posts, GROUP_CONCAT(nombre_categorias)
+        FROM usuarios AS u
+        INNER JOIN posts AS p ON u.id = p.usuario_id
+        INNER JOIN categorias AS c ON c.id = p.categoria_id
+        GROUP BY u.id
+        ORDER BY cant_posts DESC;
+
+    - Vamos a consultar un usuario que no haya escrito ningún posts
+
+        SELECT * FROM usuarios AS u
+        LEFT JOIN posts ON u.id = posts.usuario_id
+        WHERE posts.usuario_id IS NULL
+
+Puedes usar una abreviación para evitar escribir lo mismo cada vez.
+Ejemplo:
+
+FROM categorias AS c
+
+Introducción a la bases de datos NO relacionales
+
+***Clase 40 ¿Qué son y cuáles son los tipos de bases de datos no relacionales?***
+
+Respecto a las bases de datos no relacionales, no existe un solo tipo aunque se engloben en una sola categoría.
+
+Tipos de bases de datos no relacionales:
+
+Clave - valor: Son ideales para almacenar y extraer datos con una clave única. Manejan los diccionarios de manera excepcional. Ejemplos: DynamoDB, Cassandra.
+Basadas en documentos: Son una implementación de clave valor que varía en la forma semiestructurada en que se trata la información. Ideal para almacenar datos JSON y XML. Ejemplos: MongoDB, Firestore.
+Basadas en grafos: Basadas en teoría de grafos, sirven para entidades que se encuentran interconectadas por múltiples relaciones. Ideales para almacenar relaciones complejas. Ejemplos: neo4j, TITAN.
+En memoria: Pueden ser de estructura variada, pero su ventaja radica en la velocidad, ya que al vivir en memoria la extracción de datos es casi inmediata. Ejemplos: Memcached, Redis.
+ Optimizadas para búsquedas: Pueden ser de diversas estructuras, su ventaja radica en que se pueden hacer queries y búsquedas complejas de manera sencilla. Ejemplos: BigQuery, Elasticsearch.
+
+ BASES DE DATOS NO RELACIONES*
+
+Solo responden diferentes necesidades cada una, ya que con las RDB surgen problemas al ir creciendo
+Clave - valor:
+- Son ideales para almacenar y extraer datos con una clave unica.
+- Manejan diccionarios de manera excepcional
+- Se basan en algoritmos de hash o hashmap
+- EJEMPLOS: DynamoDB (maneja AWS), Cassandra (Los usa FB)
+
+Basadas en documentos:
+- Basadas en objetos de tipo JSON. Ideal para almacenar datos JSON y XML
+- Son las más utilizadas despues de los RDBMS
+- Son una implementación de clave valor que varía en la forma semiestructurada en que se trata la información
+- Guarda la forma actual de una aplicación, no son buenas para hacer consulta complejas.
+- EJEMPLOS: MongoDB, Firestore (servicio en la nube, es un ambiente grafico)
+
+Basadas en grafos:
+- Nodos o entidades que tienen multiples relaciones. Estan relacionadas TODOS CON TODOS
+- Se usan en el mundo de la inteligencia artificial, para formar redes neuronales
+- EJEMPLOS: neo4j, TITAN DB
+
+En memoria:
+- Su mayor ventaja es que son sumamente rapidas
+- La respuesta llega en el minimo de tiempo
+- Su desventaja es que son limitadas y hay que guardar cosas en disco
+- Otra desventaja es que son volatiles (si se reinicia, hay que indexar, volver a traer la información del disco)
+- EJEMPLOS: Memcached, Redis
+
+Optimizadas para búsqueda:
+- Se usa para hacer queries complejos
+- Sirven como grandes repositorios de datos, muchas veces historicos
+- Son utilizadas en Business Inteligent y Machine learning
+- EJEMPLOS: Elasticsearch, BigQuery (la ofrece Google)
+
+***Clase 41 Servicios administrados y jerarquía de datos***
+
+Firebase es un servicio de Google donde puedes tercerizar muchos elementos en la nube.
+Jerarquía de datos:
+
+    - Base de datos: En este ejemplo, podemos decir que es la que guarda el estado completo de una app
+    - Colección: Es algo parecido a las tablas en las bases de datos relacionales qué son objetos que agrupan la información
+        antes agrupaban tuplas, ahora agrupaban documentos
+    - Documento: Generalmente es la información que se quiere guardar, se guarda en un formato parecido al json
+
+Manejo de modelos de datos en bases de datos no relacionales
+***Clase 42 Top level collection con Firebase***
+
+Colecciones de nivel más alto
+
+El modelo de bases de datos no relacionales es un poco más cercano al mundo real en su comportamiento.
+
+Las top level collections son las colecciones que se tienen de inmediato o entrada en el proyecto.
+Firebase es un servicio que tiene múltiples opciones y está pensado principalmente para aplicaciones móviles y web.
+
+Creamos la primera colección a modo de ejemplo
+
+***Clase 43 Creando y borrando documentos en Firestore***
+
+Tipos de datos en Firestore:
+
+    - String: Cualquier tipo de valor alfanumérico
+
+    - Number: Soporta enteros y flotantes.
+
+    - Boolean: Los clásicos valores True y False
+
+    - Map: Permite agregar un documento dentro de otro.
+
+    - Array: Permite agregar un conjunto de datos (soporte multi type) sin nombre e identificador.
+
+    - Null: Indica que no se ha definido un valor.
+
+    - Timestamp: Permite almacenar fechas (guarda el año, mes, día y hora).
+
+    - Geopoint: Guarda una localización geográfica (coordenadas latitud-longitud).
+
+    - Reference: Permite referencia un documento (relaciona dos documentos, no importa su colección).
+        Por ejemplo:
+            Un tipo de dato reference que nos haga referencia a que usuario creó un posts
+
+***Clase 44 Colecciones vs subcolecciones***
+
+Tener en cuenta que en firebase si no tenemos una colección creada no podemos obtener una base de datos, entonces valga la aclaración hay que primero
+crear una colección
+
+Tener en cuenta que se pueden agregar nuevas colecciones pero esas ya van dentro del documento no de la colección inicial
+este tipo de colecciones significa que están relacionadas al documento y no a la base de datos principal
+ 
+
+La particularidad de las top level collections es que existen en el primer nivel de manera intrínseca. 
+Las subcolecciones ya no vivirán al inicio de la base de datos.
+
+Si tienes una entidad separada que vas a referenciar desde muchos lugares es recomendado usar 
+un top level collection. Por el otro lado si se necesita hacer algo intrínseco al documento es aconsejable usar subcolecciones.
+
+***Clase 45 Recreando Platziblog***
+
+Recordar que el id que usabamos en las tablas de mysql con AUTO_INCREMENT en firebase lo hace automáticamente
+
+***Clase 46 Construyendo Platziblog en Firestore***
+
+Para usar el reference se toma el id que se le coloca al documento
+
+***Clase 47 Proyecto final: transformando tu proyecto en una db no relacional***
+
+Dentro de las bases de datos relacionales tenemos diferentes niveles de datos. En primer lugar tenemos las Bases de Datos o Esquemas como repositorios donde vivirán los datos que nos interesa guardar. Dentro del esquema existen las Tablas que provienen del concepto de entidades; y a su vez dentro de las tablas tenemos las tuplas o renglones.
+
+Cuando trabajamos con bases de datos basadas en documentos como Firestore, aún existe la figura de la base de datos, sin embargo cambiaremos las tablas en favor de las colecciones y las tuplas en lugar de los documentos.
+
+Recuerda:
+
+Tabla -> Colección
+
+Tupla -> Documento
+
+Dentro de las Colecciones existen 2 grandes tipos. Las Top level collection o colecciones de nivel superior y las subcollections o subcolecciones. Estas últimas viven únicamente dentro de un documento padre.
+
+¿Cómo saber cuál escoger?
+
+Para determinar si tu colección debe ser top level o subcolección no hay una regla escrita en piedra y más bien tiene que ver con el caso de uso en particular y con la experiencia que hayas ganado como desarrollador.
+
+Lo cierto es que no hay una sola forma de estructurar nuestra DB basada en documentos, y por tanto no existe una respuesta correcta, sin embargo a continuación te ofrezco un par de reglas guía que puedes utilizar para transformar tu proyecto que ya trabajaste en bases de datos relacionales en un proyecto no relacional.
+
+Regla 1. Piensa en la vista de tu aplicación
+
+La primera pista que te puedo dar es que pienses en un inicio en la manera en que los datos serán extraídos. En el caso de una aplicación, la mejor forma de pensarlo es en términos de las vistas que vas a mostrar a un momento determinado en la aplicación.
+
+Es decir, al armar la estructura en la base de datos que sea un espejo o que al menos contenga todos los datos necesarios para llenar las necesidades que tiene nuestra parte visual en la aplicación.
+
+En el caso de Platziblog por ejemplo si tienes una vista de un blog post individual, generalmente conviene mostrar además de los datos inherentes al post como el contenido, datos adicionales como las etiquetas que tiene o por ejemplo el autor (o autores si es colaborativo), en este caso tal vez convenga guardar estas dos “entidades” (autores y etiquetas) como subcolecciones de cada documento blog post.
+
+Regla 2. La colección tiene vida propia
+
+Esta regla se refiere a que la excepción a la regla 1 es cuando tenemos un caso en que la “entidad” que tiene necesidad de vivir y modificarse constantemente de manera independiente a las otras colecciones. Por ejemplo en Platziblog podemos en el ejemplo anterior hacer una excepción a autores porque nos conviene tenerlas como top level collection en el sentido que se añadan, borren, cambien o listen los usuarios sin depender del blog post.
+
+Experimenta aplicando estas dos reglas a un proyecto que ya conozcas en una base de datos relacional y trata de convertirla en un proyecto de Firestore y comentanos los retos a los que te enfrentaste.
+
+Bases de datos en la vida real
+
+***Clase 48 Bases de datos en la vida real***
+
+    - Las bases de datos relacionales aunque cumplían con muchas funciones cuando se les ingresaba grandes cantidades de datos ya sea de millones o billones daba problemas
+    era complicado hacer consultas complejas
+    - Por ejemplo tenemos big query que nos permite guardar mucha información y la mismo tiempo hacer queries rápidos de búsqueda
+    - Otro ejemplo es firestore o MongoDB que se basa en documentos y nos ayuda a tener los datos que viven actualmente en una app    
+
+***Clase 49 Big Data***
+
+Cumple la necesidad de guardar grandes cantidades de datos, además, en muy poco tiempo(puede ser milesimas de segundos)
+    - Cassandra es uno de los ejemplos del uso de big data, aunque tiene la desventaja como de que las llaves están predefinidas
+    y es arduo hacer ciertos join, entre otras desventajas, pero para el caso de meter y sacar datos de manera rápida es útil
+Big Data es un concepto que nace de la necesidad de manejar grandes cantidades de datos. 
+La tendencia comenzó con compañías como YouTube al tener la necesidad de guardar y consultar mucha información de manera rápida.
+Es un gran movimiento que consiste en el uso de diferentes tipos de bases de datos.
+
+***Clase 50 Data warehouse***
+
+Se usa para guardar datos, grandes cantidades de datos también tiempos como milisegundos pero que quedan de manera histórica
+- Big table:
+    Es una sola tabla
+De sus funcionalidades es guardar datos de manera eterna prácticamente y grandes cantidades
+
+Data Warehouse trata de guardar cantidades masivas de datos para la posteridad. 
+Allí se guarda todo lo que no está viviendo en la aplicación pero es necesario tenerlo.
+Debe servir para guardar datos por un largo periodo de tiempo y estos datos se deben poder usar para poder encontrar cuestiones interesantes para el negocio.
+
+***Clase 51 Data mining***
+
+Se trata de extraer datos, de tratarlos, y de darles un sentido, ordenarlos y sacar algo más organizado
+- Se puede decir que llega al rescate de Data warehouse, es decir, llegar a organizar miles y millones de información desorganizada
+a algo que se pueda darle manejo y con lo cual se puedan presentar informes
+
+El Data Mining se dedica a minar datos, a extraerlos de donde sea que estén (archivos muertos, base de datos actual, etc…) 
+y hacer sentido de ellos para darles un uso.
+
+***Clase 52 ETL***
+
+Se toman los datos, se los pasa por un proceso de transformación, se le aplican técnicas, donde se puedan sumar, limpiar, varios pasos intermedios
+y al final esos datos se van a cargar en otro lado.
+- Primer caso de uso:
+    justamente el data mining cuando ya se tiene una gran fuente de datos que no tienen orden y se le ha hecho un proceso de limpieza
+    y cargarla en otro lado, quizá en un data warehouse donde pueda estár ordenado y se pueda sacar provecho de estos
+- Segundo caso de uso:
+    Es lo mismo que el primer caso, solo que este se hace en tiempo real, puede ser los datos que tengo vivos en este mismo instante en mi app
+    y hacerles lo mismo, limpiarlos, etc, y cargarla en otro lado, quizá en un data warehouse donde pueda estár ordenado y se pueda sacar provecho de estos
+
+Aunque no hay una tecnología concreta para este tipo de manejo de información, si hay es una idea de como transformar los datos
+
+
+ETL son las siglas de Extract, Transform, Load (extraer, transformar y cargar). 
+Se trata de tomar datos de archivos muertos y convertirlos en algo que sea de utilidad para el negocio.
+También ayuda a tomar los datos vivos de la aplicación, transformarlos y guardarlos en un data warehouse periódicamente.
+
+***Clase 53 Business intelligence***
+
+Inteligencia para el negocio
+
+Business Intelligence es una parte muy importante de las carreras de datos ya que es el punto final del manejo de estos. 
+Su razón de ser es tener la información lista, clara y que tenga todos los elementos para tomar decisiones en una empresa.
+Es necesario tener una buena sensibilidad por entender el negocio, sus necesidades y la información que puede llevar 
+a tomar decisiones en el momento adecuado al momento de realizar business intelligence.
+
+***Clase 54 Machine Learning***
+
+En los ejemplos que se han puesto Big Query nos sirve como data warehouse, porque permite ejecutar queries complejos que pueden ayudar inclusco con Business Inteligent
+
+Machine Learning tiene significados que varían. Es una serie de técnicas que involucran la inteligencia artificial y la detección de patrones.
+Machine learning para datos tiene un gran campo de acción y es un paso más allá del business intelligence.
+Nos ayuda a hacer modelos que encuentran patrones fortuitos encontrando correlaciones inesperadas.
+
+Tiene dos casos de uso particulares:
+
+Clasificación
+Predicción
+
+***Clase 55 Data Science***
+
+Data Science es aplicar todas las técnicas de procesamiento de datos. 
+En su manera más pura tiene que ver con gente con un background de estadísticas y ciencias duras.
+
+***Clase 56 ¿Por qué aprender bases de datos hoy?***
+
+¡Has concluido el curso! Ahora tienes potentes herramientas y posibilidades para ingresar en este apasionante campo.
+
+Llevaste diagramas a bases de datos, exploraste un poco el mundo de las bases de datos no relacionales, hicimos un proyecto en firestore y transformamos Platzi blog de una base de datos relacional en una base de datos de documentos.
+
+Dentro de las posibilidades que tienes hoy en día puedes hacer: Machine learning, ETL, Data Warehouse, Data mining, entre otros.
+
+Recuerda practicar mucho con el proyecto. Te invito a que tomes el examen y verifiques tus conocimientos. ¡Exitos!
+
+Bonus
+
+***Clase 57 Bases de datos relacionales vs no relacionales***
+
+
+
+***Clase 58 Elegir una base de datos***
+
+Has aprendido todo lo necesario para comenzar a trabajar con bases de datos relacionales y no-relacionales. Ahora es probable que al momento de iniciar con un proyecto te enfrentes a la pregunta ¿qué tipo de base de datos debo elegir?.
+
+El teorema CAP te ayuda a tomar en cuenta 3 factores clave:
+
+Consistencia.
+Disponibilidad.
+Tolerancia a la partición.
+En este blogpost podrás conocer más detalles para tomar la mejor decisión.
+
+
+https://platzi.com/blog/que-es-el-teorema-cap-y-como-elegir-la-base-de-datos-para-tu-proyecto/
+apuntes:
+
+Claro que si, mira, como el editor me pide una URL yo subo la imagen en https://imgur.com/ y la página me da la URL de la imagen
+que es la que coloco en el editor. Mucha suerte, amigo.
+
+IMPORTANTE:
+
+Para cuando no quiero arrancar el MySQL Workbench que me sale un error de este tipo:
+"mysql workbench could not acquire management access for administration"
+voy en mi pc a: 
+1. Servicios
+2. Busco el servicio que tiene como nombre MySQL80
+3. Si ese servicio no está en ejecución, con click derecho miro las opciones y le doy en Iniciar, y con eso corre el MySQL
+4. En este enlace lo miré
+    https://www.youtube.com/watch?v=gwNdzZ_Enok

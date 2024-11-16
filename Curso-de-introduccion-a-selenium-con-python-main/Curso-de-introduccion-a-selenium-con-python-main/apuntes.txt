@@ -1,0 +1,497 @@
+***Clase 1 Por qué aprender Selenium y qué verás***
+
+
+***Clase 2 Historia de Selenium***
+
+Es compatible con:
+    - JAVA
+    - C#
+    - PHP
+    - Python
+    - JavaScript
+    - Ruby
+Con Go no es compatible de forma nativa
+
+Inició en 2004
+- Selenium IDE es una extensión de firefo pero que ahora está disponible en Google Chrome, y sirve para grabar, repetir, importar
+    y exportar automatizaciones, através de clicks sin necesidad de código
+- Luego se dieron cuenta que Selenium era importante que se extienda a más lenguajes y navegadores por 
+    eso se creó el protocolo WebDriver el cual permite conectarse a una API de alto nivel para ejecutar comandos dentro del navegador web
+
+¿Qué es Selenium?
+Es una SUIT de herramientas para la automatización de navegadores Web.
+El objetivo de Selenium NO fue para el Testing ni para el Web Scraping (aunque se puede usar para eso), por lo tanto, no es el más optimo para estas actividades.
+Protocolo: WebDriver, herramienta que se conecta a un API.
+Selenium WebDriver es la herramienta que utilizaremos en el curso.
+-Selenium NO es un Software, ES una SUIT de Softwares.
+*DDT: Data Drive Testing: Ingresar datos para que realice varias pruebas (sin intervención humana).
+
+- Selenium IDE
+
+    Pros
+
+    - Excelente para iniciar
+    - No requiere saber programar
+    - Exporta scripts para Selenium RC y Selenium WebDriver
+    - Genera reportes
+        - Ejemplo:
+            - Cuánto se demoró una prueba
+            - Qué acciones se tomaron
+            - Qué fallos hubo durante las pruebas
+            - Entre otros
+
+    Contras
+
+    - Disponible para Google Chrome y FireFox
+    - No soporta DDT. No permite colocar datos para múltiples pruebas.
+
+- Selenium RC (Remote Control)
+
+    Pros
+
+    - Soporte para varias plataformas, navegadores y lenguajes.
+    - Operaciones lógicas y condicionales
+    - DDT
+    - Posee una API madura
+        - Con lo cual podemos hacer que haga más efectivas las pruebas
+
+    Contras
+
+    - Complejo de instalar
+    - Necesita de un servidor con el cual se comunica antes de enviar interacciones al navegador
+    - Comandos redundantes en una API
+    - Navegación no tan realista, es muy rigida
+
+- Selenium WebDriver
+
+    Pros
+
+    - Soporte para múltiples lenguajes
+    - Facil de instalar.
+    - Comunicación directa con el navegador.
+    - Interacción más realista.
+    
+    Contras
+
+    - No soporta nuevos navegadores tan rápido.
+    - No genera reportes o resultados de pruebas.
+    - Requiere de saber programar.
+
+- Selenium Grid
+    No es ni superior ni inferior al resto de versiones de Selenium pero si es un complemento que permite trabajar junto Selenium Rc
+    para ejecutar automatizaciones en distintos navegadores, sistemas operativos y otras circunstancias en paralelo, lo cua permite
+    que si tenemos un script de pruebas lo corramos en distintos ambientes de manera simultanea
+
+***Clase 3 Otras herramientas de testing y optimización***
+
+-Puppeter
+    Pros
+
+    - Soporte por parte google
+    - Datos del performance Analysis de Chrome
+    - Mayor control de Chrome
+    - No requiere drivers externos
+
+    Contras
+
+    - Funciona solo en Chrome y con JavaScript (aunque técnicamente puppeteer se puede utilizar con Firefox Nightly)
+    - Comunidad pequeña
+
+- Cypress.io
+    Pros
+
+    - Comunidad emergente
+    - Buena documentación con Ejemplos
+    - Bastante ágil en pruebas E2E
+        - Es decir evaluar un proceso de principio a fin es ideal para ello
+    - Orientado a desarrolladores
+        - Se puede usar sin tener muchos conocimientos de testing o automatización
+    - Excelente manejo de asincronismo
+        - Lo que hace que las esperas puedan ser dinámicas y se puedan manejar de una forma muy sencilla
+
+    Contras
+    - Funciona solo en Chrome y con JavaScript
+    - Pruebas en paralelo solo en versión pago
+
+***Clase 4 Configurar entorno de trabajo***
+
+- pip install selenium
+- pip install pyunitreport
+
+***Clase 5 Compatibilidad con Python 3.9 y aprendiendo a utilizar múltiples versiones****
+
+¡Es aquí cuando das un gran paso en tu camino para convertirte en una developer profesional! Al crear un ambiente virtual estás aislando tu proyecto del resto de tu computadora y haciendo que funcione con módulos independientes. Es decir, para llevar este curso puedes tener una versión de Python y Selenium y para hacer otro proyecto puedes tener versiones distintas. Esto hace que los proyectos no se rompan.
+
+Usualmente, sin hacer uso de ambientes virtuales, los proyectos en tu computadora se verían así:
+Untitled.png
+Pero, al organizarlo profesionalmente, tus proyectos aislados en ambientes virtuales se verían de esta forma:
+Untitled (1).png
+
+- ¿Cómo crear y activar un ambiente virtual?
+    Primero veamos cómo hacerlo en sistemas basados en Unix como Linux y MacOS.
+    Te ubicas en la carpeta root del proyecto y corres los siguientes comandos:
+
+    #Para crear el ambiente virtual
+    python3 -m venv nameOfVirtualEnv
+
+    #Luego lo tienes que activar
+    source nameOfVirtualEnv/bin/activate
+
+    source nameOfVirtualEnv/Scripts/activate
+
+    #Lo puedes desactivar así
+    deactivate
+    Si trabajas en Windows puedes poner lo siguiente:
+
+    #Crear
+    py -m venv nameOfVirtualEnv
+    python -m venv nameOfVirtualEnv
+
+    #Activar
+    en git bash:
+        source nameOfVirtualEnv\Scripts\activate
+
+    #Desactivar 
+    deactivate
+
+Te sugiero que, si trabajas en Windows, uses una terminal basada en Unix como Cmder o un WSL. Además, el Curso de Introducción a la Terminal y Línea de Comandos te viene perfecto para dominar la terminal.
+
+Se muestran errores en la terminal, ¿qué hago?
+Tranquila, tranquilo. Los errores son tus amigos. Si te sale un error, lee, interpreta o googlea. Al final actúa racionalmente. Pero lo más probable es que haya errores por no tener paquetes descargados o no tener Python actualizado. Soluciónalo así:
+
+sudo apt update
+sudo apt -y upgrade
+
+#Instalando el módulo para ambientes virtuales
+
+sudo apt-get install python3.8-venv #o python3.9-venv según la versión
+Instalando dependencias
+Ahora que ya sabes qué es un ambiente virtual, cómo crearlo y cómo activarlo, llegó la hora de instalar dependencias usando pip. En el caso particular del curso, instalaremos Selenium en su versión más actualizada que es 4.1.1 y Python 3.9. Puedes ver el historial de versiones de Selenium y su compatibilidad con las versiones de Python dando click aquí.
+
+Recuerda tener activado el ambiente virtual. Luego pones esto en la terminal.
+
+pip install selenium==4.1.3
+sudo apt-get install python3.9-venv
+¡Listo, ya puedes seguir con el curso! Existen otros instaladores como pyenv. Pero con pip puedes hacer cosas muy avanzadas.
+
+Te animo a revisar el Curso de Python Intermedio: Comprehensions, Lambdas y Manejo de Errores en donde se explican los ambientes virtuales y más cosas interesantes sobre Python.
+
+https://www.neoguias.com/como-instalar-pip-python/
+
+***Clase 6 ¡Hola, mundo!***
+
+Unittest(PyTest)
+
+Esta es una librería de python con el que vamos a realizar pruebas unitarias para obtener la información de lo que ocurre con nuestras automatizaciones
+
+- Text Fixture: Preparación para antes y después de la prueba
+    - en otras palabras va a preparar el entorno de nuestra automatización y luego realizará una serie de acciones para cuando termine el caso
+    de prueba que se está realizando
+- Test Case: Unidad de código a probar
+    - el caso de prueba es una unidad de código con la cual le estamos indicando a selenium que es lo que queremos que haga
+- Test Suite: Colección de Test Cases
+    - Colección de distintas pruebas o automatizaciones en un solo archivo para ejecutarlos de manera secuencial
+- Test Runner: Orquestador de la ejecución
+    - Es la parte que se encarga de dirigir que se va a ejecutar, cómo y en qué orden y resultados que nos va arrojar 
+- Test Report: Resumen de resultados
+
+Utilizar comandos básicos
+***Clase 7 Encontrar elementos con find_element***
+
+Cómo identificar ciertas etiquetas html que tiene un sitio web
+    - ID
+    - Nombre del atributo
+    - Nombre de la clase
+    - Nombre de la etiqueta
+    - XPath
+        - Nodos de xml que nos da la ubicación exacta de un elemento
+    - Selector de CSS
+    - Texto del link
+    - Texto parcial del link
+
+Xpath = Nos permite identificar elementos cuando no hay algo que es lo suficientemente explícito, y esa ruta nos muestra donde se encuentra
+el elemento
+implicitly_wait = añade una pausa, espera máximo 15 segundos para que ocurra ese cambios antes de ejecutar la prueba
+
+En ocasiones algunos sitios pueden tener bloqueos regionales o no estar disponibles por la alta cantidad de solicitudes que llegan a tener.
+Si el sitio de práctica no abre, puedes intentar ingresando a OneStepCheckout Responsive Demo.
+
+***Clase 8 Preparar assertions y test suites***
+
+Assertions:
+    - Métodos que permiten validar un valor esperado en la ejecución del test. Si el resultado es verdadero el test continúa, en caso contrario, falla y termina
+
+Test suites:
+    - Colección de test unificados en una sola prueba, permitiendo tener resultados grupales e individuales
+
+***Clase 9 Entender las clases WebDriver y WebElement***
+
+Como viste en clases anteriores, un sitio web se construye por código HTML en forma de árbol, conteniendo distintos elementos con los que podemos interactuar según estén presentes o no en nuestra interfaz gráfica.
+
+Selenium WebDriver nos brinda la posibilidad de poder referirnos a estos elementos y ejecutar métodos específicos para realizar las mismas acciones que un humano haría sobre los mismos, gracias a las clases WebDriver y WebElement.
+
+Clase WebDriver
+Cuenta con una serie de propiedades y métodos para interactuar directamente con la ventana del navegador y sus elementos relacionados, como son pop-ups o alerts. Por ahora nos centraremos a las más utilizadas.
+
+Propiedades de la clase WebDriver
+Estas son las más comunes para acceder al navegador.
+
+Propiedad/Atributo
+    - current_url	
+        Descripción:
+            Obtiene la URL del sitio en la que se encuentra el navegador	
+            Ejemplo:
+                driver.get_url
+    - current_window_handle	
+        Descripción:
+            Obtiene la referencia que identifica a la ventana activa en ese momento	
+            Ejemplo:
+                driver.current_window_handle
+    - name	
+        Descripción:
+            Obtiene el nombre del navegador subyacente para la instancia activa	
+            Ejemplo:
+                driver.name
+    - orientation	
+        Descripción:
+            Obtiene la orientación actual del dispositivo móvil	
+                Ejemplo:
+                    driver.orientation
+    - page_source	
+        Descripción:
+            Obtiene el código fuente de disponible del sitio web	
+            Ejemplo:
+                driver.page_source
+    - title	
+        Descripción:
+            Obtiene el valor de la etiqueta <title> del sitio web	
+            Ejemplo:
+                driver.title
+
+Clase WebElement
+Esta clase nos permite interactuar específicamente con elementos de los sitios web 
+como textbox, text area, button, radio button, checkbox, etc.
+
+Propiedades más comunes de la clase WebElement
+
+    - size	
+        Descripción:
+            Obtiene el tamaño del elemento	
+            Ejemplo:
+                login.size
+    - tag_name	
+        Descripción:
+            Obtiene el nombre de la etiqueta HTML del elemento	
+            Ejemplo:
+                login.tag_name
+    - text	
+        Descripción:
+            Obtiene el texto del elemento	
+            Ejemplo:
+                login.text
+Métodos más comunes de la clase WebElement
+
+    - clear()	
+        Descripción:
+            Limpia el contenido de un textarea	
+            Ejemplo:    
+                first_name.clear()
+    - click()	
+        Descripción:
+            Hace clic en el elemento	
+            Ejemplo:
+                send_button.click()
+    - get_attribute(name)	
+        Obtiene el valor del atributo de un elemento	
+        submit_button.get_attribute(‘value’) last_name.get_attribute(max_length)
+    - is_displayed()	
+        Descripción:
+            Verifica si el elemento está a la vista al usuario	
+            Ejemplo:
+                banner.is_displayed()
+    - is_enabled()	
+        Descripción:
+            Verifica si el elemento está habilitado	
+            Ejemplo:
+                radio_button.is_enabled()
+    - is_selected()	
+        Descripción:
+            Verifica si el elemento está seleccionado, para el caso de checkbox o radio button	
+            Ejemplo:
+                checkbox.is_selected()
+    - send_keys(value)	
+        Descripción:
+            Simula escribir o presionar teclas en un elemento	
+            Ejemplo:
+                email_field.send_keys(‘team@platzi.com’)
+    - submit()	
+        Descripción:
+            Envía un formulario o confirmación en un text area	
+            Ejemplo:
+                search_field.submit()
+    - value_of_css_property(property_name)	
+        Descripción:
+            Obtiene el valor de una propiedad CSS del elemento	
+            Ejemplo:
+                header.value_of_css_property(‘background-color’)
+
+Interactuar con elementos
+***Clase 10 Manejar form, textbox, checkbox y radio button***
+
+
+
+***Clase 11 Manejar dropdown y listas***
+
+Los dropdown son menús desplegables donde puedes encontrar diversa opciones y puedes acceder a ellas para elegirlas de forma automatizada
+ya se por el texto que está visible, el orden del índice o también por el valor que tiene asignado en el código html
+
+***Clase 12 Manejar alert y pop-up***
+
+Estos pueden solicitar la confirmación o negación de algo, incluso escribir información en el teclado para enviarla
+
+***Clase 13 Automatizar navegación***
+- Implícita:
+    Busca uno o varios elementos en el DOM si no se encuentran disponibles por la cantidad de tiempo asignado
+
+- Explícita:
+    Utiliza condiciones de espera determinadas y continúa hasta que se cumplan, es decir, primero se encuentre esa condición, se cumpla y con ello puede continuar
+
+Sincronizar pruebas
+***Clase 14 Demora implícita y explícita***
+
+
+***Clase 15 Condicionales esperadas***
+
+- element_to_be_clickable(locator)	
+    Espera a que el elemento sea visible y habilitado para hacer clic en el mismo	
+        WebDriverWait(self.driver,10).until(expected_conditions.element_to_be_clickable((By.NAME,“accept_button”)))
+- element_to_be_selected(element)	
+    Espera a que un elemento sea seleccionado	
+        subscription = self.driver.find_element_by_name(“terms”). WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_selected(terms)))
+- invisibility_of_element_located(locator)	
+    Espera a que un elemento no sea visible o no se encuentre presente en el DOM	
+        WebDriverWait(self.driver,10).until(expected_conditions.invisibility_of_element_located((By.ID,“loading_banner”)))
+- presence_of_all_elements_located(locator)	
+    Espera a que por lo menos uno de los elementos que se indican coincida con los presentes en el sitio	
+        WebDriverWait(self.driver,10).until(expected_conditions.presence_of_all_elements_located((By.CLASS_NAME,“input-text”)))
+- presence_of_element_located(locator)	
+    Espera a que un elemento sea visible se encuentre presente en el DOM	
+        WebDriverWait(self.driver,10).until(expected_conditions.presence_of_element_located((By.ID,“search-bar”)))
+- text_to_be_present_in_element(locator,text_)	
+    Espera a que un elemento con el texto indicado se encuentre presente	
+        WebDriverWait(self.driver,10).until(expected_conditions.text_to_be_present_in_element((By.ID,“seleorder”),“high”))
+- title_contains(title)	
+    Espera a que la página contenga en el título exactamente como es indicado	
+        WebDriverWait(self.driver, 10).until(expected_conditions.title_contains(“Welcome”))
+- title_is(title)	
+    Espera a que la página tenga un título idéntico a como es indicado	
+    
+        WebDriverWait(self.driver, 10).until(expected_conditions.title_is(“Welcome to Platzi”))
+- visibility_of(element)	
+    Espera a que el elemento indicado esté en el DOM, sea visible, su alto y ancho sean mayores a cero
+        first_name = self.driver.find_element_by_id(“firstname”) WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of(first_name))
+- visibility_of_element_located(locator)	
+    Espera a que el elemento indicado por su selector esté en el DOM, sea visible y que su alto y ancho sean mayores a cero	
+        WebDriverWait(self.driver,10).until(expected_conditions.visibility_of_element_located((By.ID,“firstname”)))
+
+Retos
+***Clase 16 Agregar y eliminar elementos***
+
+En este reto vamos a agregar y eliminar elementos de un sitio web a través de la automatización de los clicks e identificando los elementos
+El sitio con el que vamos a trabajar donde vamos a poder encontrar retos de automatización es el siguiente
+    - the-internet.herokuapp.com
+        - vamos a trabajar con el Add/Remove Elements
+
+ver archivo clase16_add_remove_elements.py
+
+***Clase 17 Elementos dinámicos***
+
+Elementos dinámicos ya que este se puede o no mostrar en pantalla bajo ciertas condiciones especiales
+
+El sitio con el que vamos a trabajar donde vamos a poder encontrar retos de automatización es el siguiente
+    - the-internet.herokuapp.com
+        - vamos a trabajar con el Disappering Elements
+
+revisar archivo clase17_dynamic_elements.py
+
+***Clase 18 Controles dinámicos***
+
+Controles dinámicos los cuales al interactuar con ellos su funcionalidad puede variar de acuerdo al tiempo, es decir, 
+tenemos que esperar antes de seguirlos manejando, por lo que vamos a usar esperas
+
+El sitio con el que vamos a trabajar donde vamos a poder encontrar retos de automatización es el siguiente
+    - the-internet.herokuapp.com
+        - vamos a trabajar con el Dynamic Controls
+
+revisar archivo clase18_dynamic_controls.py
+
+***Clase 19 Typos***
+
+Vamos a validar que el texto del sitio web es idéntico a uno que esperamos
+
+El sitio con el que vamos a trabajar donde vamos a poder encontrar retos de automatización es el siguiente
+    - the-internet.herokuapp.com
+        - vamos a trabajar con el Typos
+
+revisar archivo clase19_typos.py
+
+***Clase 20 Ordenar tablas***
+
+Vamos a trabajar para ordenarla y obtener información de ellas
+El sitio con el que vamos a trabajar donde vamos a poder encontrar retos de automatización es el siguiente
+    - the-internet.herokuapp.com
+        - vamos a trabajar con el Soportable Data Tables
+
+Metodologías de Trabajo
+***Clase 21 Data Driven Testing (DDT)***
+
+-TDD:
+    - Desarrollar código en base a pruebas para que puedas cumplirlas
+    esto ayuda a que el software en el futuro conforme va avanzando su desarrollo va cumpliendo satisfactoriamente las pruebas
+
+DDT(Data Driven Testing):
+    - Desarrollar pruebas en base a código ya existente para validar en qué escenarios pasan o fallan
+    Es un poco opuesto el proceso a TDD, ya que vamos a escribir pruebas en base a software que ya está escrito, de esta forma
+    podemos saber en que escenarios el software puede cumplir o fallar
+    
+***Clase 22 Page Object Model (POM)***
+
+Esto funciona que en lugar de que tengamos las pruebas en un solo archivo manejaremos archivos independientes
+- Beneficios
+    - Crea un alto nivel de abstracción para minimizar cambios en las pruebas si los desarrolladores modifican el sitio
+    - Crea código reutilizable que se puede utilizar en múltiples pruebas
+    - Las pruebas son más legibles, flexibles y vigentes
+
+Cierre del curso
+***Clase 23 Realizar una prueba técnica***
+
+- Practicar en sitios complejos
+- Preguntar acerca de las expectativas
+- Define paso a paso el flujo
+- Pienso como usuario final
+- Programa como desarrollador
+
+Prueba en mercado libre:
+    1. Ingresar a mercadolibre.com
+    2. Seleccionar "Colombia" como país
+    3. Buscar el término "playstation 4"
+    4. Filtrar por condición "Nuevos"
+    5. Filtrar por ubicación "Bogotá"
+    6. Ordenar de mayor a menor precio
+    7. obtener el nombre y precio de los primeros 5 artículos
+
+***Clase 24 Conclusiones***
+
+- Automatizar el navegador para testing, scraping, tareas repetitivas, etc
+- Automatizar casos de pruebas, suites de pruebas y gerar sus reportes
+- Aplicar DDT y POM a tus scripts
+- Puedes hacer,pruebas unitaris, funcionales, casos de prueba, etc.
+- Puedes usar DDT(Data Driven Testing) ó Page Object Model(POM) para que las prueas se mantengan a lo largo del tiempo
+
+- Consejos de pruebas:
+    - Probar sitios con autorización o diseñados para esto(buscar sitios para pruebas de automatización con selenium)
+    - Hacer buen uso de las automatizaciones
+    - Aún puedes hacer más: tienes Selenium Grid para pruebas en paralelo y Appium para mobile testing
+RECOMENDADOS DE LA CLASE:
+
+https://platzi.com/cursos/web-scraping/
